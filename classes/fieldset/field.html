@@ -198,7 +198,7 @@ $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 				<h4 class="method" id="method_set_value">set_value($value, $repopulate = false)</h4>
 				<p>
 					フィールドの値を設定／変更します。ラジオボタン、チェックボックスの場合、 repopulate を選択すると、
-					現在の値と渡された値に応じて "checked" を再計算します。
+					現在の値と渡された値に応じてフィールドの "checked" の値を再計算します。
 				</p>
 				<table class="method">
 					<tbody>
@@ -224,7 +224,7 @@ $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 									<tr>
 										<th><kbd>$repopulate</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>true にすると、値に応じてフィールドを再計算する (ラジオボタンとチェックボックスの場合のみ)</td>
+										<td>true にすると、値に応じてフィールドを再設定する (ラジオボタンとチェックボックスの場合のみ)</td>
 									</tr>
 								</tbody>
 							</table>
