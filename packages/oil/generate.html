@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Generate - Oil Package - FuelPHP Documentation</title>
+	<title>Generate - Oil パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -49,28 +49,28 @@
 				<h2 id="generate">Generate</h2>
 
 				<p>
-					Code Generation can be used to speed up development times by building much of the repetitive code for you. This
-					is entirely optionally - like all of oil - and all code can be edited however you like afterwards. You can generate the following items:
+					コード生成を使用すると、多く繰り返すコードをビルドする開発回数をスピードアップすることができます。
+					これは - oil 全体にも言えますが - 完全にオプションです。後で全てのコードは好きなように編集可能です。次のような項目を生成することができます:
 				</p>
 
 				<ul>
-					<li><a href="#controllers">Controllers</a></li>
-					<li><a href="#models">Models</a></li>
-					<li><a href="#presenters">Presenters</a></li>
-					<li><a href="#migrations">Migrations</a></li>
-					<li><a href="#scaffolding">Scaffolding</a></li>
-					<li><a href="#admin">Admin scaffolding</a></li>
-					<li><a href="#tasks">Tasks</a></li>
-					<li><a href="#configs">Configs</a></li>
-					<li><a href="#packages">Packages</a></li>
-					<li><a href="#modules">Modules</a></li>
+					<li><a href="#controllers">コントローラ</a></li>
+					<li><a href="#models">モデル</a></li>
+					<li><a href="#presenters">プレゼンタ</a></li>
+					<li><a href="#migrations">マイグレーション</a></li>
+					<li><a href="#scaffolding">スキャフォールド</a></li>
+					<li><a href="#admin">Admin スキャフォールド</a></li>
+					<li><a href="#tasks">タスク</a></li>
+					<li><a href="#configs">設定</a></li>
+					<li><a href="#packages">パッケージ</a></li>
+					<li><a href="#modules">モジュール</a></li>
 				</ul>
 
-				<h3 id="controllers">Controllers</h3>
+				<h3 id="controllers">コントローラ</h3>
 
 				<p>
-					To generate a skeleton <a href="../../general/controllers/base.html">Controller</a> with actions and views
-					predefined, use the following command:
+					事前に定義したアクションやビューを持つ <a href="../../general/controllers/base.html">Controller</a> のスケルトンを生成するために、
+					次ようなコマンドを使用します:
 				</p>
 
 				<pre class="cli"><code>$ php oil g controller posts action1 action2 action3
@@ -79,7 +79,7 @@
 	Created view: APPPATH/views/posts/action3.php
 	Created controller: APPPATH/classes/controller/posts.php</code></pre>
 
-				<p>This will produce a controller that looks like this:</p>
+				<p>これは次のようなコントローラを生成します:</p>
 
 				<pre class="php"><code>class Controller_Posts extends Controller_Template
 {
@@ -106,18 +106,18 @@
 
 /* End of file posts.php */</code></pre>
 
-				<h3 id="models">Models</h3>
+				<h3 id="models">モデル</h3>
 
 				<p>
-					Generate a simple Model by listing fields and have
-					the <a href="../../general/migrations.html">Migration</a> automatically created for you to match:
+					フィールドをリストすることでシンプルな <a href="../../general/controllers/base.html">Model</a> を生成し、
+					自動的にマッチした <a href="../../general/migrations.html">Migration</a> を生成します:
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int
 	Created model: APPPATH/classes/model/post.php
 	Created migration: APPPATH/migrations/001_create_posts.php</code></pre>
 
-				<p>That will create a simple Model that uses <a href="../orm/intro.html">Orm</a>, so make sure the package is enabled in your config file. It will look like this:</p>
+				<p>これは、<a href="../orm/intro.html">Orm</a> を使うシンプルなモデルを作成しますので、設定ファイルで Orm パッケージが有効になっていることを確認してください。このようなコードになります:</p>
 
 				<pre class="php"><code>class Model_Post extends Orm\Model {
 
@@ -145,7 +145,7 @@
 /* End of file post.php */
 </code></pre>
 
-			<p>Not very exciting, but the migration is the useful part here:</p>
+			<p>あまりワクワクしませんが、マイグレーションはここでは有用な部分です:</p>
 
 			<pre class="php"><code>namespace Fuel\Migrations;
 
@@ -169,23 +169,23 @@ class Create_posts
 	}
 }</code></pre>
 
-				<p>If you do not wish to generate a migration, simply supply the <code>--no-migration</code>:</p>
+				<p>もしマイグレーションの生成を望まないのなら、単に <code>--no-migration</code> を追加します:</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --no-migration
 	Created model: APPPATH/classes/model/post.php</code></pre>
 
-				<p>By default, the class name is generated singular (it represents one post), but the corresponding table is generated
-				in plural (in contains multiple posts). You can make the table use the same name as the model by using <code>--singular</code>.</p>
+				<p>デフォルトでは、生成されるクラス名は単数形です ( 1 つの投稿を表す)。ですが、対応するテーブルは複数形で生成されます (複数の投稿が含まれる)。
+				<code>--singular</code> を使うことで、生成するテーブル名をモデル名と同じにすることができます。</p>
 
-				<h4>Generating Model using Model_Crud</h4>
+				<h4>Model_Crud を使うモデルの生成</h4>
 
-				<p>FuelPHP v1.1 added a simple Model_Crud base model which offers similar functionality of using ORM without overhead of relational data. You can have the model generated using this by adding <code>--crud</code></p>
+				<p>FuelPHP v1.1 はリレーショナルデータのオーバヘッドなしで ORM を使うのと同じような機能を提供するシンプルな Model_Crud ベースのモデルを追加しました。<code>--crud</code> を追加することで、そのようなモデルを生成できます。</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int created_at:datetime --crud
 	Created model: APPPATH/classes/model/post.php
 	Created migration: APPPATH/migrations/001_create_posts.php</code></pre>
 
-				<p>That will create a simple Model that uses Fuel\Core\Model_Crud. It will look like this:</p>
+				<p>これは <a href="../orm/intro.html">Orm</a> を使用したシンプルなモデルを生成します。設定ファイルでパッケージが有効かどうか確認してください。次のようになります:</p>
 
 				<pre class="php"><code>class Model_Post extends \Model_Crud
 {
@@ -203,9 +203,9 @@ class Create_posts
 }</code></pre>
 
 
-				<h4 id="no_timestamp">Generating Model Without Timestamp Option</h4>
+				<h4 id="no_timestamp">タイムスタンプオプションを指定せずにモデルを生成する</h4>
 
-				<p>Add <code>--no-timestamp</code> to exclude the created/updated fields and observers.</p>
+				<p>created/updated フィールドやオブザーバを除外するために <code>--no-timestamp</code> を追加します。</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --no-timestamp</code></pre>
 				<pre class="php"><code>class Model_Post extends \Orm\Model
@@ -242,22 +242,22 @@ class Create_posts
 }
 </code></pre>
 
-				<h4 id="timestamp_fields">Changing the Timestamp and Timestamp Fields</h4>
+				<h4 id="timestamp_fields">タイムスタンプとタイムスタンプフィールドの変更</h4>
 
 				<p>
-					When you're using the timestamp fields in either ORM models or CRUD models (\Model_Crud) you can
-					chose your own field names. Use the <code>--created-at</code> and <code>--updated-at</code>
-					options to set your own field names.
+					ORM モデルか CRUD モデル (\Model_Crud) のいずれかでタイムスタンプフィールドを使っている場合、独自のフィールド名を選ぶことができます。
+					<code>--created-at</code> と <code>--updated-at</code> オプションを使って
+					独自のフィールド名を設定します。
 				</p>
 
 				<p>
-					By default, when you enable timestamps, the timestamps are stored in unixtime, as an integer. If you
-					prefer the MySQL DATETIME format, you can use the <code>--mysql-timestamp</code> option.
+					デフォルトでは、タイムスタンプは有効になっており、 UNIX 時間を integer 型で格納します。
+					もし、 MySQL の DATETIME 型がお好みであれば、<code>--mysql-timestamp</code> オプションを使うことができます。
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --mysql-timestamp --created-at=my_created</code></pre>
 
-				<p>Which will give you:</p>
+				<p>このようなコードになります:</p>
 
 				<pre class="php"><code>&lt;?php
 
@@ -310,15 +310,15 @@ class Create_posts
 	}
 }</code></pre>
 
-				<h4 id="model_soft">Generating Model using Model_Soft</h4>
+				<h4 id="model_soft">Model_Soft を使うモデルの生成</h4>
 
 				<p>
-					FuelPHP v1.5 added a Model_Soft based ORM model. Add <code>--soft-delete</code> to use Model_Soft.
+					FuelPHP v1.5 は ORM モデルをベースにした Model_Soft を追加しました。Model_Soft を使用するには、 <code>--soft-delete</code> を追加します。
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --soft-delete</code></pre>
 
-				<p>Which will give you:</p>
+				<p>このようなコードになります:</p>
 
 				<pre class="php"><code>&lt;?php
 
@@ -378,20 +378,20 @@ class Create_posts
 }</code></pre>
 
 				<p>
-					If you wish changing deleted_at field name. Use the <code>--deleted-at</code> option to set your own field name.
+					もし deleted_at のフィールド名を変更したい場合、 <code>--deleted-at</code> オプションに変更したい名前を設定します。
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --soft-delete --deleted-at=mydeleted</code></pre>
 
-				<h4 id="model_temporal">Generating Model using Model_Temporal</h4>
+				<h4 id="model_temporal">Model_Temporal を使うモデルの生成</h4>
 
 				<p>
-					Add <code>--temporal</code> to use Model_Temporal.
+					Model_Temporal を使用するには、 <code>--temporal</code> を追加します。
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --temporal</code></pre>
 
-				<p>Which will give you:</p>
+				<p>このようなコードになります:</p>
 
 				<pre class="php"><code>&lt;?php
 
@@ -442,25 +442,25 @@ class Create_posts
 	}
 }</code></pre>
 
-				<p class="note">Please note that <b>temporal_start</b> and <b>temporal_end</b> are not added to the migration's primary_key array. You have to add them manually.</p>
+				<p class="note"><b>temporal_start</b> と <b>temporal_end</b> は、マイグレーションの primary_key 配列に追加されませんのでご注意ください。それらを手動で追加する必要があります。</p>
 
-				<p class="note"><code>--no-timestamp</code> is set to true by default which means both <b>created_at</b> and <b>updated_at</b> fields and the related observers are ommited. You can bypass this default with <code>--no-timestamp=0</code> to get them back.</p>
+				<p class="note"><code>--no-timestamp</code> は <b>created_at</b> と <b>updated_at</b> フィールドの両方を意味しデフォルトでtrueに設定されており、関連オブザーバーは省略されている。それらを戻すために <code>--no-timestamp=0</code> とすると、このデフォルトを回避することができます。</p>
 
 				<p>
-					If you wish changing temporal_start or temporal_end field name. Use <code>--temporal-start</code> or <code>--temporal-end</code> option to set your own field name.
+					temporal_start もしくは temporal_end フィールドの名前を変更したい場合、独自のフィールド名を設定するために <code>--temporal-start</code> もしくは <code>--temporal-end</code> を利用してください。
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --temporal --temporal-start=mystart --temporal-end=myend</code></pre>
 
-				<h4 id="model_nestedset">Generating Model using Model_Nestedset</h4>
+				<h4 id="model_nestedset">Model_Nestedset を使うモデルの生成</h4>
 
 				<p>
-					Add <code>--nestedset</code> to use Model_Nestedset.
+					Model_Nestedset を使用するには、 <code>--nestedset</code> を追加します。
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --nestedset</code></pre>
 
-				<p>Which will give you:</p>
+				<p>このようなコードになります:</p>
 
 				<pre class="php"><code>&lt;?php
 
@@ -505,28 +505,28 @@ class Create_posts
 	}
 }</code></pre>
 
-				<p class="note"><code>--no-timestamp</code> is set to true by default which means both <b>created_at</b> and <b>updated_at</b> fields and the related observers are ommited.You can bypass this default with <code>--no-timestamp=0</code> to get them back.</p>
+				<p class="note"><code>--no-timestamp</code> は <b>created_at</b> と <b>updated_at</b> フィールドの両方を意味しデフォルトでtrueに設定されており、関連オブザーバーは省略されている。それらを戻すために <code>--no-timestamp=0</code> とすると、このデフォルトを回避することができます。</p>
 
 				<p>
-					If you wish changing title, tree_id, left_id, right_id field name. Use one of <code>--title</code>, <code>--tre-id</code>, <code>--left-id</code>, <code>--right-id</code> options to set your own field name.
+					title, tree_id, left_id, right_id フィールドの名前を変更したい場合、独自のフィールド名を設定し <code>--title</code>, <code>--tre-id</code>, <code>--left-id</code>, <code>--right-id</code> のひとつを利用してください。
 				</p>
 
 				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --nestedset --title=mytitle --tree-id=mytreeid --left-id=myleftid --right-id=myrightid</code></pre>
 
-				<h3 id="presenters">Presenters</h3>
+				<h3 id="presenters">プレゼンタ</h3>
 
 				<p>
-					Optionally you have have oil to generate a Presenter class to accompany the view.
+					任意でビューを伴う Presenter クラスを oil で生成することができます。
 				</p>
 
 				<pre class="cli"><code>$ php oil g controller posts action1 action2 action3 --with-presenter</code></pre>
 
-				<h3 id="running_migrations">Running Migrations</h3>
+				<h3 id="running_migrations">マイグレーションの実行</h3>
 
 				<p>
-					The following commands illustrate how to use the refine command to run useful migration tasks,
-					assuming that the system is currently at migration 5. The migrate task can be given parameters to
-					move directly to a given version, or just up/down by a single version.
+					次のコマンドは有用なマイグレーションタスクを実行する refine コマンドの使い方を示しています。
+					システムが現在マイグレーション 5 であると仮定しています。マイグレーションタスクはパラメータを指定し、直接そのバージョンに移動することができます。
+					または、バージョンを 1 つ 上げたり下げたりします。
 				</p>
 
 				<pre class="cli"><code>$ php oil refine migrate
@@ -544,20 +544,20 @@ $ php oil refine migrate:down
 $ php oil refine migrate:up
 	Migrated to version: 5.</code></pre>
 
-				<p class="note">The following field types are supported: <strong>string[n]</strong>, <strong>varchar[n]</strong>, <strong>int[n]</strong>, <strong>enum[value1, value2]</strong>, <strong>decimal[n, n]</strong>, <strong>float[n, n]</strong>, <strong>text</strong>, <strong>blob</strong>, <strong>datetime</strong>, <strong>date</strong>, <strong>timestamp</strong> and <strong>time</strong>.</p>
+				<p class="note">次のフィールドの型をサポートしています: <strong>string[n]</strong>, <strong>varchar[n]</strong>, <strong>int[n]</strong>, <strong>enum[value1, value2]</strong>, <strong>decimal[n, n]</strong>, <strong>float[n, n]</strong>, <strong>text</strong>, <strong>blob</strong>, <strong>datetime</strong>, <strong>date</strong>, <strong>timestamp</strong>, <strong>time</strong></p>
 
-				<h3 id="migrations">Generating Migrations</h3>
+				<h3 id="migrations">マイグレーションの生成</h3>
 
 				<p>
-					You can generate migrations without creating a model. This could be used to rename a table, or add fields to a table in a way that is easy to deploy in other environments.
+					モデルを生成せずにマイグレーションを生成可能です。テーブルをリネームするために使用されるか、他の環境に簡単にデプロイするためにテーブルにフィールドを追加するために使用されます。
 				</p>
 
 				<pre class="cli"><code>$ php oil generate migration rename_table_users_to_accounts
 	Building magic migration: rename_table
 	Created migration: APPPATH/migrations/002_rename_table_users_to_accounts.php</code></pre>
 
-				<h3 id="magic_migrations">Magic Migrations</h3>
-				<p>There are a number of "magic" migrations which automatically build you a migration based on a prefix to your migration name.</p>
+				<h3 id="magic_migrations">Magic マイグレーション</h3>
+				<p>いくつかの "magic" マイグレーションがあり、自動的にあなたのマイグレーション名のプレフィックスに基づいたマイグレーションをビルドします。</p>
 				<pre class="cli"><code>$ php oil generate migration create_users name:text email:string[50] password:string[125]
 $ php oil generate migration rename_table_users_to_accounts
 $ php oil generate migration add_bio_to_accounts bio:text
@@ -565,14 +565,14 @@ $ php oil generate migration delete_bio_from_accounts bio:text
 $ php oil generate migration rename_field_name_to_username_in_accounts
 $ php oil generate migration drop_accounts
 </code></pre>
-				<p>Note: Be careful when naming your migrations that you don't begin with any keywords by accident.</p>
+				<p>注意: マイグレーションを名付ける際に、誤ってキーワードで開始しないように注意してください。</p>
 
-				<h3 id="scaffolding">Scaffolding</h3>
+				<h3 id="scaffolding">スキャフォールド</h3>
 
 				<p>
-					Scaffolding is the really exciting part of Oil's code generation. This approach is heavily borrowed from Rails who have done
-					a great job with it. The idea is that you create not only the MVC skeletons and migrations, but populate them with default CRUD code
-					so the code will actually work after writing the command.
+					スキャフォールドは、 Oil のコード生成のワクワクする部分です。このアプローチは、Rails から借用しており、偉大な功績があります。
+					それは、MVC スケルトンやマイグレーションだけでなく、デフォルトの CRUD コードを埋め込んで、
+					コマンドを記述した後にコードが実際に動作するという考えです。
 				</p>
 
 				<pre class="cli"><code>$ php oil g scaffold monkey name:string description:text
@@ -590,8 +590,8 @@ Migrated to latest version: 3.
 </code></pre>
 
 				<p>
-					As you can see lots of code is generated by this command including a command that is executed in the second command.
-					The controller looks like this:
+					2 番目のコマンドで実行されたコマンドを含み、このコマンドによって多くのコードが生成されたことがわかります。
+					コントローラは次のようになります:
 				</p>
 
 				<pre class="php"><code>class Controller_Monkey extends Controller_Template
@@ -694,13 +694,13 @@ Migrated to latest version: 3.
 
 }</code></pre>
 
-				<h3 id="admin">Admin scaffolding</h3>
+				<h3 id="admin">Admin スキャフォールド</h3>
 
 				<p>
-					You can swap scaffold with admin and generate a controller which extends Controller_Admin instead of Controller_Template.
-					On the first use of this command an admin skeleton will be generated, to expand this skeleton use the skip force argument.
+					scaffold ではなく admin と入力することで、Controller_Admin を継承したコントローラを Controller_Template の代わりに生成できます。
+					初めてこのコマンドを使うときには、Admin のスケルトンが生成されます。また、このスケルトンを展開する際には、<code>-s</code> と <code>-f</code> オプションが使えます。
 
-					To generate in subdirectories name the prefix the model's name accordingly.
+					サブディレクトリに生成するには、モデルの名前に基づいたプレフィクスを付けます。
 				</p>
 
 				<pre class="cli"><code>$ php oil g admin project_entry title:string abstract:text full_text:text project_id:int is_draft:int order:int -s
@@ -714,16 +714,16 @@ Migrated to latest version: 3.
 	Creating view: APPPATH/views/admin/project/entry/_form.php
 </code></pre>
 
-				<h3 id="tasks">Tasks</h3>
+				<h3 id="tasks">タスク</h3>
 
 				<p>
-					You can also have oil generate the skeleton of a new task.
+					さらに、 oil で新しいタスクの雛形を生成できます。
 				</p>
 
 				<pre class="cli"><code>$ php oil g task newtask cmd1 cmd2</code></pre>
 
 				<p>
-					Which will generate
+					次のように生成されます
 				</p>
 
 				<pre class="php"><code>&lt;?php
@@ -739,7 +739,7 @@ class Newtask
 		echo "\n-------------------------------------------\n\n";
 
 		/***************************
-		 Put in TASK DETAILS HERE
+		 タスクの詳細をここに
 		 **************************/
 	}
 
@@ -750,7 +750,7 @@ class Newtask
 		echo "\n-------------------------------------------\n\n";
 
 		/***************************
-		 Put in TASK DETAILS HERE
+		 タスクの詳細をここに
 		 **************************/
 	}
 
@@ -761,22 +761,22 @@ class Newtask
 		echo "\n-------------------------------------------\n\n";
 
 		/***************************
-		 Put in TASK DETAILS HERE
+		 タスクの詳細をここに
 		 **************************/
 	}
 }
 /* End of file tasks/newtask.php */</code></pre>
 
-				<h3 id="configs">Configs</h3>
+				<h3 id="configs">設定</h3>
 
 				<p>
-					To generate a <a href="../../classes/config.html">Config</a>, use the following command:
+					<a href="../../classes/config.html">設定</a> を生成するために次のコマンドを使用します:
 				</p>
 
 				<pre class="cli"><code>$ php oil g config sample hello:world
 	Created config: APPPATH/config/sample.php</code></pre>
 
-				<p>This will produce a config that looks like this:</p>
+				<p>これは次のような設定を生成します:</p>
 
 				<pre class="php"><code>return array (
 	'hello' => 'world',
@@ -784,15 +784,15 @@ class Newtask
 
 /* End of file sample.php */</code></pre>
 
-				<h3>Generate Config from COREPATH</h3>
+				<h3>COREPATH から設定を生成する</h3>
 				<p>
-					To combine config from COREPATH/config if APPPATH/config doesn't have one
+					APPPATH/config がない場合、COREPATH/config から設定を結合します。
 				</p>
 
 				<pre class="cli"><code>$ php oil g config package
 	Created config: APPPATH/config/package.php</code></pre>
 
-				<p>This will produce a config that looks like this:</p>
+				<p>これは次のような設定を生成します:</p>
 
 				<pre class="php"><code>return array (
 	'sources' =>
@@ -801,15 +801,15 @@ class Newtask
 	),
 );</code></pre>
 
-				<h3>Force Update Config from COREPATH &amp; APPPATH</h3>
+				<h3>COREPATH や APPPATH から強制的に設定を更新する</h3>
 				<p>
-					To combine config from COREPATH/config and combine APPPATH/config to APPPATH/config
+					COREPATH/config や combine APPPATH/config から APPPATH/config に設定を結合する
 				</p>
 
 				<pre class="cli"><code>$ php oil g config form --overwrite
 	Created config: APPPATH/config/form.php</code></pre>
 
-				<p>This will produce a config that looks like this:</p>
+				<p>これは次のような設定を生成します:</p>
 
 				<pre class="php"><code>return array (
 	'prep_value' => true,
@@ -820,10 +820,10 @@ class Newtask
 
 /* End of file form.php */</code></pre>
 
-				<h3 id="packages">Packages</h3>
+				<h3 id="packages">パッケージ</h3>
 
 				<p>
-					To generate a <a href="../../general/packages.html">Package</a>, use the following command:
+					<a href="../../general/packages.html">パッケージ</a> を生成するには、次のコマンドを使います:
 				</p>
 
 				<pre class="cli"><code>$ php oil g package sample
@@ -831,11 +831,11 @@ class Newtask
 	Creating file: PKGPATH/sample/config/sample.php
 	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
 
-				<p class="note">The path where the package is generated is PKGPATH by default, but this value can be changed to any path defined in the <code>package_paths</code> config by passing the <code>--path=package_path</code> or <code>-p=package_path</code> option to the command.</p>
+				<p class="note">パッケージが生成されるパスは、デフォルトでは PKGPATH ですが、この値は <code>package_paths</code> 設定に設定されているどのパスにも <code>--path=package_path</code> または <code>-p=package_path</code> オプションをコマンドに渡すことで、変更できます。</p>
 
-				<h3>Generate Driver-based Package</h3>
+				<h3>ドライバベースのパッケージを生成する</h3>
 
-				<p>If you wish to generate a driver-based package, simply supply the <code>--drivers</code> or <code>-d</code> option:</p>
+				<p>もし、ドライバベースのパッケージを生成したい場合は、<code>--drivers</code> または <code>-d</code> オプションを指定してください:</p>
 
 				<pre class="cli"><code>$ php oil g package sample -d
 	Creating file: PKGPATH/sample/classes/sample.php
@@ -843,7 +843,7 @@ class Newtask
 	Creating file: PKGPATH/sample/config/sample.php
 	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
 
-				<p>You can also generate your own drivers. Simply pass the driver names separated by commas to the <code>--drivers</code> or <code>-d</code> option:</p>
+				<p>独自のドライバを生成することも可能です。カンマ区切りのドライバ名を <code>--drivers</code> または <code>-d</code> オプションに渡してください:</p>
 
 				<pre class="cli"><code>$ php oil g package sample -d=driver1,driver2
 	Creating file: PKGPATH/sample/classes/sample.php
@@ -853,9 +853,9 @@ class Newtask
 	Creating file: PKGPATH/sample/config/sample.php
 	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
 
-				<h3>Generate Package with VCS files</h3>
+				<h3>VCS ファイル付きのパッケージを生成する</h3>
 
-				<p>If you wish to generate composer.json and README.md files for your package, simply supply the <code>--vcs</code> or <code>-v</code> option:</p>
+				<p>パッケージのための composer.json と README.md ファイルを生成したい場合は、<code>--vcs</code> または <code>-v</code> オプションを追加してください:</p>
 
 				<pre class="cli"><code>$ php oil g package sample -v
 	Creating file: PKGPATH/sample/composer.json
@@ -864,16 +864,16 @@ class Newtask
 	Creating file: PKGPATH/sample/config/sample.php
 	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
 
-				<h3 id="modules">Modules</h3>
+				<h3 id="modules">モジュール</h3>
 
 				<p>
-					To generate a <a href="../../general/modules.html">Module</a>, use the following command:
+					<a href="../../general/modules.html">モジュール</a> を生成するには、次のコマンドを使います:
 				</p>
 
 				<pre class="cli"><code>$ php oil g module blog</code></pre>
 
 				<p>
-					This command will create a folder called <code>blog</code> in you app's module path defined in <code>config.module_paths</code>. If you have multiple module paths defined, you will get a list of paths that you can choose from, e.g.:
+					このコマンドは <code>blog</code> フォルダをあなたのアプリケーションの <code>config.module_paths</code> で定義されたモジュールパスに作成します。もし、複数のパスが定義されていれば、例えば、次のような選択するパスのリストが表示されます:
 				</p>
 
 				<pre class="cli"><code>$ php oil g module blog
@@ -882,7 +882,7 @@ Your app has multiple module paths defined. Please choose the appropriate path f
 [2] /var/www/fuel/app/modules/</code></pre>
 
 				<p>
-					To provide for even easier module generation, you can supply the <code>--folders</code> option with a list of comma-separated folders to be created. These can be nested almost indefinitely and you don't need to provide every parent folder. A short yet useful example can be:
+					より楽にモジュールを生成するために、<code>--folders</code> オプションで、カンマ区切りの生成するフォルダのリストを指定することができます。それらはほぼ無制限にネストすることができ、親フォルダを指定する必要はありません。短く、しかし、有用な例は次のようになります:
 				</p>
 
 				<pre class="cli"><code>$ php oil g module blog --folders=classes/model,classes/controller,config,lang</code></pre>
@@ -894,6 +894,7 @@ Your app has multiple module paths defined. Please choose the appropriate path f
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/oil/generate.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/oil/generate.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/oil/generate.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

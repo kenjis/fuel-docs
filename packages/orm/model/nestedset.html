@@ -11,7 +11,7 @@
 		var class_prefix = "Model_Nestedset::";
 	</script>
 	<script src="./../../../assets/js/combined.js"></script>
-	<title>NestedSets Model - Orm Package - FuelPHP Documentation</title>
+	<title>NestedSets Model - Orm パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,38 +45,38 @@
 
             <div id="main">
                 <section>
-                    <h2 id="introduction">Introduction</h2>
+                    <h2 id="introduction">はじめに</h2>
 
 					<p>
-						<i>This introduction is based on <a href="http://www.codeproject.com/Articles/4155/Improve-hierarchy-performance-using-nested-sets">this article</a>, (c) James Simpson.</i>
+						<i>以下の解説は <a href="http://www.codeproject.com/Articles/4155/Improve-hierarchy-performance-using-nested-sets">この記事</a> ((c) James Simpson) にもとづいています。</i>
 					</p>
                     <p>
-						The nested set model is a particular technique for representing nested sets (also known as trees or hierarchies) in
-						relational databases. The term was apparently introduced by Joe Celko; others describe the same technique without naming
-						it or using different terms. (<a href="http://en.wikipedia.org/wiki/Nested_set_model">Source: Wikipedia</a>)
+						入れ子集合モデルは、リレーショナルデータベースにおける入れ子集合 (ツリーや階層構造と言ってもいいです)を実現する方法の 1 つです。
+						この用語は Joe Celko によって紹介されたものだと言われていますが、同じテクニックが特に名前を付けられることもないまま、あるいは別の名前によって
+						語られることもあります。(<a href="http://en.wikipedia.org/wiki/Nested_set_model">出典: ウィキペディア(英語)</a>)
 					</p>
 					<p>
-						A typical example of a tree structure is an organigram of an organisation. We'll be using this to explain how nested sets work.
+						よくあるツリー構造の例は、組織の構造図です。この例を使って、入れ子集合がどのような働きをするかを説明していきます。
                     </p>
 
                     <div class="image">
-						<img src="./../../../assets/img/nestedset.gif" alt="nested set visual" />
+						<img src="./../../../assets/img/nestedset.gif" alt="入れ子集合の視覚化" />
                     </div>
 
 					<p>
-						The above diagram is indicating that each node is aware of all its descendants, and vice versa. For example, we can see easily
-						enough from the diagram that Ben and Angela are "children" of Bill. We can also see that Tim and James are "children" of Ben.
-						This ultimately gives us a link between each member of the hierarchy.
+						上図は各ノードがそれぞれの子孫全てについて把握していて、その逆もまた真であることを示しています。たとえば、この図からは
+						Ben と Angela が Bill の「子」であることが容易に見てとれます。 また、 Tim と James が Ben の「子」であることも分かります。
+						これは詰まるところ、階層構造の中の各要素間のつながりを示しているものです。
 					</p>
 					<p>
-						For us to represent this we need to store two more values per node, that define the relationship between the nodes of the
-						tree structure. These are shown on the diagram in blue and red. We call these Left (<span style="color:red;">red</span> values)
-						and Right (<span style="color:blue;">blue</span> values) pointers.
-						These values are stored on the table, this is all we need to fully represent a nested sets hierarchy.
+						この構造を表現するためには、各ノードにおいて 2 つの値を余分に保存する必要があり、これによってツリー構造内の
+						ノード間のつながりを定めます。図の中では青と赤で示しています。これら左側の値 (<span style="color:red;">赤</span>の値) と
+						右側の値 (<span style="color:blue;">青</span>の値) を、ポインターと呼びます。
+						ポインターをテーブル上に保存するだけで、入れ子集合による階層構造を完全に表現することができます。
 					</p>
 
 					<p>
-						Those who are into Mathematics know that you can use a different diagram to represent tree structures:
+						数学の好きな人なら、ツリー構造は別の形で図示することもできるということを知っている筈です。
 					</p>
 
                     <div class="image">
@@ -84,44 +84,44 @@
                     </div>
 
                     <p>
-						Although this might look confusing at first, and certainly more difficult to read, it is immediately clear why this is called
-						nested sets, and why this way of storing hierarchical data in a flat table is efficient: you can directly see the relation
-						between parent and children (all children are contained within their parent), and every node is aware of its parent, and all
-						its descendants. Using this representation you can clearly see that all pointers line up beautifully. This will come in very
-						handy when we need to access the tree.
+						一見するとよく分からないかもしれませんが、というかおそらく余計に読み難く感じるとは思うのですが、このように表せば何故これが
+						入れ子集合と呼ばれるのか、また何故この形で階層的なデータを平面的なテーブル上へ格納するのが効率的なのかは、一目瞭然となります。
+						親子間の関連性はパッと見で分かり (全ての子が親の中に含まれています) 、またそれぞれのノードは自身の親や、そして自身の全ての
+						子孫について把握しています。この形で構造を表すことによって、全てのポインタが美しく並んでいることがはっきり分かるようになります。このことは
+						ツリー構造へアクセスする必要がある際に、非常に便利なものとなります。
                     </p>
 
-					<h3>Storing multiple tree structures in a single table</h3>
+					<h3>単一のテーブルで複数のツリー構造を保存する</h3>
 
 					<p>
-						You can store multiple tree structures into a single database table. To make this possible, you can add a tree-id
-						column to the table. The tree-id identifies the tree the node belongs to.
+						単一のテーブルで複数のツリー構造を保存することもできます。これを可能とするために、ツリーの ID を
+						テーブルのカラムに追加することもできます。ツリー ID があれば、ノードがどのツリーのものかを識別することができます。
 					</p>
 					<p>
-						A tree-id may either be an integer or a string, and it can be auto-generated for you when you create a new tree, in case integers
-						are used. Integers also make it easier to use the tree-id as a foreign key in a one-to-many relation, and their index lookup
-						in the database is faster. It's strongly suggested you don't use a string value as a tree-id.
+						ツリー ID には整数値でも文字列でも使えるのですが、整数値であれば、ツリーを新しく作る際に自動生成させることもできます。
+						整数値ならツリー ID を 1 対他のリレーションでの外部キーとして使うことも容易となり、 DB 内でのインデックスのルックアップも
+						より高速になります。なるべく文字列をツリー ID に使うことはしない方がよいです。
 					</p>
 
-					<h3>Table structure</h3>
+					<h3>テーブル構造</h3>
 
 					<p>
-						You can add as many columns to the table as you want, but to be able to work, the Nestedset Model requires certain
-						columns to be present:
+						テーブルには必要とするだけ幾つでもカラムを追加できますが、ちゃんと動かすためには、入れ子集合モデルには最低限必要な
+						カラムが幾つかあります。
 					</p>
 
 					<ul>
-						<li>Left node pointer, default column name is 'left_id'</li>
-						<li>Right node pointer, default column name is 'right_id'</li>
-						<li>Tree id, a required column only if the table contains multiple trees (no default)</li>
+						<li>左ノードポインター、デフォルトのカラム名は 'left_id'</li>
+						<li>右ノードポインター、デフォルトのカラム名は 'right_id'</li>
+						<li>ツリー ID 、テーブル内に複数のツリーを含む場合のみ必須 (デフォルトでは必要ありません) </li>
 					</ul>
 					<p>
-						The actual names of the columns used for these functions can be configured in the model. Altough not strictly needed,
-						several methods require a "title" or "name" field. The name of this column can be configured in the model as well.
-						If you use a method that requires it to be present, but you haven't defined it, an exception will be thrown.
+						実際のカラム名は、モデル内で設定することができます。厳密に言うと必要というわけではないのですが、
+						幾つかのメソッドは "title" や "name" というフィールドを使います。これらのカラム名もまたモデル内で設定することができます。
+						もしこれらのフィールドを要求するメソッドを使う際、フィールドが定義されていなければ、例外が投げられます。
 					</p>
 					<p>
-						This is a minumal stucture for a nested sets table:
+						以下は入れ子集合テーブルの最小構成です。
 					</p>
 
                     <pre class="php"><code>CREATE TABLE `tree` (
@@ -131,48 +131,48 @@
   `tree_id` int(11) unsigned NOT NULL,
   `name` varchar(50),
   PRIMARY KEY (`id`),
-  KEY `left_id` (`left_id`),        // optional, might speed up certain lookups
-  KEY `right_id` (`right_id`),      // optional, might speed up certain lookups
+  KEY `left_id` (`left_id`),        // 任意、一部の参照が高速化されるはず
+  KEY `right_id` (`right_id`),      // 任意、一部の参照が高速化されるはず
 )
 </code></pre>
                 </section>
 
                 <section>
-                    <h2 id="configuration">Configuration</h2>
+                    <h2 id="configuration">設定</h2>
 
-                    <p>The Nestedset Model adds an additional property, <kbd>$_tree</kbd>, to the model, with which you can configure the model:</p>
+                    <p>Nestedset モデルでは追加のプロパティとして <kbd>$_tree</kbd> が加わり、これによってそのモデルの設定をすることができます。</p>
                     <ul>
-						<li><kbd>left_field</kbd> defines the name of the table column that is used to store the tree's <strong>left pointer</strong>. The column name defaults to "left_id".</li>
-						<li><kbd>right_field</kbd> defines the name of the table column that is used to store the tree's <strong>right pointer</strong>. The column name defaults to "right_id".</li>
-						<li><kbd>tree_field</kbd> defines the name of the table column that is used to store the tree's <strong>id</strong>, a value that uniquely identifies a tree in case you
-							want to store multiple trees in a single table. If you use a numeric value as tree-id, the model can automatically assign it when you
-							create new tree root nodes. If it is not numeric, you have to supply the value before you call <kbd>save()</kbd>.  There is no default value.</li>
-						<li><kbd>title_field</kbd> defines the name of the table column that is used to store the tree node's <strong>title</strong> or <strong>name</strong>. It is optional, the
-							Model works well without it, but it is required for some of the models methods. Where applicable this is mentioned in the documentation
-							of the method. There is no default value.</li>
+						<li><kbd>left_field</kbd> はテーブルのカラム名を定義するもので、ツリーの<strong>左ポインター</strong>を格納するのに使われます。デフォルトのカラム名は "left_id" です。</li>
+						<li><kbd>right_field</kbd> はテーブルのカラム名を定義するもので、ツリーの<strong>右ポインター</strong>を格納するのに使われます。デフォルトのカラム名は "right_id" です。</li>
+						<li><kbd>tree_field</kbd> はテーブルのカラム名を定義するもので、ツリーの <strong>ID</strong> 、つまり複数のツリー構造を単一のテーブルへ格納するときに
+							各ツリーを一意に識別する値を格納するのに使われます。ツリー ID に数値を使う場合は、新たなツリーのルートノードを作る際に、モデルへ自動的にこの値を
+							割り当てさせることができます。数値でない場合は、 <kbd>save()</kbd> を呼ぶ前に自分でその値を与えてやる必要があります。デフォルトの値はありません。</li>
+						<li><kbd>title_field</kbd> はテーブルのカラム名を定義するもので、ツリーのノードの<strong>タイトル</strong>や<strong>名前</strong>を格納するのに使われます。これは任意のもので、
+							なくても入れ子集合モデルは十分機能するのですが、このモデルの幾つかのメソッドにおいては要求されます。どこで適用されるのかについては、当該メソッドについてのドキュメントで
+							言及しています。デフォルトの値はありません。</li>
                     </ul>
-                    <p>The next section show you what a basic Nestedset model looks like, and how you configure it.</p>
+                    <p>次の節では基本的な Nestedset モデルがどのようなものなのか、またどのように設定するのかを示します。</p>
                 </section>
 
                 <section>
-                    <h2 id="model">Defining the model</h2>
+                    <h2 id="model">モデルの定義</h2>
 
                     <p>
-						Using the nested sets model is as easy as extending <kbd>\Orm\Model_Nestedset</kbd> instead of <kbd>\Orm\Model</kbd>.
-						This marks your model as being a nested sets model, adds a lot of methods to manipulate trees and nodes, and changes
-						the default behaviour of the <kbd>delete()</kbd> and <kbd>save()</kbd> methods to make sure the tree stays consistent.
+						入れ子集合モデルの利用は簡単で、 <kbd>\Orm\Model</kbd> のかわりに <kbd>\Orm\Model_Nestedset</kbd> を継承するだけです。
+						これによってあなたのモデルは入れ子集合モデルとなり、ツリーやノードを扱うための沢山のメソッドが追加され、また
+						<kbd>delete()</kbd> や <kbd>save()</kbd> メソッドのデフォルトの挙動が変わることで、ツリー構造がきちんと一貫性を保てるようになります。
 					</p>
 
                     <pre class="php"><code>&lt;?php
 class Model_Tree extends \Orm\Model_Nestedset
 {
 	/**
-	* @var  string  name of the table to be used by this model
+	* @var  string  このモデルで使用されるテーブルの名前
 	*/
     protected static $_table_name = 'tree';
 
 	/**
-	 * @var  array  array of object properties
+	 * @var  array  オブジェクトがもつプロパティの配列
 	 */
     protected static $_properties = array(
 		'id',
@@ -183,177 +183,177 @@ class Model_Tree extends \Orm\Model_Nestedset
     );
 
 	/**
-	 * @var  array  array with the tree configuration
+	 * @var  array  ツリーの設定値をもつ配列
 	 */
     protected static $_tree = array(
-		'left_field'     =&gt; 'left_id',		// name of the tree node left index field
-		'right_field'    =&gt; 'right_id',		// name of the tree node right index field
-		'tree_field'     =&gt; 'tree_id',		// name of the tree node tree index field
-		'title_field'    =&gt; 'name',		//  name of the tree node title field
+		'left_field'     =&gt; 'left_id',		// ツリーノードの左ポインター用のフィールド名
+		'right_field'    =&gt; 'right_id',		// ツリーノードの右ポインター用のフィールド名
+		'tree_field'     =&gt; 'tree_id',		// ツリーノードのツリーid用のフィールド名
+		'title_field'    =&gt; 'name',		//  ツリーノードのタイトル用フィールド名
     );
 
 }
 ?&gt;</code></pre>
                     <p>
-						As you can see, a pretty standard ORM model configuration. The only additional class property is <strong>$_tree</strong>, which defines
-						the tree configuration. The model is then set up like a normal <a href="../creating_models.html">ORM model</a>, including any relations
-						or other properties that you wish to use.
+						見ての通り、まったく標準的な ORM モデルの設定です。 唯一追加されたクラスプロパティが <strong>$_tree</strong> で、これは
+						ツリーの設定を定義するものとなります。このモデルはこの設定から通常の <a href="../creating_models.html">ORM モデル</a>と同様に構築され、いかなるリレーションや
+						他のプロパティも思うままに使うことができます。
 					</p>
 
                 </section>
 
                 <section>
-                    <h2 id="usage">Using the model</h2>
+                    <h2 id="usage">モデルの使用法</h2>
 
 					<p>
-						Based on the example in the introduction and the model defined above, let's start by creating this tree.
+						最初に挙げた組織構成図の例と先ほど定義したモデルを使って、そのツリー構造を作ることからやってみましょう。
 					</p>
                     <pre class="php"><code>&lt;?php
-// Bill, our MD, is the root of the tree
+// Bill 社長、つまりこのツリーのルート
 $bill = Model_Tree::forge(array('name' => 'Bill'));
 
-// if you save a new node, it will automatically become a tree root node
+// 新しくノードを保存する際、自動的にツリーのルートノードとなる
 $bill->save();
 
-// give our MD some subordinates
+// 社長に部下を与える
 $angela = Model_Tree::forge(array('name' => 'Angela'));
 $ben = Model_Tree::forge(array('name' => 'Ben'));
 
-// they are children of Bill in the tree
+// 彼らはツリー上で Bill の子となる
 $angela->child($bill)->save();
 $ben->child($bill)->save();
 
-// add the rest of Customer service
+// その他カスタマーサービスを追加
 $henry = Model_Tree::forge(array('name' => 'Henry'));
 $henry->child($angela)->save();
 $nicola = Model_Tree::forge(array('name' => 'Nicola'));
 $nicola->child($angela)->save();
 
-// and the development team
+// そして開発チームを追加
 $kerry = Model_Tree::forge(array('name' => 'Kerry'));
 $kerry->child($ben)->save();
-// a sibling of Kerry is a child of Ben too...
+// Kerry の兄弟は Ben の子でもある
 $james = Model_Tree::forge(array('name' => 'James'));
 $james->sibling($kerry)->save();
 
-// assign the teams benjamin to Kerry
+// チームの若いのを Kerry のところに割り当てる
 $tim = Model_Tree::forge(array('name' => 'Tim'));
 $tim->child($kerry)->save();
 ?&gt;</code></pre>
 
 					<p>
-						As you can see, creating a tree and adding tree nodes is pretty straitforward. One of the main differences between the
-						Nestedset model and other ORM models, it that is has methods that operate on other model objects. You don't just query
-						the model, or save an object, you do it in relation to another object in the tree. That doesn't mean you can't use the
-						traditional methods, <kbd>Model::find()</kbd> and <kbd>Model::query()</kbd> still work like for any other ORM model.
+						見ての通り、ツリー構造の作成とノードの追加はいい感じに簡単なものです。 Nestedset モデルと他の ORM モデルとの間にある
+						主な違いは、モデルの他のオブジェクトに対して影響するメソッドを持つかどうか、という点にあります。単に問い合わせをそのモデルに対して
+						行ったり、あるオブジェクトを保存するというのではなく、ツリー構造内の別のオブジェクトに対してそれらのことを行う、ということです。これは
+						従来通りのメソッドが使えないという意味ではなく、<kbd>Model::find()</kbd> や <kbd>Model::query()</kbd> なども依然、他の ORM モデルと同様に使うことができます。
 					</p>
 					<p>
-						Let's move on to describing the methods that are available for getting information out of our tree and manupulating the
-						tree structure.
+						それでは次はこのツリー構造から情報を得たり、ツリー構造を操作したりするのに使えるメソッドの説明へ
+						進みましょう。
 					</p>
                 </section>
 
                 <section>
-					<h2 id="behavioral_changes">Behavioral changes</h2>
+					<h2 id="behavioral_changes">挙動の変更点</h2>
 
 					<p>
-						In addition to the primary key, which is read-only in every ORM model object once set, a Nestedset model doesn't allow
-						you to make	changes to the left- and right pointers of the node, and to the tree-id if defined. Attempting to do so, either
-						via assigment, using a call to <kbd>set()</kbd> or by using <kbd>unset()</kbd>, will result in a <strong>InvalidArgumentException</strong>.
+						ORM モデルにおいてプライマリーキーは、オブジェクトが一度構築されたあとは読み込み専用のデータとなるのですが、これに加えて入れ子集合モデルでは
+						ノードの左右ポインタを変更することができません。定義されている場合はツリー ID についても同様です。変更しようとした場合、
+						代入や <kbd>set()</kbd> の呼び出し、また <kbd>unset()</kbd> のいずれも <strong>InvalidArgumentException</strong> となります。
 					</p>
 
 					<article>
 						<h4 id="method_save" class="method">save($cascade = null, $use_transaction = false)</h4>
 						<p>
-							The <kbd>save</kbd> method works exactly the same as the regular model's implementation.
+							<kbd>save</kbd> メソッドは通常モデルの実装とまったく同じように機能します。
 						</p>
 						<p>
-							However, when you use this method on new tree node objects, additional functionality is added to make sure the tree structure
-							stays consistent. When you call it on an object and you have used one of the collection methods documented below, the
-							new object is inserted in the tree relative to the object passed to the collection method.
+							しかし、このメソッドを新しいツリーノードのオブジェクトにおいて使う場合は、ツリー構造の一貫性を保つための追加機能が
+							付与されます。あるオブジェクトにおいて呼び出した際に、それがあとで述べるコレクションメソッドのいずれかを使ってからのことであれば、
+							新規作成されたオブジェクトはそのコレクションメソッドへ渡されていたオブジェクトと紐付いたツリーに挿入されます。
 						</p>
 						<p>
-							If you haven't used a collection method, <kbd>save</kbd> will assume you want to insert a new root node. If the model is
-							a multi-tree model, it will create a new root with the next available tree-id (if the id is numeric. If not, assign a new
-							tree-id to the node object yourself).
+							事前にコレクションメソッドを使っていなかった場合、その <kbd>save</kbd> は新たなルートノードを挿入しようとしているものと見なされます。モデルが
+							複数ツリーモデルの場合、新たなルートが次に使えるツリー ID とともに作成されます (これはツリー ID が数値型の場合の話で、そうでない場合は
+							自分でツリー ID をノードのオブジェクトに割り当てる必要があります) 。
 						</p>
 						<p class="note">
-							 If a root node can not be created because one already exists, an <strong>OutOfBoundsException</strong> will be thrown. If
-							 the tree-id is not numeric, and you haven't supplied one manually, the result is <strong><u>unpredicable</u></strong>!
+							 ルートノードが既に存在しているため作れなかった場合、 <strong>OutOfBoundsException</strong> が投げられます。もし
+							 ツリー ID が数値型でなく、また手動で ID を指定してもいない場合、その結果は <strong><u>予測不可能</u></strong> です！
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_delete" class="method">delete($cascade = null, $use_transaction = false)</h4>
 						<p>
-							The <kbd>delete</kbd> method works exactly the same as the regular model's implementation.
+							<kbd>delete</kbd> メソッドは通常モデルの実装とまったく同じように機能します。
 						</p>
 						<p>
-							If the node you delete is not a leaf node (i.e. is has children), all descendants of the node will move one level up in the
-							tree, they will become descendants of the nodes parent. If you want to delete an entire (subsection of the) tree, use the
-							<a href="#method_delete_tree">delete_tree()</a> method instead.
+							削除するノードがリーフノードではなかった場合 (つまり子を持つ場合) 、そのノードの全ての子孫はツリー上で 1 階層上に移動し、
+							削除するノードの親の子孫となります。ツリーの全体 (または部分木) を削除したい場合は、かわりに
+							<a href="#method_delete_tree">delete_tree()</a> メソッドを使います。
 						</p>
 						<p class="note">
-							You can not use the <strong>delete()</strong> method on a root node if the root node has more then one child node.
-							Doing so would create an inconsistent tree, as you can't have multiple nodes at the highest level. Trying do to so
-							will throw a <strong>DomainException</strong>!
+							<strong>delete()</strong> メソッドを 1 つより多くの子を持つルートノードに対して使うことはできません。
+							もしそれができると、整合性のないツリー構造を作る事になります。複数のノードを一番上の階層に持つことはできないからです。使おうとした場合は
+							<strong>DomainException</strong> が投げられます。
 						</p>
 					</article>
 
                 </section>
 
                 <section>
-					<h2 id="collection_methods">Collection methods</h2>
+					<h2 id="collection_methods">コレクションメソッド</h2>
 
 					<p>
-						Collection methods are methods that allow you to perform an operation, either a <strong>get()</strong> or a <strong>save()</strong>,
-						on a part of a nestedset tree. Some methods are available for both, some are only relevant for one. For clarity, they are documented
-						seperately. Using a collection method on an operation that doesn't support it will cause an <strong>OutOfBoundsException</strong> to
-						be thrown.
+						コレクションメソッドとは <strong>get()</strong> か <strong>save()</strong> 、いずれかの操作を入れ子集合ツリーの一部分に対して
+						行えるようにするメソッド群のことです。幾つかのメソッドは両方で利用でき、また幾つかは片方にのみ関係しています。明確性のため、これらを別々に
+						説明します。コレクションメソッドをサポートされていない操作について使う場合、 <strong>OutOfBoundsException</strong> が
+						投げられます。
 					</p>
 
-					<h3 id="collection_methods_get">Collection methods for getting nodes</h3>
+					<h3 id="collection_methods_get">ノードを得るためのコレクションメソッド</h3>
 
 					<p>
-						Like with standard ORM models, you can use the <strong>get()</strong> method to return an array of objects, and the
-						<strong>get_one()</strong> method to return a single object. If a collection method is supposed to return a single result,
-						like for example <strong>root()</strong>, <strong>get()</strong> will return an array with that single object. If
-						a collection method returns multiple objects, like for example <strong>children()</strong>, <strong>get_one()</strong>
-						will return the first object from the result set. It is undetermined which one that will be.<br />
-						<strong>get()</strong> and <strong>get_one()</strong> return <strong>null</strong> if no result was found.
+						通常の ORM モデルと同様に、 <strong>get()</strong> メソッドをオブジェクトの配列を得るために使うことができ、また
+						<strong>get_one()</strong> メソッドを単一のオブジェクトを得るために使えます。 あるコレクションメソッドが単一の結果を得るよう想定されたものの場合、
+						たとえば <strong>root()</strong> のような場合、 <strong>get()</strong> はその単一のオブジェクトを持つ配列を返します。もし
+						あるコレクションメソッドが複数のオブジェクトを返すものの場合、たとえば <strong>children()</strong> の場合、 <strong>get_one()</strong> は
+						その結果セットから最初のオブジェクトを返します。どの 1 つが返されるかは不定です。<br />
+						<strong>get()</strong> と <strong>get_one()</strong> は結果が見つからなかった場合、 <strong>null</strong> を返します。
 					</p>
 
 					<article>
 						<h4 id="method_get_root" class="method">root()</h4>
 						<p>
-							The <strong>root</strong> method allows you to get the root of the tree of the object you call this method on.
+							<strong>root</strong> メソッドで、呼び出したオブジェクトの属するツリー構造のルート (根) を取得できます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the root of the tree $henry belongs to
+										<pre class="php"><code>// $henry が属するツリーのルートを取得
 $root = $henry->root()->get_one();
 
-// echos 'true'
+// 'true' を echo
 echo $root == $bill ? 'true' : 'false';
 
-// get the root of a specific tree
+// 特定のツリーのルートを取得
 $root = Model_Tree::forge()->set_tree_id($mytreeid)->root()->get_one();
 </code></pre>
 									</td>
@@ -365,35 +365,35 @@ $root = Model_Tree::forge()->set_tree_id($mytreeid)->root()->get_one();
 					<article>
 						<h4 id="method_get_roots" class="method">roots()</h4>
 						<p>
-							The <strong>roots</strong> method allows you to get all the root nodes. If the model is not a multi-tree model,
-							only the one root node is returned.
+							<strong>roots</strong> メソッドで、全てのルートノードを取得できます。モデルが複数ツリーのモデルではない場合、
+							1つのルートノードだけが返されます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get all roots in the tree
+										<pre class="php"><code>// ツリー内のすべてのルートを取得
 $roots = $henry->roots()->get();
 
-// echos 'true' (there's only one root in the tree)
+// 'true' を echo （このツリー内には 1 つのルートだけがある）
 echo reset($roots) == $bill ? 'true' : 'false';
 
-// get alls root without having an existing object
+// 既存のオブジェクトを起点とせずにすべてのルートを取得
 $roots = Model_Tree::forge()->roots()->get();
 </code></pre>
 									</td>
@@ -405,34 +405,34 @@ $roots = Model_Tree::forge()->roots()->get();
 					<article>
 						<h4 id="method_get_parent" class="method">parent()</h4>
 						<p>
-							The <strong>parent</strong> method allows you to get the parent node of the object you call this method on.
+							<strong>parent</strong> メソッドで、呼び出したオブジェクトの親ノードを取得することができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the parent of $nicola
+										<pre class="php"><code>// $nicola の親を取得
 $parent = $nicola->parent()->get_one();
 
-// echos 'true'
+// 'true' を echo
 echo $parent == $angela ? 'true' : 'false';
 
-// returns null, it won't work without a node tree context
+// null が返る。ノードのツリーコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->parent()->get_one();
 </code></pre>
 									</td>
@@ -444,36 +444,36 @@ $parent = Model_Tree::forge()->parent()->get_one();
 					<article>
 						<h4 id="method_get_children" class="method">children()</h4>
 						<p>
-							The <strong>children</strong> method allows you to get all child nodes of the object you call this method on.
-							Note that this returns only children, no grandchildren. If you are interested in the entire sub-tree, use
-							the <a href="#method_get_descendants">descendants</a> method instead.
+							<strong>children</strong> メソッドで、呼び出したオブジェクトの全ての子ノードを取得することができます。
+							注意してほしいのは、このメソッドは子のみを返し、孫は返さないということです。部分木の全てを取得したい場合は、
+							<a href="#method_get_descendants">descendants</a> メソッドをかわりに使って下さい。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the children of $angela
+										<pre class="php"><code>// $angela の子を取得
 $children = $angela->children()->get();
 
-// echos 'true'
+// 'true' を echo
 echo $children == array($henry->id => $henry, $nicola->id => $nicola) ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が 返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->children()->get();
 </code></pre>
 									</td>
@@ -485,34 +485,34 @@ $parent = Model_Tree::forge()->children()->get();
 					<article>
 						<h4 id="method_get_ancestors" class="method">ancestors()</h4>
 						<p>
-							The <strong>ancestors</strong> method allows you to get all ancestor nodes of the object you call this method on.
+							<strong>ancestors</strong> メソッドで、呼び出したオブジェクトの全ての先祖ノードを取得することができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the ancestors of $henry
+										<pre class="php"><code>// $henry の先祖を取得
 $ancestors = $henry->children()->get();
 
-// echos 'true'
+// 'true' を echo
 echo $ancestors == array($bill->id => $bill, $angela->id => $angela) ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->ancestors()->get();
 </code></pre>
 									</td>
@@ -520,42 +520,42 @@ $parent = Model_Tree::forge()->ancestors()->get();
 							</tbody>
 						</table>
 						<p class="note">
-							Ancestors are returned in order of their position in the tree, with the root node first.
+							先祖ノードはツリー構造内での位置の順で返され、ルートノードが最初のものとなります。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_get_descendants" class="method">descendants()</h4>
 						<p>
-							The <strong>descendants</strong> method allows you to get all descendant nodes of the object you call this method on.
-							This allows you to fetch an entire sub-tree.The result will NOT include the start node itself.
+							<strong>descendants</strong> メソッドで、呼び出したオブジェクトの全ての子孫を得ることができます。
+							これによって部分木の全てを取得できます。 結果には開始ノード自身は含まれ「ません」。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the descendants of $ben
+										<pre class="php"><code>// $ben の子孫を取得
 $descendants = $ben->descendants()->get();
 
-// echos 'true'
+// 'true' を echo
 echo $descendants == array($kerry->id => $kerry, $tim->id => $tim, $james->id => $james) ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->descendants()->get();
 </code></pre>
 									</td>
@@ -563,43 +563,43 @@ $parent = Model_Tree::forge()->descendants()->get();
 							</tbody>
 						</table>
 						<p class="note">
-							Descendants are returned in order of their position in the tree.
+							子孫ノードはツリー構造内での位置の順で返されます。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_get_leaf_descendants" class="method">leaf_descendants()</h4>
 						<p>
-							The <strong>leaf_descendants</strong> method allows you to get leaf descendant nodes of the object you call this method on.
-							Unlike the <a href="#method_get_descendants">descendants</a> method, this method only returns nodes that do not have
-							children (the leafs of the tree).
+							<strong>leaf_descendants</strong> メソッドで、呼び出したオブジェクトの末端の子孫ノード (リーフノード) を取得することができます。
+							<a href="#method_get_descendants">descendants</a> メソッドとは違い、このメソッドは子を持たないノードのみを返します
+							 (ツリー構造の葉) 。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the leaf descendants of $ben
+										<pre class="php"><code>// $ben の末端の子孫を取得
 $descendants = $ben->leaf_descendants()->get();
 
-// echos 'true'. Note that $kerry is not returned now, as that has a child object
+// 'true' を echo。$kerry は子のオブジェクトを持つため、ここでは返されないことに注意
 echo $descendants == array($tim->id => $tim, $james->id => $james) ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->leaf_descendants()->get();
 </code></pre>
 									</td>
@@ -607,41 +607,41 @@ $parent = Model_Tree::forge()->leaf_descendants()->get();
 							</tbody>
 						</table>
 						<p class="note">
-							Leaf descendants are returned in order of their position in the tree.
+							末端の子孫ノードはツリー構造内での位置の順で返されます。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_get_siblings" class="method">siblings()</h4>
 						<p>
-							The <strong>siblings</strong> method allows you to get all sibling nodes of the object you call this method on.
+							<strong>siblings</strong> メソッドで、呼び出したオブジェクトの全ての兄弟ノードを取得することができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the siblings of $kerry
+										<pre class="php"><code>// $kerry の兄弟を取得
 $siblings = $kerry->siblings()->get();
 
-// echos 'true'
+// 'true' を echo
 echo $siblings == array($kerry->id => $kerry, $james->id => $james) ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->siblings()->get();
 </code></pre>
 									</td>
@@ -649,48 +649,48 @@ $parent = Model_Tree::forge()->siblings()->get();
 							</tbody>
 						</table>
 						<p class="note">
-							Siblings are returned in order of their position in the tree. Note that the result set will include the current node!
+							兄弟ノードはツリー構造内での位置の順で返されます。注意してほしいのは、結果セットには現在のノードが含まれるということです！
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_get_child" class="method">child()</h4>
 						<p>
-							The <strong>child</strong> method is an alias for the <a href="#method_get_last_child">last_child</a> method.
+							<strong>child</strong> メソッドは、 <a href="#method_get_last_child">last_child</a> メソッドの別名です。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_get_first_child" class="method">first_child()</h4>
 						<p>
-							The <strong>first_child</strong> method allows you to get the first child node of the object you call this method on.
+							<strong>first_child</strong> メソッドで、呼び出したオブジェクトの最初の子ノードを得ることができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the first child of $bill
+										<pre class="php"><code>// $bill の最初の子を取得
 $child = $bill->first_child()->get_one();
 
-// echos 'true'
+// 'true' を echo
 echo $child == $angela ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が 返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->first_child()->get_one();
 </code></pre>
 									</td>
@@ -702,34 +702,34 @@ $parent = Model_Tree::forge()->first_child()->get_one();
 					<article>
 						<h4 id="method_get_last_child" class="method">last_child()</h4>
 						<p>
-							The <strong>last_child</strong> method allows you to get the last child node of the object you call this method on.
+							<strong>last_child</strong> メソッドで、呼び出したオブジェクトの最後の子ノードを得ることができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the last child of $bill
+										<pre class="php"><code>// $bill の最後の子を取得
 $child = $bill->last_child()->get_one();
 
-// echos 'true'
+// 'true' を echo
 echo $child == $ben ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->last_child()->get_one();
 </code></pre>
 									</td>
@@ -741,44 +741,44 @@ $parent = Model_Tree::forge()->last_child()->get_one();
 					<article>
 						<h4 id="method_get_sibling" class="method">sibling()</h4>
 						<p>
-							The <strong>sibling</strong> method is an alias for the <a href="#method_get_next_sibling">next_sibling</a> method.
+							<strong>sibling</strong> メソッドは <a href="#method_get_next_sibling">next_sibling</a> メソッドの別名です。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_get_previous_sibling" class="method">previous_sibling()</h4>
 						<p>
-							The <strong>previous_sibling</strong> method allows you to get the previous_sibling node of the object you call this method on.
+							<strong>previous_sibling</strong> メソッドで、呼び出したオブジェクトの 1 つ前の兄弟ノードを得ることができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the previous sibling of $nicola
+										<pre class="php"><code>// $nicola の前の兄弟を取得
 $sibling = $nicola->previous_silbing()->get_one();
 
-// echos 'true'
+// 'true' を echo
 echo $sibling == $henry ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->previous_sibling()->get_one();
 
-// will return null too, $henry has no previous sibling
+// こちらも null が返る。$henry には前の兄弟がない
 $sibling = $henry->previous_silbing()->get_one();
 </code></pre>
 									</td>
@@ -790,37 +790,37 @@ $sibling = $henry->previous_silbing()->get_one();
 					<article>
 						<h4 id="method_get_next_sibling" class="method">next_sibling()</h4>
 						<p>
-							The <strong>next_sibling</strong> method allows you to get the next sibling node of the object you call this method on.
+							<strong>next_sibling</strong> メソッドで、呼び出したオブジェクトの次の兄弟ノードを得ることができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the next sibling of $henry
+										<pre class="php"><code>// $henry の次の兄弟を取得
 $sibling = $henry->next_silbing()->get_one();
 
-// echos 'true'
+// 'true' を echo
 echo $sibling == $nicola ? 'true' : 'false';
 
-// returns null, it won't work without a current node context
+// null が返る。現在のノードのコンテキストがなければうまくいかない
 $parent = Model_Tree::forge()->previous_sibling()->get_one();
 
-// will return null too, $nicola has no previous sibling
+// こちらも null が返る。$nicola には次の兄弟がない
 $sibling = $nicola->next_silbing()->get_one();
 </code></pre>
 									</td>
@@ -832,50 +832,50 @@ $sibling = $nicola->next_silbing()->get_one();
 					<article>
 						<h4 id="method_get_path" class="method">path($addroot = true)</h4>
 						<p>
-							The <strong>path</strong> method returns the path to the current node as a string, using the column identified
-							by the "title_field" in the models tree configuration.
+							<strong>path</strong> メソッドは現在のノードまでのパスを文字列として返し、この際に使われるカラムは
+							モデルのツリー設定の "title_field" で指定されたものとなります。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$addpath</kbd></th>
 												<td><pre class="php"><span class="keyword">true</span></pre></td>
-												<td>If false, the root node will be excluded from the result.</td>
+												<td>偽の場合、ルートノードは結果から除外されます。</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Throws</th>
-									<td>OutOfBoundsException, if the model doesn't define a "title_field" column.</td>
+									<th>例外</th>
+									<td>OutOfBoundsException が、モデルで "title_field" 列を定義していない場合に投げられます。</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the path to Tim, returns "Bill/Ben/Kerry/Tim"
+										<pre class="php"><code>// Tim までのパスを取得。"Bill/Ben/Kerry/Tim" を返す
 $path = $tim->path()->get();
 
-// get the path to Nicola, returns "Bill/Angela/Nicola"
+// Nicola までのパスを取得。"Bill/Angela/Nicola" を返す
 $path = $nicola->path()->get();
 
-// get the path to Kerry, and exclude the boss. returns "Ben/Kerry"
+// Kerry までのパスを取得。ボスについては除外。"Ben/Kerry" を返す
 $path = $kerry->path(false)->get();
 </code></pre>
 									</td>
@@ -884,67 +884,67 @@ $path = $kerry->path(false)->get();
 						</table>
 					</article>
 
-					<h3 id="collection_methods_save">Collection methods for saving nodes</h3>
+					<h3 id="collection_methods_save">ノードを保存するためのコレクションメソッド</h3>
 
 					<p>
-						Like with a standard ORM model, <strong>save()</strong> will either insert the object as a new record in the table,
-						or it updates an existing record in case the object was retrieved from the database.
+						通常の ORM モデルと同様に、 <strong>save()</strong> はオブジェクトをテーブル内の新たなレコードとして挿入するか、
+						またはオブジェクトがデータベースから取得されたものの場合は既存のレコードを更新します。
 					</p>
 					<p>
-						However, unlike a standard ORM model in a nestedset tree is is very relevant <u>where</u> exactly in the tree an object
-						is saved. If you don't specify a collection method before save, saving an existing object will just do that, identical to
-						normal ORM model behaviour. If you did specify a collection method, the object will be relocated in the tree when you save.
-						If your saving a new object, not specifing a collection method will create a new root node. If you did specify one, it will
-						determine where in the tree the new node will be inserted.
+						しかし、通常の ORM モデルの場合とは異なり、入れ子集合ツリー内のものの場合は実際にツリー内の<u>どこに</u>オブジェクトが保存されているかが
+						非常に密接に関係しています。保存の前にコレクションメソッドが指定されていない場合、既存のオブジェクトの保存については単にそのまま行われ、通常の
+						ORM モデルの挙動と全く同じです。コレクションメソッドを指定した場合、そのオブジェクトは保存時にツリー構造内で再配置されます。
+						新規のオブジェクトを保存する場合は、コレクションメソッドを指定しなければ新たなルートノードが作られます。また指定した場合、それによって
+						ツリー構造のどこに新たなノードが挿入されるかが決まります。
 					</p>
 
 					<article>
 						<h4 id="method_save_child" class="method">child($to = null)</h4>
 						<p>
-							The <strong>child</strong> method is an alias for the <a href="#method_save_last_child">last_child</a> method.
+							<strong>child</strong> メソッドは <a href="#method_save_last_child">last_child</a> メソッドの別名です。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_save_first_child" class="method">first_child($to = null)</h4>
 						<p>
-							The <strong>first_child</strong> method tells the model you want to save the object you call this method on
-							as the first child of the (primary key of the) node object passed.
+							<strong>first_child</strong> メソッドは、呼び出したオブジェクトを渡されたオブジェクトの (またはプライマリーキーの) ノードの
+							最初の子として保存するメソッドです。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node object or the primary key of the node which has to become the parent of the object on which this method is called.</td>
+												<td>呼び出しに使われたオブジェクトの親となるノードのオブジェクトかプライマリキー</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// give bill a new subordinate, before Angela in the tree
+										<pre class="php"><code>// Bill に部下を与える。ツリー上では Angela の前
 $john = Model_Tree::forge(array('name' => 'John'))->first_child($bill)->save();
 
-// promote Kerry to a subordinate of Bill
+// Kerry を Bill の部下に昇進させる
 $kerry->first_child($bill)->save();
 </code></pre>
 									</td>
@@ -956,43 +956,43 @@ $kerry->first_child($bill)->save();
 					<article>
 						<h4 id="method_save_last_child" class="method">last_child($to = null)</h4>
 						<p>
-							The <strong>last_child</strong> method tells the model you want to save the object you call this method on
-							as the last child of the (primary key of the) node object passed.
+							<strong>last_child</strong> メソッドは、呼び出したオブジェクトを渡されたオブジェクトの (またはプライマリーキーの) ノードの
+							最後の子として保存するメソッドです。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node object or the primary key of the node which has to become the parent of the object on which this method is called.</td>
+												<td>呼び出しに使われたオブジェクトの親となるノードのオブジェクトかプライマリキー</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// give bill a new subordinate, after Ben in the tree
+										<pre class="php"><code>// Bill に新たな部下を与える。ツリー上では Ben の後
 $john = Model_Tree::forge(array('name' => 'John'))->last_child($bill)->save();
 
-// promote Kerry to a subordinate of Bill
+// Kerry を Bill の部下に昇進させる
 $kerry->last_child($bill)->save();
 </code></pre>
 									</td>
@@ -1002,57 +1002,57 @@ $kerry->last_child($bill)->save();
 					</article>
 
 					<p class="note">
-						From a hierarchy perspective, <strong>first_child</strong> and <strong>last_child</strong> do the same. Only the
-						exact position in the tree, the relation to its siblings after the insert or relocation of the node, is different.
+						階層という観点では、<strong>first_child</strong> も <strong>last_child</strong> も同じことをします。ただ
+						ツリー構造内での正確な位置、挿入やノードの再配置をした後の兄弟との関係のみが異なります。
 					</p>
 
 					<article>
 						<h4 id="method_save_sibling" class="method">sibling($to = null)</h4>
 						<p>
-							The <strong>sibling</strong> method is an alias for the <a href="#method_save_next_sibling">next_sibling</a> method.
+							<strong>sibling</strong> メソッドは <a href="#method_save_next_sibling">next_sibling</a> メソッドの別名です。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_save_previous_sibling" class="method">previous_sibling($to = null)</h4>
 						<p>
-							The <strong>previous_sibling</strong> method tells the model you want to save the object you call this method on
-							as the previous sibling of the (primary key of the) node object passed (just before the passed object, on the same level in the tree).
+							<strong>previous_sibling</strong> メソッドは、呼び出したオブジェクトを渡されたオブジェクトの (またはプライマリーキーの) ノードの
+							前の兄弟 (渡されたオブジェクトの直前、ツリー構造内で同じ階層のもの) として保存するメソッドです。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node object or the primary key of the node which has to become the next sibling of the object on which this method is called.</td>
+												<td>呼び出しに使われたオブジェクトの次の兄弟オブジェクトとなるノードのオブジェクトかプライマリキー</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// give bill a new subordinate, before Angela in the tree
+										<pre class="php"><code>// Bill に新たな部下を与える。ツリー上では Angela の前
 $john = Model_Tree::forge(array('name' => 'John'))->previous_sibling($angela)->save();
 
-// demote James to be a subordinate of Ben, besides Tim
+// James を Ben の部下、Tim の隣へ降格させる
 $james->previous_sibling($tim)->save();
 </code></pre>
 									</td>
@@ -1064,43 +1064,43 @@ $james->previous_sibling($tim)->save();
 					<article>
 						<h4 id="method_save_next_sibling" class="method">next_sibling($to = null)</h4>
 						<p>
-							The <strong>next_sibling</strong> method tells the model you want to save the object you call this method on
-							as the next sibling of the (primary key of the) node object passed (just after the passed object, on the same level in the tree).
+							<strong>next_sibling</strong> メソッドは、呼び出したオブジェクトを渡されたオブジェクトの (またはプライマリーキーの) ノードの
+							次の兄弟 (渡されたオブジェクトの直後、ツリー構造内で同じ階層のもの) として保存するメソッドです。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node object or the primary key of the node which has to become the previous sibling of the object on which this method is called.</td>
+												<td>呼び出しに使われたオブジェクトの前の兄弟オブジェクトとなるノードのオブジェクトかプライマリキー</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// give bill a new subordinate, after Angela in the tree
+										<pre class="php"><code>// Bill に新たな部下を与える。ツリー上では Angela の後
 $john = Model_Tree::forge(array('name' => 'John'))->next_sibling($angela)->save();
 
-// demote James to be a subordinate of Ben, besides Tim
+// James を Ben の部下、Tim の隣へ降格させる
 $james->next_sibling($tim)->save();
 </code></pre>
 									</td>
@@ -1112,40 +1112,40 @@ $james->next_sibling($tim)->save();
                 </section>
 
                 <section>
-					<h2 id="test_methods">Test methods</h2>
+					<h2 id="test_methods">検査メソッド</h2>
 
 					<p>
-						Test methods are used to query a particular state of the object with regards to their position in the tree.
+						検査メソッドはオブジェクトのツリー構造内での位置に関する特定の状態を問い合わせるものです。
 					</p>
 
 					<article>
 						<h4 id="method_is_root" class="method">is_root()</h4>
 						<p>
-							The <strong>is_root</strong> method tells you if the object you're calling it on is a root node or not.
+							<strong>is_root</strong> メソッドは呼び出したオブジェクトがルートノードかどうか示します。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object is a root node, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトがルートノードであれば真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// is Bill a root node? echo's 'true'
+										<pre class="php"><code>// Bill がルートノードか？ 'true' を echo
 echo $bill->is_root() ? 'true' : 'false';
 
-// is Tim a root node? echo's 'false'
+// Tim がルートノードか？ 'false' を echo
 echo $tim->is_root() ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1157,31 +1157,31 @@ echo $tim->is_root() ? 'true' : 'false';
 					<article>
 						<h4 id="method_is_leaf" class="method">is_leaf()</h4>
 						<p>
-							The <strong>is_leaf</strong> method tells you if the object you're calling it on is a leaf, i.e. that is doesn't have child nodes.
+							<strong>is_leaf</strong> メソッドは呼び出したオブジェクトが末端であるか、つまり子ノードを持たないかどうかを示します。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object is a leaf node, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが末端ノードなら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// is Tim a leaf node? echo's 'true'
+										<pre class="php"><code>// Tim が末端ノードか？ 'true' を echo
 echo $tim->is_leaf() ? 'true' : 'false';
 
-// is Angela a leaf node? echo's 'false'
+// Angela が末端ノードか？ 'false' を echo
 echo $angela->is_leaf() ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1193,32 +1193,32 @@ echo $angela->is_leaf() ? 'true' : 'false';
 					<article>
 						<h4 id="method_is_child" class="method">is_child()</h4>
 						<p>
-							The <strong>is_child</strong> method tells you if the object you're calling it on is a child node, i.e. that is has
-							a parent node. This is the reverse of <strong>is_root()</strong>, as all non-root nodes have a parent.
+							<strong>is_child</strong> メソッドは呼び出したオブジェクトが子ノードであるか、つまり
+							親ノードを持つかどうかを示します。これは <strong>is_root()</strong> の逆のものです。全ての非ルートノードは親を持つからです。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object is a child node, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが子ノードなら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// is Henry a root node? echo's 'true'
+										<pre class="php"><code>// Henry がルートノードか？ 'true' を echo
 echo $henry->is_child() ? 'true' : 'false';
 
-// is Bill a root node? echo's 'false'
+// Bill がルートノードか？ 'false' を echo
 echo $bill->is_child() ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1230,46 +1230,46 @@ echo $bill->is_child() ? 'true' : 'false';
 					<article>
 						<h4 id="method_is_child_of" class="method">is_child_of(Model_Nestedset $to = null)</h4>
 						<p>
-							The <strong>is_child_of</strong> method allows you to check if the object you call this method on
-							is a child node (a direct descendant) of the node object passed.
+							<strong>is_child_of</strong> メソッドで、呼び出したオブジェクトが渡されたオブジェクトのノードの子ノード (直接の子孫) であるかを
+							確認することができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node which you want to check against.</td>
+												<td>検査したいノード</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object is a child node of the node passed, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが与えられたノードの子ノードなら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// is Ben a child node of Bill? echo's 'true'
+										<pre class="php"><code>// Ben が Bill の子ノードか？ 'true' を echo
 echo $ben->is_child_of($bill) ? 'true' : 'false';
 
-// is James a child node of Bill? echo's 'false', as it's a grandchild
+// James が Bill の子ノードか？ 孫なので 'false' を echo
 echo $james->is_child_of($bill) ? 'true' : 'false';
 
-// is Nicola a child node of Ben? echo's 'false', different part of the tree
+// Nicola が Ben の子ノードか？ ツリーの違う部分なので 'false' を echo
 echo $nicola->is_child_of($ben) ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1281,46 +1281,46 @@ echo $nicola->is_child_of($ben) ? 'true' : 'false';
 					<article>
 						<h4 id="method_is_descendant_of" class="method">is_descendant_of(Model_Nestedset $to = null)</h4>
 						<p>
-							The <strong>is_descendant_of</strong> method allows you to check if the object you call this method on
-							is a descendant node of the node object passed.
+							<strong>is_descendant_of</strong> メソッドで、呼び出したオブジェクトが渡されたオブジェクトのノードの子孫ノードであるかを
+							確認することができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node which you want to check against.</td>
+												<td>検査したいノード</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object is a descendant node of the node passed, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが与えられたノードの子孫なら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// is Ben a descendant node of Bill? echo's 'true'
+										<pre class="php"><code>// Ben が Bill の子孫ノードか？ 'true' を echo
 echo $ben->is_descendant_of($bill) ? 'true' : 'false';
 
-// is James a descendant node of Bill? echo's 'true', as it's a grandchild
+// James が Bill の子孫ノードか？ 孫なので 'true' を echo
 echo $james->is_descendant_of($bill) ? 'true' : 'false';
 
-// is Nicola a descendant node of Ben? echo's 'false', different part of the tree
+// Nicola が Ben の子孫ノードか？ ツリーの別の部分なので 'false' を echo
 echo $nicola->is_descendant_of($ben) ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1333,43 +1333,43 @@ echo $nicola->is_descendant_of($ben) ? 'true' : 'false';
 					<article>
 						<h4 id="method_is_parent_of" class="method">is_parent_of(Model_Nestedset $to = null)</h4>
 						<p>
-							The <strong>is_parent_of</strong> method allows you to check if the object you call this method on
-							is the parent node of the node object passed.
+							<strong>is_parent_of</strong> メソッドで、呼び出したオブジェクトが渡されたオブジェクトのノードの親ノードであるかを
+							確認することができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node which you want to check against.</td>
+												<td>検査したいノード</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object is the parent node of the node passed, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが渡されたノードの親ノードなら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// is Bill the parent of Ben? echo's 'true'
+										<pre class="php"><code>// Bill が Ben の親か？ 'true' を echo
 echo $bill->is_parent_of($ben) ? 'true' : 'false';
 
-// is Bill the parent of James? echo's 'false', as it's a grandparent
+// Bill が James の親か？ 祖父なので 'false' を echo
 echo $bill->is_parent_of($james) ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1381,43 +1381,43 @@ echo $bill->is_parent_of($james) ? 'true' : 'false';
 					<article>
 						<h4 id="method_is_ancestor_of" class="method">is_ancestor_of(Model_Nestedset $to = null)</h4>
 						<p>
-							The <strong>is_ancestor_of</strong> method allows you to check if the object you call this method on
-							is a ancestor of the node object passed.
+							<strong>is_ancestor_of</strong> メソッドで、呼び出したオブジェクトが渡されたオブジェクトのノードの先祖ノードであるかを
+							確認することができます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$to</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The node which you want to check against.</td>
+												<td>検査したいノード</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object is an ancestor of the node passed, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが与えられたノードの祖先なら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// is Bill an ancestor of Ben? echo's 'true'
+										<pre class="php"><code>// Bill が Ben の祖先か？ 'true' を echo
 echo $bill->is_ancestor_of($ben) ? 'true' : 'false';
 
-// is Bill an ancestor of James? echo's 'true', as it's a grandparent
+// Bill が James の祖先か？ 祖父なので 'true' を echo
 echo $bill->is_ancestor_of($james) ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1428,61 +1428,61 @@ echo $bill->is_ancestor_of($james) ? 'true' : 'false';
 
 					<article>
 						<h4 id="method_is_same_model_as" class="method">is_same_model_as(Model_Nestedset $to = null)</h4>
-						<p>This method is mainly used internally to avoid operations across two different Nestedset models.</p>
+						<p>このメソッドは主として内部的に、 2 つの異なる Nestedset モデルをまたがる操作を避けるために使われます。</p>
 					</article>
 
 					<article>
 						<h4 id="method_is_same_tree_as" class="method">is_same_tree_as(Model_Nestedset $to = null)</h4>
 						<p>
-							This method is mainly used internally to avoid operations across two different Nestedset models.
-							It not only checks if both objects are instances of the same model, but also if both instances belong
-							to the same tree in a multi-tree model.
+							このメソッドは主として内部的に、 2 つの異なる Nestedset モデルをまたがる操作を避けるために使われます。
+							両方のオブジェクトが同じモデルのインスタンスかをチェックするだけではなく、 両方のインスタンスが
+							複数ツリーモデルで同じツリーに属するかもチェックします。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_has_parent" class="method">has_parent()</h4>
 						<p>
-							The <strong>has_parent</strong> method is an alias for the <a href="#method_is_child">is_child</a> method.
+							<strong>has_parent</strong> メソッドは <a href="#method_is_child">is_child</a> メソッドの別名です。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_has_children" class="method">has_children()</h4>
 						<p>
-							The <strong>has_children</strong> method is the reverse of the <a href="#method_is_leaf">is_leaf</a> method.
-							If an object is not a leaf, it implies it has child nodes.
+							<strong>has_children</strong> メソッドは <a href="#method_is_leaf">is_leaf</a> メソッドの逆です。
+							あるオブジェクトが末端でないなら、それは子ノードを持っているということです。
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_has_previous_sibling" class="method">has_previous_sibling()</h4>
 						<p>
-							The <strong>has_previous_sibling</strong> method tells you if the object you're calling it on has a previous sibling.
+							<strong>has_previous_sibling</strong> メソッドは呼び出したオブジェクトが前の兄弟を持つかどうかを示します。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object has a previous sibling, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが前の兄弟を持つなら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// Does James have a previous sibling? echo's 'true'
+										<pre class="php"><code>// James が前の兄弟を持つか？ 'true' を echo
 echo $james->has_previous_sibling() ? 'true' : 'false';
 
-// Does Tim have a previous sibling? echo's 'false'
+// Tim が前の兄弟を持つか？ 'false' を echo
 echo $tim->has_previous_sibling() ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1494,31 +1494,31 @@ echo $tim->has_previous_sibling() ? 'true' : 'false';
 					<article>
 						<h4 id="method_has_next_sibling" class="method">has_next_sibling()</h4>
 						<p>
-							The <strong>has_next_sibling</strong> method tells you if the object you're calling it on has a next sibling.
+							<strong>has_next_sibling</strong> メソッドは呼び出したオブジェクトが次の兄弟を持つかどうかを示します。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Bool, true if the object has a next sibling, false if not</td>
+									<th>戻り値</th>
+									<td>Bool。オブジェクトが次の兄弟を持つなら真、そうでなければ偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// Does Henry have a next sibling? echo's 'true'
+										<pre class="php"><code>// Henry が次の兄弟を持つか？ 'true' を echo
 echo $henry->has_next_sibling() ? 'true' : 'false';
 
-// Does Ben have a next sibling? echo's 'false'
+// Ben が次の兄弟を持つか？ 'false' を echo
 echo $ben->has_next_sibling() ? 'true' : 'false';
 </code></pre>
 									</td>
@@ -1529,56 +1529,56 @@ echo $ben->has_next_sibling() ? 'true' : 'false';
                 </section>
 
                 <section>
-					<h2 id="miscellaneous_methods">Miscellaneous methods</h2>
+					<h2 id="miscellaneous_methods">その他のメソッド</h2>
 
 					<article>
 						<h4 id="method_delete_tree" class="method">delete_tree($cascade = null, $use_transaction = false)</h4>
 						<p>
-							The <kbd>delete_tree</kbd> works identical to the <a href="#method_delete">delete()</a> method, which the difference that
-							this method DOES delete all children as well.
+							<kbd>delete_tree</kbd> は <a href="#method_delete">delete()</a> メソッドと同じように動作しますが、違うのは
+							このメソッドが全ての子についても削除「する」という点です。
 						</p>
 						<p class="note">
-							If you use the <strong>delete_tree()</strong> method on a root node, the entire tree will be deleted!
+							<strong>delete_tree()</strong> メソッドをルートノードに対して使った場合、そのツリー全体が削除されます！
 						</p>
 					</article>
 
 					<article>
 						<h4 id="method_tree_config" class="method">tree_config($name = null)</h4>
 						<p>
-							You use this method to get one or all tree configuration options of the model. It is mainly used internally
-							to construct queries that operate on parts of the tree, or on a specific tree in a multi-tree model.
+							このメソッドはモデルの 1 つ、または全てのツリー設定値を取得するのに使います。主として内部的に、
+							ツリーの一部分や、複数ツリーモデルでの特定のツリーを操作するクエリを構築するのに使われます。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>Yes</td>
+									<th class="legend">静的</th>
+									<td>はい</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$name</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The name of the configuration property to return.</td>
+												<td>取得する設定値の項目名</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>A configuration value, an array of values, or null if the requested value does not exist.</td>
+									<th>戻り値</th>
+									<td>設定項目の値か値の配列、 要求された値が存在しなかった場合は null</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the name of the tree-id column
+										<pre class="php"><code>// ツリー ID のカラム名を取得
 $tree_id = Model_Tree::tree_config('tree_id');</code></pre>
 									</td>
 								</tr>
@@ -1589,31 +1589,31 @@ $tree_id = Model_Tree::tree_config('tree_id');</code></pre>
 					<article>
 						<h4 id="method_get_tree_id" class="method">get_tree_id()</h4>
 						<p>
-							You use this method to get the tree-id in a multi-tree environment. If there is a valid node to operate on, the
-							tree-id of that node is returned. If not, the value set using <strong>set_tree_id()</strong> is returned.
-							If no tree-id has been set, an exception is thrown. This method is mainly used internally to make sure queries
-							run in the context of the current tree in a multi-tree environment.
+							このメソッドは複数ツリー環境においてツリー ID を取得するのに使います。もし有効な操作対象ノードがある場合、
+							そのノードのツリー ID が返されます。そうでない場合、 <strong>set_tree_id()</strong> で設定された値が返されます。
+							ツリー ID がまだ設定されていない場合は、例外が投げられます。このメソッドは主として内部的に使われ、クエリが複数ツリー環境でも
+							確実に現在のツリーのコンテキストにおいて実行されるようにします。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>mixed, the tree-id of the current tree, or the default tree-id set.</td>
+									<th>戻り値</th>
+									<td>mixed。現在のツリーのツリー ID、またはデフォルトのツリー ID のセット</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the tree_id (returns 1)
+										<pre class="php"><code>// tree_id を取得する（1 を返す）
 $current_tree = $bill->get_tree_id();</code></pre>
 									</td>
 								</tr>
@@ -1624,40 +1624,40 @@ $current_tree = $bill->get_tree_id();</code></pre>
 					<article>
 						<h4 id="method_set_tree_id" class="method">set_tree_id($tree = null)</h4>
 						<p>
-							You use this method to set the tree-id in a multi-tree environment. You mainly use this when you want to
-							run	a <strong>get()</strong> or <strong>get_one()</strong> but you don't have an existing node to work on.
+							このメソッドは複数ツリー環境でツリー ID を設定するのに使います。主な使い道としては、
+							<strong>get()</strong> を <strong>get_one()</strong> 実行したいものの、既存の操作対象ノードがない場合があります。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$tree</kbd></th>
 												<td><pre class="php"><span class="keyword">null</span></pre></td>
-												<td>The tree-id of the tree to select. If no value, or null, is passed, the stored tree-id is reset.</td>
+												<td>選択するツリーのツリー ID。引数がなしか null の場合、ツリー ID の設定がリセットされる</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get the root of a tree without having a previous node to work with
+										<pre class="php"><code>// あるツリーのルートを既存のノードを起点とせずに取得する
 $root = Model_Tree::forge()->set_tree_id($mytreeid)->get_one();</code></pre>
 									</td>
 								</tr>
@@ -1668,38 +1668,38 @@ $root = Model_Tree::forge()->set_tree_id($mytreeid)->get_one();</code></pre>
 					<article>
 						<h4 id="method_build_query" class="method">build_query()</h4>
 						<p>
-							The <strong>build_query</strong> method returns an ORM query object, like <strong>Model_Nestedset::query()</strong>
-							but with an added <strong>where</strong> clause in case of a multi-tree model, to make sure the query runs in the context of the
-							current tree. It requires a tree-id to be available, so if you call this on a new object, use <strong>set_tree_id</strong> to make
-							sure a valid id is defined.
+							<strong>build_query</strong> メソッドは ORM のクエリオブジェクトを返します。 <strong>Model_Nestedset::query()</strong> と同様のものですが、
+							追加的な <strong>where</strong> 句が複数ツリーモデルの場合に付与され、これはクエリの実行が現在のツリーについて行われることを
+							保証するためのものです。これにはツリー ID が利用可能なことが必要なので、新規のオブジェクトにおいて呼び出す場合、<strong>set_tree_id</strong> を
+							有効な ID が定義されているのを保証するのに使ってください。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>an ORM Query object.</td>
+									<th>戻り値</th>
+									<td>ORM Query オブジェクト</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get all nodes in the current tree with an enabled status set
+										<pre class="php"><code>// 現在のツリー内で enabled がセットされたすべてのノードを取得する
 $enabled = Model_Tree::forge()
 	->set_tree_id($mytreeid)
 	->build_query()
 	->where('enabled', '=', 1)
 	->get();
 
-// using an existing object, this will use the tree-id of the $bill object
+// 既存のオブジェクトを使う場合。$bill のオブジェクトのツリー ID が使われる
 $enabled = $bill
 	->build_query()
 	->where('enabled', '=', 1)
@@ -1713,30 +1713,30 @@ $enabled = $bill
 					<article>
 						<h4 id="method_get_query" class="method">get_query()</h4>
 						<p>
-							The <strong>get_query</strong> method returns an ORM query object, but unlike <strong>build_query()</strong>
-							this method requires a collection methods to be used. It allows you to use the standard Model methods to
-							constuct a first selection of nodes, and use the returned Query object to fine-tune the query.
+							<strong>get_query</strong> メソッドは ORM のクエリオブジェクトを返しますが、 <strong>build_query()</strong> とは違い、
+							コレクションメソッドが事前に使われていることを必要とします。このメソッドによりモデルの標準的なメソッドを最初のノードの絞込に使い、
+							返されたクエリオブジェクトによってクエリの細かい調整を行うことができるようになります。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>an ORM Query object.</td>
+									<th>戻り値</th>
+									<td>ORM Query オブジェクト</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// get all child nodes of Bill with an enabled status set
+										<pre class="php"><code>// Bill の enabled がセットされたすべての子ノードを取得する
 $enabled = $bill
 	->children()
 	->get_query()
@@ -1752,37 +1752,37 @@ $enabled = $bill
 					<article>
 						<h4 id="method_count_children" class="method">count_children()</h4>
 						<p>
-							The <strong>count_children</strong> method returns the number of children (direct descendants) of the object you're calling it on.
+							<strong>count_children</strong> メソッドは呼び出したオブジェクトの子 (直接の子孫) の数を返します。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
+									<th>戻り値</th>
 									<td>Integer</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// Get the number of Bill's children, echo's 2
+										<pre class="php"><code>// Bill の子の数を取得。2 を echo
 echo $bill->count_children();
 
-// Get the number of Kerry's children, echo's 1
+// Kerry の子の数を取得。1 を echo
 echo $kerry->count_children();
 
-// Get the number of Tim's children, echo's 0
+// Tim の子の数を取得。0 を echo
 echo $tim->count_children();
 
-// echo's 0 too, a new object can't have children
+// これも 0 を echo。新たなオブジェクトは子を持たない
 echo Model_Tree::forge()->count_children();
 </code></pre>
 									</td>
@@ -1794,34 +1794,34 @@ echo Model_Tree::forge()->count_children();
 					<article>
 						<h4 id="method_count_descendants" class="method">count_descendants()</h4>
 						<p>
-							The <strong>count_descendants</strong> method returns the number of descendants of the object you're calling it on.
+							<strong>count_descendants</strong> メソッドは呼び出したオブジェクトの子孫の数を返します。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
+									<th>戻り値</th>
 									<td>Integer</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// Get the number of Bill's descendants, echo's 7
+										<pre class="php"><code>// Bill の子孫の数を取得。7 を echo
 echo $bill->count_descendants();
 
-// Get the number of Ben's children, echo's 3
+// Ben の子の数を取得。3 を echo
 echo $ben->count_descendants();
 
-// echo's 0, a new object can't have descendants
+// 0 を echo。新たなオブジェクトは子孫を持たない
 echo Model_Tree::forge()->count_descendants();
 </code></pre>
 									</td>
@@ -1833,38 +1833,38 @@ echo Model_Tree::forge()->count_descendants();
 					<article>
 						<h4 id="method_depth" class="method">depth()</h4>
 						<p>
-							The <strong>depth</strong> method returns the depth or level the current node is in the tree, where
-							the level of the root node is 0.
+							<strong>depth</strong> メソッドは現在のノードがツリー内のどの深さ、階層にあるかを返し、この際
+							ルートノードの階層は 0 となります。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
-										None.
+										なし。
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Mixed, integer or false if the current object is not valid</td>
+									<th>戻り値</th>
+									<td>Mixed。整数か、現在のオブジェクトが有効でない場合は偽</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// Get the level of Bill in the organisation
-echo $bill->depth(); // echo's 0, he's top dog!
+										<pre class="php"><code>// 組織内での Bill の階級を取得
+echo $bill->depth(); // 0 を echo。彼が親分だ！
 
-// Get the level of Angela in the organisation
-echo $angela->depth(); // echo's 1, as she's an N+1
+// 組織内での Angela の階級を取得
+echo $angela->depth(); // 1 を echo。彼女は N+1 のため
 
-// Get the level of Tim in the organisation
-echo $tim->depth(); // echo's 3, as low as you can go...
+// 組織内での Tim の階級を取得
+echo $tim->depth(); // 3 を echo。いちばんの下っ端だ……
 
-// returns false, you can't get the depth of a new node
+// 偽を返す。新たなノードの階層を取得することはできない
 $result = Model_Tree::forge()->depth();
 </code></pre>
 									</td>
@@ -1876,78 +1876,78 @@ $result = Model_Tree::forge()->depth();
 					<article>
 						<h4 id="method_dump_tree" class="method">dump_tree($as_object = false, $children = 'children', $path = 'path', $pathuri = null)</h4>
 						<p>
-							The <strong>dump_tree</strong> method returns the entire tree, using the current object as root node
-							into a multi-dimensional array.
+							<strong>dump_tree</strong> メソッドはツリー全体を返し、これは現在のオブジェクトをルートノードとして
+							多次元配列として返します。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$as_object</kbd></th>
 												<td><pre class="php"><span class="keyword">false</span></pre></td>
-												<td>If true, it will return a hierarchical tree of objects instead of a multi-dimensional array.</td>
+												<td>真なら、多次元配列ではなくオブジェクトの階層的なツリー構造を返します。</td>
 											</tr>
 											<tr>
 												<th><kbd>$children</kbd></th>
 												<td><pre class="php">'children'</pre></td>
-												<td>data for child nodes will be added to a property or array key with this name.</td>
+												<td>子ノードのデータはこの名前のプロパティ、もしくは配列のキー名で付与されます。</td>
 											</tr>
 											<tr>
 												<th><kbd>$path</kbd></th>
 												<td><pre class="php">'path'</pre></td>
 												<td>
-													a property by this name is created and will contain the path to the node, starting at the root.
-													This requires the 'title_field' to be configured!
+													この名前でルートからそのノードへのパスを持つプロパティが作られます。
+													これには 'title_field' が設定されている必要があります!
 												</td>
 											</tr>
 											<tr>
 												<th><kbd>$pathuri</kbd></th>
 												<td><pre class="php">null</pre></td>
 												<td>
-													This argument requires an existing table column as input. If defined, it will create a property
-													by the name of this argument, prefixed with "path_", which will contain the path definition pointing
-													to the node, starting at the root, using the column name provided. This is mainly used when the model
-													contains a URL or URI column, so you have both the breadcrumb path (in 'path') and the uri path.
+													この引数は入力として既存のテーブルのカラムを必要とします。定義されれば、指定されたカラム名を使い、
+													ルートを指すパス定義を含む "path_" を頭に付けたこの引数名のプロパティを作成します。
+													これは主にモデルが URL や URI のカラムを含む場合に用いられ、
+													パンくずのパス ('path' の中に) と URI のパスの両方を保有できます。
 												</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Mixed, multi-dimensional array, or the current object, with added children.</td>
+									<th>戻り値</th>
+									<td>Mixed。多次元配列か、または現在のオブジェクトに子が追加されたもの</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// returns a multi-dimensional array. $tree['children'] will contain the children of Bill
+										<pre class="php"><code>// 多次元配列を返す。$tree['children'] が Bill の子を持つ
 $tree = $bill->dump_tree();
 
-// returns the 'bill' object with a property 'children' containing the children of Bill
+// 'children' プロパティとして Bill の子を持つ 'bill' オブジェクトを返す
 $tree = $bill->dump_tree(true);
 
-// using $tree, this returns array($angela, $ben)
+// $tree を使うと、array($angela, $ben) を返す
 $children = $tree->children;
 
-// and this returns array($henry, $nicola), the children of $angela
+// そしてこちらは array($henry, $nicola)、つまり $angela の子を返す
 $grandchildren = reset($children)->children;
 
-// ORM objects are always used by reference!
+// ORM オブジェクトは常に参照として扱われる！
 $bill->dump_tree(true);
 
-// so this works fine too...
+// ので、こっちでもいける
 $children = $bill->children;
 </code></pre>
 									</td>
@@ -1955,58 +1955,58 @@ $children = $bill->children;
 							</tbody>
 						</table>
 						<p class="note">
-							As with all ORM array's, the table's primary key is used as array index. Note that because the ORM uses objects by
-							reference from a single cache, if you choose to use 'as_object', children will be added to existing objects too.</p>
+							全ての ORM 配列がそうであるように、テーブルのプライマリーキーが配列の添字として使われます。注意してほしいのは、 ORM ではオブジェクトを
+							単一のキャッシュからの参照として利用するため、 'as_object' を true にして使う場合、子 (children) が他の場所で取得済みのオブジェクトにも追加されるということです。</p>
 					</article>
 
 					<article>
 						<h4 id="method_related" class="method">related($relation, $conditions = array())</h4>
 						<p>
-							The <strong>related</strong> method allows you to fetch related objects when executing a nested set command, indentical
-							to a normal Orm model query.
+							<strong>related</strong> メソッドで、入れ子集合用の命令を実行する際、リレーションのオブジェクトを取得することができます。これは
+							通常の Orm モデルのクエリのものと同じものです。
 						</p>
 						<table class="method">
 							<tbody>
 								<tr>
-									<th class="legend">Static</th>
-									<td>No</td>
+									<th class="legend">静的</th>
+									<td>いいえ</td>
 								</tr>
 								<tr>
-									<th>Parameters</th>
+									<th>パラメータ</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>Param</th>
-												<th>Default</th>
-												<th class="description">Description</th>
+												<th>パラメータ</th>
+												<th>デフォルト</th>
+												<th class="description">説明</th>
 											</tr>
 											<tr>
 												<th><kbd>$related</kbd></th>
-												<td><pre class="php">required</pre></td>
-												<td>The name of the relation to include.</td>
+												<td><pre class="php">必須</pre></td>
+												<td>含めるリレーションの名前</td>
 											</tr>
 											<tr>
 												<th><kbd>$conditions</kbd></th>
 												<td><pre class="php">array()</pre></td>
-												<td>Any conditions you want to pass on when fetching the related objects.</td>
+												<td>リレーションのオブジェクトを取得する際に渡したい何らかの条件</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<th>Returns</th>
-									<td>Model_Nestedset, for chaining.</td>
+									<th>戻り値</th>
+									<td>Model_Nestedset 、メソッドチェーン用</td>
 								</tr>
 								<tr>
-									<th>Example</th>
+									<th>例</th>
 									<td>
-										<pre class="php"><code>// include related 'child' objects in the result
+										<pre class="php"><code>// リレーション 'child' のオブジェクトを結果に含める
 $tree = $bill->related('child')->dump_tree();
 
-// get the descendants of $ben
+// $ben の子孫を取得
 $descendants = $ben->descendants()->related('child')->get();
 
-// This will NOT include the child relation!
+// これには child のリレーションは含まれ「ない」！
 $descendants = $ben->related('child')->descendants()->get();
 </code></pre>
 									</td>
@@ -2014,14 +2014,15 @@ $descendants = $ben->related('child')->descendants()->get();
 							</tbody>
 						</table>
 						<p class="note">
-							If you want to use this method on any nested set operation (like for example decendants()), make sure to setup that
-							operation first. If you don't, your included relations will be reset my the nested set operation method call!</p>
+							このメソッドを入れ子集合用の操作 (たとえば decendants() のような) とともに使いたい場合は常に、先にその操作を
+							行うようにしてください。さもなければ、含めた筈のリレーションが入れ子集合用操作の呼び出しで取り消されてしまうことになります！</p>
 					</article>
                 </section>
 			</div>
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/orm/model/nestedset.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/orm/model/nestedset.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/orm/model/nestedset.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

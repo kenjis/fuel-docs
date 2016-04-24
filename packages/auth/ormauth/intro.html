@@ -10,7 +10,7 @@
 		var path = './../../../';
 	</script>
 	<script src="./../../../assets/js/combined.js"></script>
-	<title>Introduction - OrmAuth - Auth Package - FuelPHP Documentation</title>
+	<title>はじめに - OrmAuth - Auth パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -43,190 +43,190 @@
 		</div>
 
 		<div id="main">
-			<h2>OrmAuth - Introduction</h2>
+			<h2>OrmAuth - はじめに</h2>
 
 			<p>
-				Ormauth is a set of authentication and authorisation drivers that provide a similar functionality as Simpleauth,
-				but stores its data in the database instead of in a configuration file. The data is accessed through ORM models.
+				Ormauth は、 Simpleauth と同様の機能を提供し、しかし、データを設定ファイルの代わりにデータベースへ保存する認証と承認のドライバのセットです。
+				データへは ORM モデルを通じてアクセスされます。
 			</p>
 			<p>
-				Besides this, it also comes with additional functionality. Unlike Simpleauth, Ormauth supports roles assigned directly
-				to users, and permissions assigned to both users and groups, allowing for a much more fine-grained permission system.
-				It stores the user's metadata not in a serialized array, but in a separate metadata table, using the ORM's EAV functionality,
-				allowing you to access metadata like any other property of the user. It also keeps track of the previous login time,
-				which can be displayed to the user at login time as an additional security measure.
+				このほかに、Ormauth はまた追加機能が付属しています。 Simpleauth とは異なり、Ormauth はユーザーに直接割り当てられたロールと、
+				ユーザーおよびグループの両方に割り当てられたパーミッションをサポートした、遥かにきめ細かなパーミッションシステムが可能になっています。
+				ユーザーのメタデータはシリアライズされた配列では保存されませんが、独立したメタデータテーブル内に ORM の EAV 機能を使用し保存され、
+				ユーザーの他のプロパティと同様にメタデータにアクセスできるようになります。
+				また、さらなるセキュリティ対策として、前回のログイン時間を記録しログイン時にユーザに表示することがでます。
 			</p>
 
-			<h3 id="setup">Auth setup</h3>
+			<h3 id="setup">Auth のセットアップ</h3>
 
 			<p>
-				Configuration starts with telling the Auth package that you are going to use the Ormauth driver.
-				This is done through the auth.php configuration file. A default file is provided in the Auth package.
-				You should copy this file to your app/config folder before making any changes. The default file is configured
-				for the Simpleauth drivers, so you need to change that. You will find an explaination of this config file <a href="../intro.html#/configuration">here</a>.
+				設定は、Ormauth ドライバを使用しようとしていることを Auth パッケージを伝えることから始まります。
+				これは auth.php 設定ファイルを介して行われます。 Auth パッケージにはデフォルトのファイルが提供されています。
+				任意の変更を加える前に、このファイルを app/config フォルダにコピーする必要があります。デフォルトのファイルは Simpleauth
+				ドライバー用に構成されているので、それを変更する必要があります。この設定ファイルについての説明を<a href="../intro.html#/configuration">ここ</a>で見るけることができます。
 			</p>
 			<p>
-				After you have done this, you can choose to autoload the package through the <strong>always_load</strong> section of the app/config/config.php.
+				上記の後に、パッケージをオートロードするかどうかを app/config/config.php の <strong>always_load</strong> セクションで指定します。
 			</p>
 
-			<p class="note">As OrmAuth uses the ORM to access the database, make sure you have added the 'orm' package to the <strong>always_load</strong> section too!</p>
+			<p class="note">OrmAuth がデータベースへアクセスするために ORM を使用していることから <strong>always_load</strong> セクションに 'orm' パッケージを追加したことも確認してください！</p>
 
 			<h3 id="acl">ACL's</h3>
 
 			<p>
-				OrmAuth has a much more fine-grained ACL system then SimpleAuth. It uses standard ORM relations to construct the permission set
-				for any given user, and has the following features:
+				OrmAuth は SimpleAuth より遥かにきめ細かいACLシステムを持っています。
+				任意のユーザーのアクセスパーミッションセットを構築するために標準的な ORM の関係を使用しており、以下の特徴があります：
 			</p>
 
 			<ul>
-				<li>Every user is a member of one, and exactly one, group</li>
-				<li>Every user has zero or more roles assigned to it</li>
-				<li>Every group has zero or more roles assigned to it</li>
-				<li>Every user can have zero or more permissions assigned to it</li>
-				<li>Every group can have zero or more permissions assigned to it</li>
-				<li>Every role can have zero or more permissions assigned to it</li>
-				<li>Every permission belongs to a permission area</li>
-				<li>Every permission can have zero or more associated actions</li>
+				<li>すべてのユーザーはいずれかのメンバーであり厳密に 1 つでありグループである</li>
+				<li>すべてのユーザーは 0 個以上のロールを割り当てられ持っている</li>
+				<li>すべてのグループは 0 個以上のロールを割り当てられ持っている</li>
+				<li>すべてのユーザーは 0 個以上のパーミッションを割り当て持つことができる</li>
+				<li>すべてのグループは 0 個以上のパーミッションを割り当て持つことができる</li>
+				<li>すべてのロールは 0 個以上のパーミッションを割り当て持つことができる</li>
+				<li>すべてのパーミッションはパーミッション領域に属している</li>
+				<li>すべてのパーミッションは 0 個以上の関連するアクションを持つことができる</li>
 			</ul>
 
 			<p>
-				All the permissions are aggregated per user. A role can have special permission filters, that may alter the
-				assigned aggregated permissions. These are:
+				すべてのパーミッションは、ユーザーごとに集約されます。ロールは割り当てられた集約パーミッションを変更することができる特別な
+				パーミッションフィルタを持つことができます。これらは：
 			</p>
 
 			<ul>
-				<li>"All access", stored as "A". Users with this role have all access. This is typically used for a 'super-admin' role. It overrules all permissions set.</li>
-				<li>"No access", stored as "D". Users with this role have no access. This is typically used for a 'banned' role. It overrules all permissions set.</li>
-				<li>"Revoke permissions", stored as "R". Permissions set on this role will be removed from the aggregated permissions set.</li>
+				<li>"All access(すべてアクセス可)" は "A" として格納されている。このロールを持つユーザーはすべてのアクセス権を持っている。一般的には 'super-admin' のロールで使用される。すべてのアクセスパーミッションセットを却下する。</li>
+				<li>"No access(アクセス不可)" は "D" として格納されている。このロールを持つユーザーはアクセスできません。一般的には 'banned' のロールで使用される。これは、すべてのアクセス許可セットを却下。</li>
+				<li>"Revoke permissions(パーミッション取り消し)" は "R" として格納されている。パーミッションをロールに指定すると、集約されたパーミッションセットから削除される。</li>
 			</ul>
 
 			<p class="note">
-				Note that "revoked" permissions are checked before all others. This allows you to create permission constructs like "all access
-				for this super-admin, except to the top-secret area of the application"...
+				"revoked(取り消し)" パーミッションは他のすべてのパーミッションの前に検査されることに注意してください。これは「アプリケーションの極秘エリアを除き、
+				super-admin はすべてアクセス可」のようなパーミッション構造を作成することができます。
 			</p>
 
-			<p>Assigning a permission is using standard ORM relations, and is very straitforward:</p>
-<pre class="php"><code>// get the Role identified by $role_id
+			<p>パーミッションの割り当ては非常に簡単で標準的な ORM を使用しています：</p>
+<pre class="php"><code>// $role_id で識別されるロールを取得
 $role = \Model\Auth_Role::find($role_id);
 
-// get the Permission identified by $perm_id
+// $perm_id で識別されるパーミッションを取得
 $perm = \Model\Auth_Permission::find($perm_id);
 
-// relate the two
+// 2 つを関連付け
 $role->permissions = $perm;
 
-// and save the relation
+// そして、関連付けを保存
 $role->save();</code></pre>
 
-			<h4 id="actions">Actions</h4>
+			<h4 id="actions">アクション</h4>
 
 			<p>
-				As mentioned above, you can add additional granularity by adding a list of actions to a permission (a combination of area and permission).
+				前述のように、パーミッションにアクションのリストを追加することによってさらなる粒度を追加することができます (領域とパーミッションの組み合わせ) 。
 			</p>
 
 			<p>
-				Actions are stored as an indexed array of strings in the permission record, serialized and unserialized automatically by the ORM.
-				You can define as many actions as you want, and chose any strings you like. If needed this allows you to set a permission on each
-				and every action on a form, more fine-grained then you would probably ever need!
+				アクションは、パーミッションレコードに添字付き文字列型配列として格納され、 ORM によりシリアライズとアンシリアライズが自動的に行われます。
+				好きな文字列を選択し、あなたが望むように多くのアクションとして定義することができます。
+				必要であればフォーム上で一人ひとりのアクションに対するパーミッションを設定することができます。よりきめ細かく制御しようとすればこれも必要となるでしょう。
 			</p>
 
 			<p>
-				The action list defined on a permission specify which possible actions can be assigned when assigning the permission to either a
-				user, a group, or a role. The assigned actions are stored as an array of keys, that defines which of the actions were assigned.
+				ユーザー、グループ、もしくはロールのどれかに対する権限を割り当てるときに、どの実行可能なアクションがパーミッションに指定することが可能か
+				をアクションリストで定義します。割り当てられたアクションは、キーを持つ配列として格納されており、それがどのアクションが割り当てられているかを定義しています。
 			</p>
 
-<pre class="php"><code>// if these are the possible actions:
+<pre class="php"><code>// 実行可能なアクションである場合：
 array('add', 'view', 'edit', 'delete')
 
-// then you should store this when assigning 'view' and 'edit':
+// 次に 'view' と 'edit' に割り当てる時に、これを保存する必要があります
 array(1, 2)
 </code></pre>
 
 			<p>
-				To store this, ORM Models have been provided to directly access the relationship or though table that connects either the user, the
-				role or the group to the permission.
+				これを保存するには、テーブルを通じて、もしくはリレーションシップへの直接アクセスのために提供されている
+				ORM モデルで、ユーザーかロールもしくはグループのどれかをパーミッションと接続します。
 			</p>
 
-<pre class="php"><code>// get the Role identified by $role_id
+<pre class="php"><code>// $role_id で識別されるロールを取得
 $role = \Model\Auth_Role::find($role_id);
 
-// get the Permission identified by $perm_id
+// $perm_id で識別されるパーミッションを取得
 $perm = \Model\Auth_Permission::find($perm_id);
 
-// relate the two, adding a subselection of actions
+// アクションのサブセレクションを追加し 2 つを関連付け
 $role->rolepermission[] = \Model\Auth_Rolepermission::forge(array(
 	'role_id' => $role->id,
 	'perms_id' => $perm->id,
 	'actions' => array(1,2),
 ));
 
-// and save the relation
+// そして、関連付けを保存
 $role->save();</code></pre>
 
 			<p>
-				When checking for access, you specify the required access as either <code>area.permission</code> (when you want to check for
-				a single right, <code>area.[permission,permission,...]</code> when you want to check for multiple permissions at once, or if you
-				want to check for associated actions, you can use <code>area.permission[action,action,...]</code>. This is an AND check,
-				so when you specify multiple rights, the user must have ALL of them assigned to be granted access.
-				This will allow you to construct checks like <code>blog.comments[read,create,write,write-own,delete,delete-own]</code>.
+				アクセスを検査するときは次のいずれかで必要なアクセス権を指定します。 1 つの権利を検査したい場合は <code>area.permission</code> 、
+				一度に複数のパーミッションを検査したい場合は <code>area.[permission,permission,...]</code> 、
+				もし、関連するアクションを検査したい場合は、 <code>area.permission[action,action,...]</code> を使用することができます。
+				これは AND チェックなので、複数の権限を指定した場合には、すべてにおいてアクセス許可が割り当てられている必要があります。
+				これは <code>blog.comments[read,create,write,write-own,delete,delete-own]</code> ように構築しチェックすることができます。
 			</p>
 
 
 
-			<h3 id="caching">Caching</h3>
+			<h3 id="caching">キャッシュ</h3>
 
 			<p>
-				To reduce database I/O, the OrmAuth drivers make heavy use of caching, to avoid having to retrieve the entire permission set for the
-				logged-in user on every page request. Make sure your cache configuration is setup before you start using OrmAuth.
+				データベース I/O を軽減するために、 OrmAuth ドライバはすべてのページ要求でログインしているユーザのための完全なパーミッションセットを取得することを避けキャッシングを多用します。
+				OrmAuth の使用を開始する前に、キャッシュ設定がセットアップされていることを確認してください。
 			</p>
 
 			<p>
-				All cache entries are created with the prefix defined in the OrmAuth configuration file. They are created without expiration timestamp,
-				so when you design your admin backend, make sure do delete the required cache entries after an update, so the cache can be refreshed.
+				すべてのキャッシュエントリは OrmAuth 設定ファイルに定義されたプレフィックスを使用して作成されています。
+				これらは有効期限のタイムスタンプは指定せず作成されていますが、あなたの設計した管理バックエンドで、必ず必要となるキャッシュエントリを更新後に削除するので、キャッシュをリフレッシュすることができます。
 			</p>
 
 			<p>
-				The following cache keys are used by OrmAuth:
+				次のキャッシュキーが OrmAuth で使用されます：
 			</p>
 			<ul>
-				<li><strong>&lt;prefix&gt;.groups</strong> - complete list of all defined groups</li>
-				<li><strong>&lt;prefix&gt;.roles</strong> - complete list of all defined roles</li>
-				<li><strong>&lt;prefix&gt;.permissions.user_&lt;id&gt;</strong> - effective permissions for user &lt;id&gt;</li>
+				<li><strong>&lt;prefix&gt;.groups</strong> - すべての定義されたグループの完全なリスト</li>
+				<li><strong>&lt;prefix&gt;.roles</strong> - すべての定義されたロールの完全なリスト</li>
+				<li><strong>&lt;prefix&gt;.permissions.user_&lt;id&gt;</strong> - ユーザー &lt;id&gt; の有効なパーミッション</li>
 			</ul>
 
 			<p>
-				After an update to the permissions system, make sure to flush the cached permissions, and, if you have changed either role or group
-				definitions, flush them too.
+				パーミッションシステムの更新後にはキャッシュされたパーミッションをフラッシュするようにし、
+				そして、ロールまたはグループ定義のいずれかを変更した場合にも、同じくフラッシュします。
 			</p>
 
-<pre class="php"><code>// flush the permissions of a single user (with id 12211)
+<pre class="php"><code>// ユーザーごとのパーミッションをフラッシュする (id 12211 とともに)
 \Cache::delete(\Config::get('ormauth.cache_prefix', 'auth').'.permissions.user_12211');
 
-// flush all the cached permissions
+// キャッシュされているすべてのパーミッションをフラッシュ
 \Cache::delete_all(\Config::get('ormauth.cache_prefix', 'auth').'.permissions');
 
-// flush all the cached groups
+// キャッシュされたすべてのグループをフラッシュ
 \Cache::delete(\Config::get('ormauth.cache_prefix', 'auth').'.groups');
 
-// flush all the cached roles
+// キャッシュされたすべてのロールをフラッシュ
 \Cache::delete(\Config::get('ormauth.cache_prefix', 'auth').'.roles');</code></pre>
 
-			<h3 id="configuration">Configuration</h3>
+			<h3 id="configuration">設定</h3>
 
 			<p>
-				The Ormauth authentication system is configured through a configuration file, not suprisingly called
-				'ormauth.php'. A default file is provided in the Auth package. You should copy this file
-				to your app/config folder before making any changes.
+				Ormauth 認証システムは、設定ファイルを使用して構成されており、予想通り 'ormauth.php' を呼び出している。
+				Auth パッケージにはデフォルトのファイルが提供されています。
+				任意の変更を加える前には、app/config フォルダにこのファイルをコピーする必要があります。
 			</p>
 
-				<p>The following configuration values can be defined:</p>
+				<p>下記の設定値が定義されています：</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>Param</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>パラメータ</th>
+							<th>型</th>
+							<th>デフォルト</th>
+							<th>説明</th>
 						</tr>
 						<tr>
 							<th>db_connection</th>
@@ -234,8 +234,8 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>null</code></pre>
 							</td>
 							<td>
-								Name of the database connection to use. This should match the definition in your applications db.php configuration file.
-								Set it to <strong>null</strong> to use the default DB instance.
+								利用するデータベース接続の名前。 db.php の config ファイルでの名称と一致させる必要があります。
+								<strong>null</strong> でデフォルトの DB インスタンスを使います。
 							</td>
 						</tr>
 						<tr>
@@ -244,7 +244,7 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>'users'</code></pre>
 							</td>
 							<td>
-								Name of the users table to use.
+								利用するユーザ情報を定義したテーブル名。
 							</td>
 						</tr>
 						<tr>
@@ -253,8 +253,8 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>array('*')</code></pre>
 							</td>
 							<td>
-								List of columns to select from the users table, or '*' to select all columns. You have to at least include
-								'username', 'password', 'email', 'last_login', 'login_hash', 'group' and 'profile_fields'.
+								ユーザ情報のテーブルのうち、 select するカラムのリスト。　'*' で全カラムを select 。少なくとも、
+								'username', 'password', 'email', 'last_login', 'login_hash', 'group', 'profile_fields' を含んでいる必要があります。
 							</td>
 						</tr>
 						<tr>
@@ -263,7 +263,7 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>'auth'</code></pre>
 							</td>
 							<td>
-								Prefix used for cache keys when caching ORM data.
+								ORM データをキャッシュする時に使用するキャッシュキーのためのプリフィックス。
 							</td>
 						</tr>
 						<tr>
@@ -272,8 +272,8 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>true</code></pre>
 							</td>
 							<td>
-								If true a dummy 'guest' user will be created if no one is logged in. This allows you to use the group and
-								acl drivers even when no one is logged in.
+								true の場合には誰もログインしていない場合にダミーの 'guest' ユーザーが作成されます。
+								誰もログインしていない場合でさえグループと ACL のドライバを使用することが可能となります。
 							</td>
 						</tr>
 						<tr>
@@ -286,7 +286,7 @@ $role->save();</code></pre>
 )</code></pre>
 							</td>
 							<td>
-								Configuration for the Ormauth 'remember_me' functionality
+								Ormauth の 'remember_me' 機能のための設定
 							</td>
 						</tr>
 						<tr>
@@ -295,8 +295,8 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>false</code></pre>
 							</td>
 							<td>
-								If true multiple concurrent logins of the same user are allowed. If false, when a user logs in, any previous login will be
-								cancelled. Note that enabling this will disable some login session hijacking measures!
+								true の場合、同一ユーザの複数の同時ログインが許可されています。 false の場合、ユーザーがログインしたときに以前のログインが取り消されます。
+								これを有効にすると、いくつかのログインセッションハイジャック対策が無効になることに注意してください！
 							</td>
 						</tr>
 						<tr>
@@ -305,9 +305,9 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>'put_some_salt_in_here'</code></pre>
 							</td>
 							<td>
-								To make the passwords used by the OrmAuth drivers extra secure, a salt value is used when hashing
-								the passwords to store them into the database. Make sure you change this default to a very random string!
-								To hash passwords, OrmAuth uses <a href="http://en.wikipedia.org/wiki/PBKDF2" target="_blank">PBKDF2</a>, a very secure hashing mechanism.
+								OrmAuth で利用されるパスワードをよりセキュアにするために、パスワードのハッシュ値をデータベースに保存する際に、サルトが使われています。
+								デフォルトのものから、ランダムな文字列に変更することを忘れないように！
+								パスワードのハッシュ化にあたり、 OrmAuth は非常にセキュアな機構である <a href="http://en.wikipedia.org/wiki/PBKDF2" target="_blank">PBKDF2</a>　を利用しています。
 							</td>
 						</tr>
 						<tr>
@@ -316,7 +316,7 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>'username'</code></pre>
 							</td>
 							<td>
-								Name of the input field on the login form that contains the username.
+								ログインフォームのユーザ名を入力するフィールド名。
 							</td>
 						</tr>
 						<tr>
@@ -325,52 +325,52 @@ $role->save();</code></pre>
 							<td><pre class="php"><code>'password'</code></pre>
 							</td>
 							<td>
-								Name of the input field on the login form that contains the password.
+								ログインフォームのパスワードを入力するフィールド名。
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
 			<p class="note">
-				If you want to use the 'remember-me' functionality, make sure you have a valid <a href="../../../classes/crypt.html">Crypt</a> configuration, as it
-				uses an encrypted cookie to store the user information to be remembered.
+				'remember-me' 機能を使用したい場合は、記憶されるユーザ情報を格納するために暗号化されたクッキーを使用するため、有効な
+				<a href="../../../classes/crypt.html">Crypt</a> 設定を持っていることを確認してください。
 			</p>
 
-			<h3 id="database">Database table</h3>
+			<h3 id="database">データベーステーブル</h3>
 
 			<p>
-				OrmAuth relies on a quite a few tables to store all information. The Auth package contains the required migration files to create these tables.<br />
-				Just run <code>oil refine migrate --packages=auth</code> to have these tables created for you.
+				OrmAuth はすべての情報を格納するためにかなりの数のテーブルに依存しています。 Auth パッケージにはこれらのテーブルを作成するために必要なマイグレーションファイルが含まれています。<br />
+				<code>oil refine migrate --packages=auth</code> を実行すればあなたのために作成されたテーブルを持つことができます。
 			</p>
 
-			<h3 id="example">Example</h3>
+			<h3 id="example">例</h3>
 
-			<p>This is a sample login action:</p>
+			<p>これはログイン処理のサンプルです：</p>
 
 			<pre class="php"><code>public function action_login()
 {
 	$data = array();
 
-	// If so, you pressed the submit button. Let's go over the steps.
+	// もし、あなたが送信ボタンを押下したならば、ステップを超えてへ行こう。
 	if (Input::post())
 	{
-		// Check the credentials. This assumes that you have the previous table created and
-		// you have used the table definition and configuration as mentioned above.
+		// 資格を確認。これは前述のテーブルが作成され、
+		// 上記のようにテーブルの定義および設定を使用していることが前提となります。
 		if (Auth::login())
 		{
-			// Credentials ok, go right in.
+			// 認証情報は OK 、ただちに下記へ
 			Response::redirect('success_page');
 		}
 		else
 		{
-			// Oops, no soup for you. Try to login again. Set some values to
-			// repopulate the username field and give some error text back to the view.
+			// おっと！あなたにはあげれません。 再度ログインしてみてください。 username フィールドを再設定し、
+			// ビューに戻っていくつかのエラーテキストを与えるためにいくつかの値を設定します。
 			$data['username']    = Input::post('username');
 			$data['login_error'] = 'Wrong username/password combo. Try again';
 		}
 	}
 
-	// Show the login form.
+	// ログインフォームを表示
 	echo View::forge('auth/login',$data);
 }</code></pre>
 
@@ -379,6 +379,7 @@ $role->save();</code></pre>
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/auth/ormauth/intro.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/auth/ormauth/intro.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/auth/ormauth/intro.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

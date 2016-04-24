@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 		var class_prefix = "Session::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Session Config - Classes - FuelPHP Documentation</title>
+	<title>Session 設定 - クラス - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,31 +45,31 @@
 
 		<div id="main">
 
-			<h2>Session Class</h2>
+			<h2>Session クラス</h2>
 
-			<p>The session class allows you to maintain state for your application in the stateless environment of the web.
-				It allows you to store variables on the server using a variety of storage solutions, and recall these variables on the next page request.</p>
+			<p>セッションクラスを使用することでステートレスな Web 環境において、アプリケーションの状態を管理出来るようになります。
+				サーバー上の様々なストレージに変数を格納し、それらを次のページリクエストに再度呼び出すことが出来ます。</p>
 
 			<section>
-				<h2 id="configuration">Configuration</h2>
+				<h2 id="configuration">設定</h2>
 
-				<p>The session class is configured through the fuel/core/config/session.php configuration file. It is already populated with a default configuration. You can override this configuration by copying this config file to your application config directory, and modify that file as needed.</p>
-				<p>The following global configuration values can be defined:</p>
+				<p>セッションクラスは、 fuel/core/config/session.php 設定ファイルで設定されています。それは、デフォルト設定が入力されています。この config ファイルをあなたのアプリケーションの config ディレクトリへコピーし、必要に応じて修正することによって、この設定を上書きすることができます。</p>
+				<p>以下のグローバル設定値が定義されています。</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>Param</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>パラメータ</th>
+							<th>型</th>
+							<th>デフォルト</th>
+							<th>説明</th>
 						</tr>
 						<tr>
 							<th>auto_initialize</th>
 							<td>boolean</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								If true, the default driver defined in the configuration will be automatically loaded and initialized.
-								Set it to false if you want to load a specific session configuration manually.
+								true の場合、設定で定義されたデフォルトのドライバが自動的に読み込まれ初期化されます。
+								手動で特定のセッション設定を読み込みたい場合は、 false に設定します。
 							</td>
 						</tr>
 						<tr>
@@ -77,9 +77,9 @@
 							<td>string</td>
 							<td><pre class="php"><code>'cookie'</code></pre></td>
 							<td>
-								Name of the session driver to load. Currently, you can use 'cookie', 'db', 'memcached', 'redis' and 'file'.
-								Other values will generate an error.
-								Check the advanced section on how you can load a session driver manually, or how to use multiple drivers concurrently.
+								読み込むセッションドライバの名前。 現在、 'cookie', 'db', 'memcached', 'redis' そして 'file' を利用することができます。
+								その他の値はエラーを生成します。
+								手動でセッションドライバを読み込む方法、またはどのように同時に複数のドライバを使用するかについては高度なセクションを確認してください。
 							</td>
 						</tr>
 						<tr>
@@ -87,9 +87,9 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								If true, the IP address stored in the session cookie will be compared with the client IP address as reported by the webserver.
-								In case of a mismatch, the session is discarded. This function uses both the clients real IP address and the public IP address,
-								so that users behind proxy servers can be uniquely identified (if the proxy reveils this information).
+								true の場合、セッションクッキーに格納されている IP アドレスは、ウェブサーバによって報告されたクライアントの IP アドレスと比較されます。
+								不一致の場合には、セッションは破棄されます。(プロキシがこの情報を明らかにしている場合) プロキシサーバーの背後にいるユーザを一意に識別できるように、
+								この機能はクライアントの実際の IP アドレスとパブリック IP アドレスの両方を利用します。
 							</td>
 						</tr>
 						<tr>
@@ -97,8 +97,8 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								If true, the User Agent string stored in the session cookie will be compared with the User Agent string as reported by the webserver.
-								In case of a mismatch, the session is discarded.
+								true の場合、セッションクッキーに格納されているユーザーエージェント文字列は、ウェブサーバによって報告されたユーザーエージェント文字列と比較されます。
+								不一致の場合には、セッションは破棄されます。
 							</td>
 						</tr>
 						<tr>
@@ -106,8 +106,8 @@
 							<td>string</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								The domain for which the session cookie is valid. If you leave it blank, it will default to the hostname as specified in the URL.
-								<br />Make sure you follow the rules for cookie domain names, as defined in http://www.faqs.org/rfcs/rfc2109.html!
+								そのセッションクッキーが有効なドメイン。 空白にした場合、それは URL で指定されたホスト名にデフォルトで設定されます。
+								<br />必ず http://www.faqs.org/rfcs/rfc2109.html で定義されている Cookie ドメイン名の規則に従ってください！
 							</td>
 						</tr>
 						<tr>
@@ -115,8 +115,8 @@
 							<td>string</td>
 							<td><pre class="php"><code>'/'</code></pre></td>
 							<td>
-								If you want the cookie to be only valid for a certain path, enter the path here.
-								You use this mainly if you have installed your application in a folder instead of in the webservers DOCROOT.
+								クッキーを特定のパスに対してのみ有効にする場合は、ここにパスを入力します。
+								フォルダ内の代わりに ウェブサーバの DOCROOT でアプリケーションをインストールしている場合は主にこれを利用します。
 							</td>
 						</tr>
 						<tr>
@@ -124,7 +124,7 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								if true, allow only transmit of cookies over HTTP, disabling Javascript access.
+								true の場合、 Javascript でのアクセスを無効にし、 HTTP 経由でクッキーの送信のみ可能とする。
 							</td>
 						</tr>
 						<tr>
@@ -132,8 +132,8 @@
 							<td>integer</td>
 							<td><pre class="php"><code>7200</code></pre></td>
 							<td>
-								Number of seconds of idle time after which the session will expire. This value must be greater than zero.
-								If an invalid value is defined, it will be set to 7200 seconds.
+								セッションが期限切れになるまでのアイドル時間の秒数。 この値はゼロより大きくなければなりません。
+								無効な値が定義されている場合、 7200 秒に設定されます。
 							</td>
 						</tr>
 						<tr>
@@ -141,8 +141,8 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								When set to true, the session will expire when the browser (not the current window!) is closed.
-								If set, it has precedence over the expiration_time defined.
+								true に設定した場合、 (現在のウィンドウではなく！) ブラウザが閉じられたときにセッションが期限切れとなります。
+								設定した場合は、それは expiration_time の定義よりも優先されます。
 							</td>
 						</tr>
 						<tr>
@@ -150,9 +150,9 @@
 							<td>mixed</td>
 							<td><pre class="php"><code>300</code></pre></td>
 							<td>
-								To prevent session hijacking due to session fixation, Fuel automatically encrypts the session cookie data.
-								It also changes the session IDs at the interval specified here. Automatic rotation can be disabled to settings this value to <kbd>false</kbd>.
-								If not given, or an invalid value is defined, the rotation time defaults to 300 seconds.
+								セッション固定攻撃によるセッションハイジャックを防ぐため、Fuel はセッションクッキーのデータを自動的に暗号化します。
+								さらに、ここで指定した間隔でセッション ID が自動的に変更されます。自動変更を無効にするには、この設定の値を <kbd>false</kbd> にしてください。
+								値が未設定の場合、または、無効な値の場合は、自動変更の間隔はデフォルトで 300 秒になります。
 							</td>
 						</tr>
 						<tr>
@@ -160,9 +160,9 @@
 							<td>string</td>
 							<td><pre class="php"><code>'flash'</code></pre></td>
 							<td>
-								Flash variables are identified in the session by the flash id and the session variable name.
-								You can use this flash id as a session variable namespace, to avoid variable name collisions,
-								or to make sure session variables from a module don't interfere with variables used in the application.
+								Flash 変数は、フラッシュ ID とセッション変数名によるセッションで識別されます。
+								変数名の衝突を避けるために、セッション変数の名前空間として、このフラッシュ ID
+								を利用でき、また、アプリケーションで使用される変数を妨害しないセッション変数を確実にモジュールから作ることができます。
 							</td>
 						</tr>
 						<tr>
@@ -170,9 +170,9 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								Flash variables are intended to be used only once. If you set this parameter to true, flash variables will auto expire
-								after the next page request, whether or not there are read back.
-								If you set this to false, flash variables will remain stored in the session until you retrieve them.
+								フラッシュ変数は一度だけ使用されることを意図しています。 このパラメータを true に設定した場合、フラッシュ変数は、
+								読み直すにしろしないにしろ、次のページ要求後に自動で期限切れとなります。
+								これを false に設定すると、それらを取得するまで、フラッシュ変数はセッションに保存されたままになります。
 							</td>
 						</tr>
 						<tr>
@@ -180,9 +180,9 @@
 							<td>string</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								For situations where no cookies are sent to the server (for example, when you use Flash objects), you can use client side code to copy the contents of the session cookie into a variable that will be send to the server as part of a POST request.
-								You can use this variable to define the name of the POST variable.
-								<br />Note that this variable will only be checked when no session cookie can be found.
+								全くクッキーがサーバーに送信されない状況 (たとえば、 Flash オブジェクトを使用している場合) 、 POST 要求の一部としてサーバーに送信される変数にセッションクッキーの内容をコピーするにはクライアント側のコードを利用することができます。
+								この変数を POST 変数の名前を定義する場合に利用することができます。
+								<br />全くセッションクッキーが見つからない場合この変数は確認のみされることに注意してください。
 							</td>
 						</tr>
 						<tr>
@@ -190,9 +190,9 @@
 							<td>string</td>
 							<td><pre class="php"><code>'Session-Id'</code></pre></td>
 							<td>
-								For situations where no cookies are sent to the server, you can also use client side code to set a custom HTTP header
-								to pass the session cookie to the server.
-								<br />Note that this variable will only be checked when no session cookie can be found.
+								全くクッキーがサーバーに送信されない状況では、サーバにセッションクッキーを渡すためにカスタム
+								HTTP ヘッダーを設定するためにクライアント側のコードを利用することができます。
+								<br />全くセッションクッキーが見つからない場合この変数は確認のみされることに注意してください。
 							</td>
 						</tr>
 						<tr>
@@ -200,9 +200,9 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								When set to false, no session cookie will be created and added to the response send back to the client. This means
-								you have to use other means (GET, POST or HTTP-HEADER) to pass the session-id back from the client to the server
-								on the next request.
+								false に設定すると、全くセッションクッキーは作成されず、クライアントに送り返される応答に追加されます。
+								これは、次のリクエストに応じてクライアントからサーバへ戻るときにセッション ID を渡すため他の手段 (GET, POST や HTTP-HEADER)
+								を使用しなければならないことを意味します。
 							</td>
 						</tr>
 						<tr>
@@ -210,7 +210,7 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								When set to true, the session class will add support for PHP native sessions through <a href="#native_emulation">emulation</a>.
+								true に設定すると、セッションクラスは、<a href="#native_emulation">エミュレーション</a>を通じて PHP のネイティブのセッションのサポートを追加します。
 							</td>
 						</tr>
 						<tr>
@@ -222,7 +222,7 @@
 	'write_on_set'   => true
  )</code></pre>
 							</td>
-							<td>Specific configuration for cookie based sessions.</td>
+							<td>クッキーに基づいたセッションのための具体的な設定。</td>
 						</tr>
 						<tr>
 							<th>file</th>
@@ -234,7 +234,7 @@
 	'gc_probability' => 5
  )</code></pre>
 							</td>
-							<td>Specific configuration for file based sessions.</td>
+							<td>ファイルに基づいたセッションのための具体的な設定。</td>
 						</tr>
 						<tr>
 							<th>db</th>
@@ -247,7 +247,7 @@
 	'gc_probability' => 5
  )</code></pre>
 							</td>
-							<td>Specific configuration for database based sessions.</td>
+							<td>データベースに基づいたセッションのための具体的な設定。</td>
 						</tr>
 						<tr>
 							<th>memcached</th>
@@ -264,7 +264,7 @@
 						)
  )</code></pre>
 							</td>
-							<td>Specific configuration for memcached based sessions.</td>
+							<td>memcached に基づいたセッションのための具体的な設定。</td>
 						</tr>
 						<tr>
 							<th>redis</th>
@@ -275,118 +275,118 @@
 	'database'       => 'default'
  )</code></pre>
 							</td>
-							<td>Specific configuration for redis based sessions.</td>
+							<td>redis に基づいたセッションのための具体的な設定。</td>
 						</tr>
 					</tbody>
 				</table>
 
 				<p>
-					For each of the session storage drivers, a separate configuration section exists.
-					This section contains the driver specific parameters, and you can use it to override
-					global parameters for that specific storage driver.
+					それぞれのセッションストレージドライバについて、個別の設定のセクションが存在します。
+					このセクションでは、ドライバ固有のパラメータが含まれており、そして、
+					その特定のストレージドライバのためのグローバルなパラメータを上書きするために利用することができます。
 				</p>
 
 				<p>
-					The Session class checks the following locations for a session id, in this order. It doesn't validate at this point, the
-					first value found is used, and if that turns out not to be valid, a new session is created:
+					セッションクラスは、セッション ID の以下のような場所をこの順番で確認します。 この時点では検証されまず、
+					それは最初に見つかった値が使用され、それが有効ではないと判明した場合に新しいセッションが作成されます：
 				</p>
 				<ul>
-					<li>Posted data, it will check <code class="php">Input::post</code> for the variable defined in "post_cookie_name".</li>
-					<li>Cookies, it will check for a valid cookie with the name defined in "cookie_name".</li>
-					<li>Get data, it will check <code class="php">Input::get</code> for the variable with the name defined in "cookie_name".</li>
-					<li>http headers, it will check for the header with the name defined in "http_header_name".</li>
+					<li>POST データ、それは "post_cookie_name" で定義された <code class="php">Input::post</code> の変数を確認します。</li>
+					<li>クッキー、それは "cookie_name" で定義された名前を持つ有効なクッキーを確認します。</li>
+					<li>GET データ、それは "cookie_name" で定義された名前を持つ <code class="php">Input::get</code> の変数を確認します。</li>
+					<li>HTTP ヘッダ、それは "http_header_name" で定義された名前を持つヘッダをチェックします。</li>
 				</ul>
 
 				<p class="note">
-					The session class configuration is independent from the cookie class configuration.
-					It is important that you configure the <kbd>cookie_domain</kbd> and <kbd>cookie_path</kbd> items
-					correctly. Notably, the domain 'localhost' is not accepted as valid by most modern browsers!
+					セッションクラスの設定は、 Cookie クラスの設定から独立しています。
+					正しく <kbd>cookie_domain</kbd> と <kbd>cookie_path</kbd> の項目を設定することが重要です。
+					注目すべきことに、 'localhost' ドメインは最新のブラウザで有効なものとして受け入れられません！
 				</p>
 
 				<section>
-					<h5 id="cookie_driver_config">Cookie driver configuration</h5>
+					<h5 id="cookie_driver_config">Cookie ドライバの設定</h5>
 
-					<p>The cookie driver doesn't use any server based storage. Instead, all session variables will be stored in the cookie that is sent to the browser after each request. Use this only if you don't have to store much data, as the maximum payload size of a cookie is 4Kb, which you will reach quite quickly, due to the overhead of array serialization and encryption.</p>
+					<p>クッキードライバはどんなサーバーベースのストレージも利用しません。 代わりに、すべてのセッション変数は、それぞれのリクエスト後にブラウザに送信されクッキーに保存されます。 クッキーの最大ペイロードサイズは 4Kb で、配列のシリアル化と暗号化のオーバーヘッドが原因で、これには実に速く到達するため、多くのデータを保存する必要がない場合に限りこれを使用します。</p>
 
-					<p>Specific driver configuration:</p>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>cookie_name</th>
 								<td>string</td>
 								<td><pre class="php"><code>'fuelcid'</code></pre></td>
-								<td>Name of the cookie used to store the session. If not set, it defaults to 'fuelcid'. If you use multiple session drivers in your application, make sure the cookie name for each of the drivers is unique!</td>
+								<td>セッションを格納するために使用されるクッキー名。 設定されていない場合、 'fuelcid' がデフォルトです。 アプリケーションで複数のセッションドライバを使用する場合は、クッキー名がそれぞれのドライバで一意になるようにしてください！</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="file_driver_config">File driver configuration</h5>
+					<h5 id="file_driver_config">ファイルドライバの設定</h5>
 
-					<p>Specific driver configuration:</p>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>cookie_name</th>
 								<td>string</td>
 								<td><pre class="php"><code>'fuelfid'</code></pre></td>
-								<td>Name of the cookie used to store the session. If not set, it defaults to 'fuelfid'. If you use multiple session drivers in your application, make sure the cookie name for each of the drivers is unique!</td>
+								<td>セッションを格納するために使用されるクッキー名。 設定されていない場合、 'fuelfid' がデフォルトです。 アプリケーションで複数のセッションドライバを使用する場合は、クッキー名がそれぞれのドライバで一意になるようにしてください！</td>
 							</tr>
 							<tr>
 								<th>path</th>
 								<td>string</td>
 								<td><pre class="php"><code>'/tmp'</code></pre></td>
-								<td>Location on disk where the session data has to be stored. File based session data is not encrypted for performance reasons. Make sure you select a location that can not be read by other applications and/or users. Pay specific attention to this fact when you run your application on a shared host!</td>
+								<td>セッションデータが収納されるディスク上の場所。 ファイルベースのセッションデータは、パフォーマンス上の理由から暗号化されていいません。 他のアプリケーション および / または ユーザーによって読み取ることができない場所を選択していることを確かめてください。 共有ホスト上でアプリケーションを実行するときにこの事実に明確に注意を払ってください！</td>
 							</tr>
 							<tr>
 								<th>gc_probability</th>
 								<td>integer</td>
 								<td><pre class="php"><code>5</code></pre></td>
-								<td>To keep the number of expired session files under control, regular garbage collection is performed. The gc_probability is an integer between 0 and 100, indicating the chance that this process will start, where 0 = never, and 100 = always. The session driver executes this task as a shutdown event, to minimize the impact on the application.</td>
+								<td>管理下の有効期限が切れたセッションファイルの数を保つために、定期的なガベージコレクションが実行されます。 gc_probability は、このプロセスが開始する可能性、 0 = 決して行わない、および 100 = 常に行う を示す、 0 から 100 までの整数です。 セッションドライバはアプリケーションへの影響を最小限に抑えるため、シャットダウンイベントとしてこのタスクを実行します。</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="db_driver_config">Database session configuration</h5>
-					<p>Specific driver configuration:</p>
+					<h5 id="db_driver_config">データベースセッションの設定</h5>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>cookie_name</th>
 								<td>string</td>
 								<td><pre class="php"><code>'fueldid'</code></pre></td>
-								<td>Name of the cookie used to store the session. If not set, it defaults to 'fueldid'. If you use multiple session drivers in your application, make sure the cookie name for each of the drivers is unique!</td>
+								<td>セッションを格納するために使用されるクッキー名。 設定されていない場合、 'fueldid' がデフォルトです。 アプリケーションで複数のセッションドライバを使用する場合は、クッキー名がそれぞれのドライバで一意になるようにしてください！</td>
 							</tr>
 							<tr>
 								<th>database</th>
 								<td>string</td>
 								<td><pre class="php"><code>null</code></pre></td>
 								<td>
-									Name of the database which is going to be used to store the session data. This is the name defined in the application database configuration file, app/config/db.php. If not defined, or set to null, the current active database will be selected.
+									セッションデータを格納するために利用しようとしているデータベースの名前。 これは、アプリケーションのデータベース設定ファイル app/config/db.php で定義された名前です。 定義されていない、または null に設定されている場合は、現在アクティブなデータベースが選択されます。
 									<p class="note">
-										Note that if you use multiple databases, it is not wise to use null here, as your application flow determines what the active database is at any given time.
-										Either use <strong>Config::get('environment')</strong> to use the configured current environment, or use a named database configuration.
+										複数のデータベースを使用する場合は、ここに null を使用するのは賢明ではなく、アクティブなデータベースが任意の時点で何であるかをアプリケーションフローで決定するように注意してください。
+										<strong>Config::get('environment')</strong> を利用して設定された現在の環境を利用するか、または、名前の付いたデータベースの設定を利用するかのどちらか一方。
 									</p>
 								</td>
 							</tr>
@@ -395,7 +395,7 @@
 								<td>string</td>
 								<td><pre class="php"><code>'sessions'</code></pre></td>
 								<td>
-									Name of the table that will be used to store the session data. You should make sure this table exists, and has these fields (MySQL syntax):
+									セッションデータを保存するために使われるテーブル名。テーブルが存在し、以下のフィールド (MySQL 構文) を持つようにしてください: 
 								<br /><br /><pre>
 CREATE TABLE IF NOT EXISTS `sessions` (
   `session_id` varchar(40) NOT NULL,
@@ -409,36 +409,36 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   UNIQUE KEY `PREVIOUS` (`previous_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 </pre><br />
-									Note that the sessions table has a unique index on both the session_id and the previous_id columns. This is both to speed up the query (which is always by id), and to make sure no duplicate id's are inserted.
+									sessions テーブルが session_id カラムと previous_id カラムの両方にユニークキーを持つことに注意してください。 これは、 (id によって常に) クエリをスピードアップするため、そして重複した id が挿入されていないことを確認するためです。
 								</td>
 							</tr>
 							<tr>
 								<th>gc_probability</th>
 								<td>integer</td>
 								<td><pre class="php"><code>5</code></pre></td>
-								<td>To keep the number of expired session files under control, regular garbage collection is performed. The gc_probability is an integer between 0 and 100, indicating the chance that this process will start, where 0 = never, and 100 = always. The session driver executes this task as a shutdown event, to minimize the impact on the application.</td>
+								<td>管理下の有効期限が切れたセッションファイルの数を保つために、定期的なガベージコレクションが実行されます。 gc_probability は、このプロセスが開始する可能性、 0 = 決して行わない、および 100 = 常に行う を示す、 0 から 100 までの整数です。 セッションドライバはアプリケーションへの影響を最小限に抑えるため、シャットダウンイベントとしてこのタスクを実行します。</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="memcache_driver_config">Memcached session configuration</h5>
+					<h5 id="memcache_driver_config">Memcached セッションの設定</h5>
 
-					<p>Specific driver configuration:</p>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>cookie_name</th>
 								<td>string</td>
 								<td><pre class="php"><code>'fuelmid'</code></pre></td>
-								<td>Name of the cookie used to store the session. If not set, it defaults to 'fuelmid'. If you use multiple session drivers in your application, make sure the cookie name for each of the drivers is unique!</td>
+								<td>セッションを格納するために使用されるクッキー名。 設定されていない場合、 'fuelmid' がデフォルトです。 アプリケーションで複数のセッションドライバを使用する場合は、クッキー名がそれぞれのドライバで一意になるようにしてください！</td>
 							</tr>
 							<tr>
 								<th>servers</th>
@@ -454,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 )
 </code></pre>
 								</td>
-								<td>Array containing a list of available memcached servers, as defined by <a href="http://php.net/manual/en/memcached.addservers.php">http://php.net/manual/en/memcached.addservers.php</a>. If you don't specify this parameter, it will default to a single memcached server, running on the local machine, and the listening to default port.
+								<td><a href="http://php.net/manual/en/memcached.addservers.php">http://php.net/manual/en/memcached.addservers.php</a> によって定義される、利用可能な memcached サーバのリストを含む配列。 このパラメータを指定しない場合、ローカルマシン上で実行され、デフォルトのポートでリスニングしている、単一の memcached サーバがデフォルトとして設定されます。
 
 								</td>
 							</tr>
@@ -463,71 +463,71 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 				</section>
 
 				<section>
-					<h5 id="redis_driver_config">Redis session configuration</h5>
+					<h5 id="redis_driver_config">Redis セッションの設定</h5>
 
-					<p>Specific driver configuration:</p>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>cookie_name</th>
 								<td>string</td>
 								<td><pre class="php"><code>'fuelrid'</code></pre></td>
-								<td>Name of the cookie used to store the session. If not set, it defaults to 'fuelrid'. If you use multiple session drivers in your application, make sure the cookie name for each of the drivers is unique!</td>
+								<td>セッションを格納するために使用されるクッキー名。 設定されていない場合、 'fuelrid' がデフォルトです。 アプリケーションで複数のセッションドライバを使用する場合は、クッキー名がそれぞれのドライバで一意になるようにしてください！</td>
 							</tr>
 							<tr>
 								<th>database</th>
 								<td>string</td>
 								<td><pre class="php"><code>'default'</code></pre></td>
-								<td>Name of the redis database which is going to be used to store the session data. This is the name defined in the redis section of the application database configuration file, app/config/db.php. If not defined or not found, the 'default' database configuration will be selected.</td>
+								<td>セッションデータを格納するために利用しようとしている redis データベースの名前。 これは、アプリケーションのデータベース設定ファイル app/config/db.php の redis セクションで定義された名前です。 定義されていない、または見つからない場合は、 'default' データベース構成が選択されます。</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
-				<h3 id="oil_session_setup">Using Oil to Create/Control Your Sessions Table</h3>
+				<h3 id="oil_session_setup">Oil コマンドを使い、セッションテーブルを作成/制御する</h3>
 					<p>
-						An oil task has been provided to allow you to create, remove and clear your sessions table using
-						the oil command line utility.
+						oil コマンドラインユーティリティを使って、 sessions テーブルを作成、削除、クリアできるように、
+						oil タスクが提供されています。
 					</p>
-					<pre class="cli"><code># display menu
+					<pre class="cli"><code># メニューを表示する
 $ php oil r session
 
-# create the sessions table
+# sessions テーブルを作成する
 $ php oil r session:create
 
-# remove the sessions table
+# sessions テーブルを削除する
 $ php oil r session:remove
 
-# clear (truncate) the sessions table
+# sessions テーブルをクリア (truncate) する
 $ php oil r session:clear</code></pre>
 
-				<h3 id="native_emulation">PHP native session emulation</h3>
+				<h3 id="native_emulation">PHP ネイティブセッションのエミュレーション</h3>
 
 				<p>
-					When activated via the configuration, the Session class will enable some basic emulation of PHP's native session mechanism that
-					can be accessed via the <kbd>$_SESSION</kbd> global variable. This only works on the default session instance, the one accessable via the
-					static interface.
+					設定をアクティブにして起動すると、セッションクラスは、 <kbd>$_SESSION</kbd> グローバル変数を介してアクセスすることができ、
+					PHP のネイティブなセッション機構のいくつかの基本的なエミュレーションが可能になります。
+					これは、デフォルトのセッションインスタンス上で静的インタフェースを介してアクセス可能なもの限定で動作します。
 				</p>
 				<p>
-					When enabled, the Session class will setup a custom session handler, that will capture the calls to the PHP functions
-					<kbd>session_start()</kbd>, <kbd>session_close()</kbd> and <kbd>session_write_close()</kbd>. If will force a close at shutdown when an open native session
-					is detected.
+					有効にすると、セッションクラスは PHP の関数 <kbd>session_start()</kbd> 、 <kbd>session_close()</kbd> および <kbd>session_write_close()</kbd> への呼び出しをキャプチャするように、
+					カスタムセッションハンドラをセットアップします。 もしネイティブセッションが開かれているのを検出したときはシャットダウン時に強制的に
+					閉じられます。
 				</p>
 				<ul>
-					<li>When <kbd>session_start()</kbd> is called, all session data stored in the Fuel session store you have configured will be copied into the <kbd>$_SESSION</kbd> array, so it can be accessed by non-Fuel code requiring sessions.</li>
-					<li>When the session is closed, a diff is made and changes in $_SESSION are copied back into the Fuel session store.</li>
+					<li><kbd>session_start()</kbd> が呼び出された場合、設定した Fuel セッションストアに格納されているすべてのセッションデータは <kbd>$_SESSION</kbd> 配列にコピーされるため、セッションを必要とする Fuel ではないコードからアクセスできます。</li>
+					<li>セッションが閉じられると、 $_SESSION の変化の差分が作られ Fuel セッションストアにコピーされます。</li>
 				</ul>
 
 				<p class="note">
-					This mechanism means that if you have a session variable that is modified both inside- and outside Fuel, it is undetermined which of
-					the changes will be saved. This depends on the position of the last <kbd>session_close()</kbd> call in the code. If the session is
-					not closed, Fuel's shutdown event will close it, and it will overwrite any data set via standard Session calls!
+					このメカニズムでは、 Fuel の内側と Fuel の外側の両方に変更されたセッション変数を持っている場合、どちらの変更が保存されるか未確定であることを意味します。
+					それはコードの最後の <kbd>session_close()</kbd> の呼び出し位置に依存します。 セッションが閉じられていない場合、
+					Fuel のシャットダウンイベントはそれを閉じ、そしてそれは、標準的なセッションの呼び出しを経由した任意のデータセットを上書きしてしまいます！
 				</p>
 
 			</section>
@@ -537,6 +537,7 @@ $ php oil r session:clear</code></pre>
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/classes/session/config.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/classes/session/config.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/classes/session/config.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

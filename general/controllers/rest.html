@@ -1,5 +1,5 @@
-﻿<!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Rest Controller - General - FuelPHP Documentation</title>
+	<title>Rest コントローラ - 概要 - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -44,27 +44,27 @@
 
 		<div id="main">
 
-			<h2 id="rest_controller">Rest Controller</h2>
+			<h2 id="rest_controller">Rest コントローラ</h2>
 
-			<h3 id="what_is_rest">What is a Rest controller?</h3>
+			<h3 id="what_is_rest">Rest コントローラとは?</h3>
 
 			<p>
-				A Rest Controller is an extension of the Base Controller which has RESTful support built in.
-				This will allow you to build API's with ease.
+				Rest コントローラは Base コントローラを継承したもので、RESTful のサポートが組み込まれています。
+				これは、API を簡単に構築をすることが出来ます。
 			</p>
 
 			<p class="note">
-				<strong>Please note:</strong> if you have a <kbd>before()</kbd> or <kbd>router</kbd> method in
-				your REST controller extension you <strong>must</strong> call the parent method
-				<kbd>parent::before()</kbd> (or router) for it to keep working properly.
+				<strong>Please note:</strong> もし、REST コントローラの中で <kbd>before()</kbd> や <kbd>router</kbd> メソッドを
+				使うなら、うまく動作させるために親クラスの <kbd>parent::before()</kbd> (または router) 
+				を呼び出さなければ <strong>いけません</strong>。
 			</p>
 
-			<h3 id="usage">Using the Rest controller</h3>
+			<h3 id="usage">Rest コントローラを使う</h3>
 
 			<p>
-				Like all Controllers, you create a class in the <kbd>fuel/app/classes/controller</kbd> directory.
-				They need to extend the <kbd>Controller_Rest</kbd> class and are prefixed by default by "Controller_".
-				Below is an example of the controller "test":
+				すべてのコントローラと同様に、<kbd>fuel/app/classes/controller</kbd>ディレクトリ内にクラスを作成します。
+				それらは <kbd>Controller_Rest</kbd> クラスを継承し、"Controller_" というプレフィックスを付けます。
+				以下は "test" コントローラの例です:
 			</p>
 
 			<pre class="php"><code>class Controller_Test extends Controller_Rest
@@ -83,60 +83,60 @@
 }</code></pre>
 
 			<p>
-				This controller method "list" is called by the following URL:
+				このコントローラの "list" メソッドは下記の URL から呼び出されます。
 				<pre>http://localhost/test/list.json?foo=bar</pre>
 			</p>
 
 
 			<p class="note">
-				You'll notice that instead of the usual "action_" prefix the Rest Controller uses the HTTP method as a prefix.
-				When no method with the corresponding HTTP method prefix is found it will fall back to the "action_" prefix.
-				All common HTTP methods are supported by the Rest Controller, such as:
+				他のコントローラと同様に、 Rest コントローラにおいても "action_" というプレフィックスのメソッドは、 HTTP メソッドをプレフィックスとしたメソッドの代わりになることに気づくでしょう。
+				HTTP メソッドに当てはまるプレフィクスのメソッドがない場合、"action_" プレフィクスのメソッドが代わりに呼び出されます。
+				Rest コントローラがサポートしている一般的な HTTP メソッドは下記のとおりです。
 			</p>
 
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>HTTP Method</th>
-						<th>Description</th>
+						<th>HTTP メソッド</th>
+						<th>説明</th>
 					</tr>
 					<tr>
 						<th>GET</th>
 						<td>
-							Used to fetch information about an existing resource. This is used by browsers when you
-							enter a URL and hit go, or when you click on a link, so it perfect for fetching information
-							on one of your resources (like user). Forms can also use this method to fetch information submitting a query string (i.e. Search forms).
+							既存のリソースの情報を取得するために使用される。
+							ブラウザで URL を入力して開いたり、リンクをクリックする際に使用され、ユーザなどが情報を取得するのに最適なメソッド。
+							また、フォームでもこのメソッドは使用でき、検索フォームなどで、送信されたクエリ文字列に対する情報を取得する際にも使用される。
 						</td>
 					</tr>
 					<tr>
 						<th>POST</th>
 						<td>
-							Used to create a new resource. It is also used to update a resource because of the lack of HTML support for the PUT method. Most forms use POST method except when their intend is to fetch information submitting a query string.
+							新しいリソースを作成する際に使われる。HTML が PUT メソッドをサポートしていないため、リソースの更新にも使用される。大抵のフォームでは POST メソッドが使用されるが、送信したクエリ文字列に対する情報を取得する場合には使用されない。
 						</td>
 					</tr>
 					<tr>
 						<th>PUT</th>
 						<td>
-							Used to create or update a resource with a known id. You are expected to pass all properties. Missing ones should be set to NULL. Less commonly used as it is not yet supported by HTML (v.5). It is although supported for XMLHttpRequests by most browsers.
+							既知の id に対応するリソースを作成・更新する際に使用される。すべてのプロパティを渡すことが期待される。存在しないものは NULL にセットされるべきである。HTML (v.5) でまだサポートされていないため、ほとんど使われていない。しかし、ほとんどのブラウザの XMLHttpRequests ではサポートされている。
 						</td>
 					</tr>
 					<tr>
 						<th>DELETE</th>
 						<td>
-							Used to delete an existing resource. As for PUT, it is not supported by HTML (v.5) but supported for XMLHttpRequests by most browsers.
+							既存のリソースを削除する際に使用される。PUT メソッドと同様に HTML5 でサポートされなくなったものの、 XMLHttpRequests のために多くのブラウザでサポートされている。
 						</td>
 					</tr>
 					<tr>
 						<th>PATCH</th>
 						<td>
-							Used to update a resource with a known id. You only pass properties you want to update. Less commonly used as it is not yet supported by HTML (v.5). It is although supported for XMLHttpRequests by most browsers.
+							既知の id のリソースの更新のために使用される。更新したいプロパティのみを渡す。HTML (v.5) でまだサポートされていないため、ほとんど使われていない。しかし、ほとんどのブラウザの XMLHttpRequests ではサポートされている。
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<p class="note">This is not a restrictive list, the FuelPHP framework accepts any HTTP method accepted by your webserver.</p>
+			<p class="note">これは制約に関するリストではありません。FuelPHP フレームワークは、Web サーバが受け付けるどんな HTTP メソッドも受け付けます。</p>
 
-			<h3 id="output">Output</h3>
+			<h3 id="output">出力</h3>
 
 			<pre class="javascript"><code>{
 	"foo":"bar",
@@ -145,35 +145,35 @@
 }</code></pre>
 
 			<p>
-				This is output as json because a file extension was defined in the URL. By default, responses will be
-				formatted as XML or whichever format is set in <em>fuel/core/config/rest.php</em>.
+				ファイル拡張子が URL で定義されているので、これは JSON として出力されます。デフォルトでは、XML フォーマット出力されるか、
+				<em>fuel/core/config/rest.php</em> に設定されているフォーマットで出力されます。
 			</p>
 
-			<h3 id="config">Configuration</h3>
+			<h3 id="config">設定</h3>
 
 			<p>
-				The REST controllers can be globally configured via the <strong>fuel/core/config/rest.php</strong> configuration file. It
-				is already populated with a default configuration. You can override this configuration adding a config file
-				with the same name to your application config directory, and set the values you want to change there. These
-				will overwrite the core config but keep what you didn't overwrite.
+				REST コントローラは fuel/core/config/rest.php でグローバルに設定されており、既にデフォルト値が入力されています。
+				この設定ファイルを上書きするには、あなたのアプリケーションの設定ディレクトリに同名の設定ファイルを追加して、
+				設定したい値に変更してください。
+				これによって、Core の設定が上書きされますが、上書きされなかった設定は元の値が保持されます。
 			</p>
 
-			<p>The following global configuration values can be defined:</p>
+			<p>設定可能な値一覧</p>
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>Param</th>
-						<th>Type</th>
-						<th>Default</th>
-						<th>Description</th>
+						<th>パラメータ</th>
+						<th>型</th>
+						<th>デフォルト</th>
+						<th>説明</th>
 					</tr>
 					<tr>
 						<th>default_format</th>
 						<td>string</td>
 						<td><pre class="php"><code>'xml'</code></pre></td>
 						<td>
-							The default format to return the result in. This will only be used when no format is defined in the
-							controller, and all autodetection mechanisms fail.
+							結果を返す際のデフォルトフォーマット。
+							コントローラでフォーマットが指定されなかった場合とフォーマットの自動判定にすべて失敗した場合のみに使用される。
 						</td>
 					</tr>
 					<tr>
@@ -181,7 +181,7 @@
 						<td>string</td>
 						<td><pre class="php"><code>'xml'</code></pre></td>
 						<td>
-							The <a href="#xml_basenode">basenode XML tag</a> to be used when outputting XML structures.
+							XML で出力する際に使われる<a href="#xml_basenode">ベースノードの XML タグ</a>。
 						</td>
 					</tr>
 					<tr>
@@ -189,7 +189,7 @@
 						<td>string</td>
 						<td><pre class="php"><code>'REST API'</code></pre></td>
 						<td>
-							The name for the password protected REST API displayed on login dialogs.
+							パスワード保護された REST API のログインダイアログで表示される名前。
 						</td>
 					</tr>
 					<tr>
@@ -197,10 +197,10 @@
 						<td>string</td>
 						<td><pre class="php"><code>''</code></pre></td>
 						<td>
-							Defines the type of authentication needed. Valid values are 'basic' and 'digest'. You can also define a
-							name of controller method which must be called to check authorization. This method may return a boolean
-							(true will allow the request, false will return a default 401 response is returned), or a Response object.
-							<br />Leave this empty if no autorization need to be performed.
+							必要な認証のタイプを定義。有効な値は 'basic' と 'digest'。
+							認証をチェックするためのコントローラのメソッド名も定義できます。このメソッドは論理値 (true の場合、リクエストを許可、false の場合、デフォルトの 401 レスポンスを返します)、
+							または、Response オブジェクトを返します。
+							<br />認証を行う必要がない場合は、これは空のままにしておきます。
 						</td>
 					</tr>
 					<tr>
@@ -208,7 +208,7 @@
 						<td>array</td>
 						<td><pre class="php"><code>array('admin' => '1234')</code></pre></td>
 						<td>
-							An array of key/value pairs, defining valid usernames and passwords for the 'basic' and 'digest' authorization methods.
+							'basic' と 'digest' 認証で使用される、ユーザ名とパスワードの組み合わせを key/value で定義した配列。
 						</td>
 					</tr>
 					<tr>
@@ -216,73 +216,73 @@
 						<td>boolean</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							Whether or not the HTTP_ACCEPT header should be parsed on a REST request to determine the format to return.
+							REST リクエストで、返す結果のフォーマットを判定する際に HTTP_ACCEPT ヘッダーをパースするかどうか。
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<h3 id="formats">Supported Formats</h3>
+			<h3 id="formats">サポートされるフォーマット</h3>
 
 			<ul>
-				<li><strong>xml</strong> - almost any programming language can read XML</li>
-				<li><strong>json</strong> - useful for JavaScript and increasingly PHP apps.</li>
-				<li><strong>csv</strong> - open with spreadsheet programs</li>
-				<li><strong>html</strong> - any string returned by your method</li>
-				<li><strong>php</strong> - Representation of PHP code that can be <kbd>eval()</kbd>'ed</li>
-				<li><strong>serialize</strong> - Serialized data that can be unserialized in PHP</li>
+				<li><strong>xml</strong> – ほとんどのプログラミング言語は XML を読めます</li>
+				<li><strong>json</strong> – JavaScript で役立ち、PHP アプリでも使用が増えています。</li>
+				<li><strong>csv</strong> – 表計算プログラムで開きます</li>
+				<li><strong>html</strong> – あなたのメソッドによって返された任意の文字列</li>
+				<li><strong>php</strong> – <kbd>eval()</kbd> 可能な PHP コードでの表現</li>
+				<li><strong>serialize</strong> – PHP でアンシリアライズ可能な、シリアライズされたデータ</li>
 			</ul>
 			<p class="note">
-				If your controller method returns an array, but the requested output format is something that an array can not be
-				converted to (such as <strong>html</strong>), you will get a 406 NOT ACCEPTABLE status returned when your
-				application runs in a production environment, or a warning message and a JSON dump of the array when in
-				any other environment.
+				もし、あなたのコントローラのメソッドが配列を返す場合で、
+				リクエストされた出力フォーマットが (<strong>html</strong> のような) 配列に変換できないとき、
+				本番環境では、406 NOT ACCEPTABLE ステータスが、
+				他の環境では警告メッセージと配列の JSON ダンプが返ります。
 			</p>
 
-			<h3 id="format_determination">Format determination</h3>
+			<h3 id="format_determination">フォーマットの決定</h3>
 
 			<p>
-				To determine the format in which the result should be returned, the REST controller uses the following algorithm:
+				返される結果のフォーマットを決定するために、REST コントローラは次のアルゴリズムを用います:
 			</p>
 			<ul>
-				<li>use the protected property <kbd>$format</kbd> if it contains a supported format</li>
-				<li>use the URL extension if it is a supported format</li>
-				<li>use the format specified by the <kbd>:format</kbd> variable in the route if it contains a supported format</li>
-				<li>use the format specified by the <kbd>format</kbd> variable in the request</li>
-				<li>use the format defined in the <kbd>HTTP_ACCEPT</kbd> header</li>
-				<li>use the default value defined by the <kbd>$rest_format</kbd> property of your class</li>
-				<li>use the <kbd>default_format</kbd> value defined in the global configuration file</li>
+				<li>対応フォーマットを含むなら、protected なプロパティである <kbd>$format</kbd> を使用する</li>
+				<li>対応フォーマットであるなら、URL の拡張子を使用する</li>
+				<li>対応フォーマットを含むなら、ルートの中で指定された <kbd>:format</kbd> 変数のフォーマットを使用する</li>
+				<li>リクエストの中の <kbd>format</kbd> 変数で指定されたフォーマット</li>
+				<li><kbd>HTTP_ACCEPT</kbd> で定義されたフォーマットを使用する</li>
+				<li>あなたのクラスの <kbd>$rest_format</kbd> プロパティで定義されたデフォルト値を使用する</li>
+				<li>グローバル設定の <kbd>default_format</kbd> でで意義された値を使用する</li>
 			</ul>
 
 			<p>
-				In most cases the <kbd>HTTP_ACCEPT</kbd> is present and contains (at least) <u>text/html</u>, which is a valid
-				result format. This has the implication that the <kbd>$rest_format</kbd>, and any global default defined in the <strong>rest.php</strong>
-				configuration file, will never be used.
+				多くの場合、 <kbd>HTTP_ACCEPT</kbd> が存在し、正しい結果のフォーマットである <u>text/html</u> を（少なくとも）含んでいます。
+				 このことは <kbd>$rest_format</kbd> や <strong>rest.php</strong> 設定ファイルで定義されたグローバルなデフォルトが
+				使われないことを意味しています。
 			</p>
 
 			<p>
-				To disable the <kbd>HTTP_ACCEPT</kbd> as a valid format source, set the configuration key <strong>ignore_http_accept</strong>
-				in the <strong>rest.php</strong> to <code>true</code>.
+				<kbd>HTTP_ACCEPT</kbd> がフォーマットの判定に使われないようにするには、
+				<strong>rest.php</strong> で <strong>ignore_http_accept</strong> キーの値を <code>true</code> に設定します。
 			</p>
 
 			<p class="note">
-				Note that it is considered bad practice to hardcode any result format in your REST controller. It should be up to the client
-				to specify in which format the result should be returned. In case of <kbd>HTTP_ACCEPT</kbd>, most ajax solutions like for example
-				<code>jQuery.ajax()</code> allow you to set the accept header to <u>application/json</u>.
+				結果のフォーマットを REST コントローラ内でハードコードすることはバッドプラクティスであることに注意してください。
+				返される結果のフォーマットはクライアントによって指定されるべきです。<kbd>HTTP_ACCEPT</kbd> に備えて、 例えば、<code>jQuery.ajax()</code> のような、
+				ほとんどの Ajax の手法は、<u>application/json</u> ヘッダを設定することを許可します。
 			</p>
 
 			<h3 id="xml_basenode">XML Base Node Name</h3>
 
 			<p>
-				When using XML output you can set the XML basenode by setting the <code>$xml_basenode</code> param.
+				XML が出力される場合に、 XML のベースノードは <code>$xml_basenode</code> パラメータで設定されます。
 			</p>
 
 			<pre class="php"><code>class Controller_Test extends Controller_Rest
 {
-	// Set it for the whole controller
+	// コントローラ全体に設定する
 	protected $xml_basenode = 'my_basenode';
 
-	// Or inside your controller function
+	// または、コントローラのメソッド内で
 	public function get_items()
 	{
 		$this->xml_basenode = 'other_basenode';
@@ -297,13 +297,13 @@
 	}
 }</code></pre>
 
-			<h3 id="special_methods">Special controller methods</h3>
+			<h3 id="special_methods">特別なコントローラのメソッド</h3>
 
 			<article>
 				<h4 id="response">response($data = array(), $http_code = 200)</h4>
 				<p>
-					This method is used to send your response data through the formatting and output logic. You can
-					optionally set a status code as the 2nd parameter.
+					このメソッドは、フォーマットと出力ロジックを介して応答データを送信するために使用されます。
+					必要に応じて、2 番目のパラメータとしてステータスコードを設定することができます。
 				</p>
 			</article>
 
@@ -312,6 +312,7 @@
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/general/controllers/rest.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/general/controllers/rest.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/general/controllers/rest.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

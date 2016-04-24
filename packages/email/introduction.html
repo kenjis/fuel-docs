@@ -10,7 +10,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Introduction - Email Package - FuelPHP Documentation</title>
+	<title>はじめに - Email パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -43,27 +43,27 @@
 		</div>
 
 		<div id="main">
-			<h2>Email package</h2>
+			<h2>Email パッケージ</h2>
 
 			<p>
-				The Email package provides an interface for sending email using either php's mail function, sendmail
-				or SMTP. The package supports:
+				Email パッケージは、 php のメール関数、 sendmail 、または SMTP のいずれかを利用して、メールを送信するインターフェースを提供します。
+				パッケージのサポート:
 			</p>
 
 			<ul>
-				<li>Plain-text mails</li>
-				<li>HTML mails, with and optional alternative body</li>
-				<li>Attachments</li>
-				<li>Inline attachments.</li>
+				<li>プレーンテキストメール</li>
+				<li>HTML メールとオプションの代替本文</li>
+				<li>添付ファイル</li>
+				<li>インラインの添付ファイル。</li>
 			</ul>
 
 			<section>
-
-				<h3 id="installation">Installation</h3>
-
+			
+				<h3 id="installation">インストール</h3>
+				
 				<p>
-					The Email package is part of the official download (since version 1.1). You will have to enable the package
-					either in the app config or include it on the fly.
+					Email パッケージは、本体 (1.1 以降) に含まれています。
+					アプリケーションの設定ファイルの中、または必要な時に呼び出して、パッケージを有効にする必要があります。
 				</p>
 
 					<pre class="php"><code>'always_load' => array(
@@ -72,7 +72,7 @@
 	),
 ),
 
-// Or in a controller:
+// または Controller の中で:
 
 \Package::load('email');
 </code></pre>
@@ -80,33 +80,33 @@
 			</section>
 
 			<section>
-
-				<h3 id="configuration">Configuration</h3>
+			
+				<h3 id="configuration">構成</h3>
 
 				<p>
-					Create (or copy from the package) a config file at <em>app/config/email.php</em>. And change the settings needed.
+					<em>app/config/email.php</em> にある設定ファイルを作成 (または package からコピー) します。そして、必要な設定項目を変更します。
 				</p>
 
 				<p class="note">
-					<strong>Please note:</strong> The Email package loads the email config for you, so there is no need to autoload it.
+					<strong>注意してください:</strong> Email パッケージがあなたの email 設定を読み込みます、従って設定を読み込むことは必要はありません。
 				</p>
 
-				<h4 id="general_config">General configuration</h4>
+				<h4 id="general_config">一般的な構成</h4>
 
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>Param</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>パラメータ</th>
+							<th>型</th>
+							<th>デフォルト</th>
+							<th>説明</th>
 						</tr>
 						<tr>
 							<th>defaults</th>
 							<td>array</td>
-							<td><pre class="php"><code>array( /* default config array */ )</code></pre></td>
+							<td><pre class="php"><code>array( /* デフォルト設定の配列 */ )</code></pre></td>
 							<td>
-								Default settings for every setup group to use. In your setup group you overwrite these values.
+								デフォルト設定項目は、すべての設定グループに使用されます。あなたの設定グループは、これらの値を上書きします。
 							</td>
 						</tr>
 						<tr>
@@ -114,7 +114,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>'default'</code></pre></td>
 							<td>
-								The default setup to use if none is profided.
+								何も指定されない場合に使用するデフォルト設定。
 							</td>
 						</tr>
 						<tr>
@@ -124,28 +124,28 @@
 		'default' => array(),
 	)</code></pre></td>
 							<td>
-								A setups array with one default setup. Add your own or modify the default setup group.
+								デフォルト設定と一緒にする設定の配列。あなたの設定を追加するか、またはデフォルト設定のグループを変更します。
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<h4 id="group_config">Group configuration</h4>
+				<h4 id="group_config">グループの構成</h4>
 
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>Param</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>パターン</th>
+							<th>型</th>
+							<th>デフォルト</th>
+							<th>説明</th>
 						</tr>
 						<tr>
 							<th>useragent</th>
 							<td>string</td>
 							<td><pre class="php"><code>'FuelPHP, PHP 5.3 Framework'</code></pre></td>
 							<td>
-								The user agent.
+								ユーザエージェント。
 							</td>
 						</tr>
 						<tr>
@@ -153,7 +153,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>'mail'</code></pre></td>
 							<td>
-								The driver to use. Can be mail, smtp, sendmail, mailgun, mandrill or noop (only logs writes to log). Must be lowercase.
+								使うドライバ。 mail 、 smtp 、 sendmail 、mailgun または noop (ただログを書き込むだけ) 。小文字で指定します。
 							</td>
 						</tr>
 						<tr>
@@ -161,7 +161,7 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								Whether to send as html mail or as plain mail.
+								HTML 形式のメール、もしくはテキスト形式のメールのどちらかで送信します。
 							</td>
 						</tr>
 						<tr>
@@ -169,8 +169,8 @@
 							<td>boolean</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								Whether to encode subject and recipient names.
-								Requires the <a href="http://www.php.net/manual/en/ref.mbstring.php" target="_blank">mbstring extension</a>.
+								メールの表題と受信者名をエンコードするかどうか。
+								<a href="http://www.php.net/manual/ja/ref.mbstring.php" target="_blank">mbstring 拡張モジュール</a> が必要となります。
 							</td>
 						</tr>
 						<tr>
@@ -178,7 +178,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>'utf-8'</code></pre></td>
 							<td>
-								The email message charset.
+								メールメッセージの文字セットを指定します。
 							</td>
 						</tr>
 						<tr>
@@ -186,7 +186,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>'8bit'</code></pre></td>
 							<td>
-								The email message encoding. Can be 7bit, 8bit, quoted-printable and base64.
+								メールメッセージのエンコードを指定します。 7bit 、 8bit 、 quoted printable 文字列と base64 が使用できます。
 							</td>
 						</tr>
 						<tr>
@@ -194,7 +194,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>\Email::P_NORMAL</code></pre></td>
 							<td>
-								The email's priority. Can be:
+								次のように、メールの優先度を指定することができます。
 								<ul style="padding-bottom: 5px; padding-top: 5px;">
 									<li>\Email::P_LOWEST</li>
 									<li>\Email::P_LOW</li>
@@ -209,7 +209,7 @@
 							<td>string|false</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								Use this to set a default from email address.
+								デフォルトの from メールアドレスにセットします。
 							</td>
 						</tr>
 						<tr>
@@ -217,7 +217,7 @@
 							<td>string|false</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								Use this to set a default from name.
+								デフォルトの from 名をセットします。
 							</td>
 						</tr>
 						<tr>
@@ -225,7 +225,7 @@
 							<td>bool</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								Set to false if you don't want to validate the addresses. Can result in failure in sending.
+								アドレスを検証したくない場合は、 false に設定します。送信に失敗する可能性があります。
 							</td>
 						</tr>
 						<tr>
@@ -233,7 +233,7 @@
 							<td>bool</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								Whether to auto attach (background) images from a html body.
+								HTML 本文から (背景) 画像を自動的に添付するかどうかを指定します。
 							</td>
 						</tr>
 						<tr>
@@ -241,7 +241,7 @@
 							<td>bool</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								Whether to automatically generate an alt body from a html body.
+								HTML 本文から alt (代替テキスト) を自動的に生成するかどうかを指定します。
 							</td>
 						</tr>
 						<tr>
@@ -249,7 +249,7 @@
 							<td>int|false</td>
 							<td><pre class="php"><code>76</code></pre></td>
 							<td>
-								Word wrap size. If lower than anything above 0 will wrap. This setting is ignored when using base64 or quoted-printable.
+								ワードラップのサイズ。 0 以下の場合は折り返されます。 base64 または quoted printable 文字列を使用している場合、この設定は無視されます。
 							</td>
 						</tr>
 						<tr>
@@ -257,7 +257,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>'/usr/sbin/sendmail'</code></pre></td>
 							<td>
-								Path to sendmail.
+								sendmail のパス。
 							</td>
 						</tr>
 						<tr>
@@ -265,7 +265,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								SMTP host.
+								SMTP ホスト。
 							</td>
 						</tr>
 						<tr>
@@ -273,7 +273,7 @@
 							<td>int</td>
 							<td><pre class="php"><code>25</code></pre></td>
 							<td>
-								SMTP port.
+								SMTP ポート。
 							</td>
 						</tr>
 						<tr>
@@ -281,7 +281,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								SMTP username.
+								SMTP ユーザ名。
 							</td>
 						</tr>
 						<tr>
@@ -289,7 +289,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								SMTP password.
+								SMTP パスワード。
 							</td>
 						</tr>
 						<tr>
@@ -297,7 +297,7 @@
 							<td>int</td>
 							<td><pre class="php"><code>5</code></pre></td>
 							<td>
-								SMTP timeout. Increase this when a SMTP server times out during the sending proccess.
+								SMTP のタイムアウトの値。送信処理中にタイムアウトが発生する場合はこの値を増やしてください。
 							</td>
 						</tr>
 						<tr>
@@ -305,7 +305,7 @@
 							<td>bool</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								Whether a SMTP server needs STARTTLS command.
+								SMTP サーバが STARTTLS コマンドを必要とするかどうか。
 							</td>
 						</tr>
 						<tr>
@@ -313,7 +313,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>"\n"</code></pre></td>
 							<td>
-								New line.
+								新しい行。
 							</td>
 						</tr>
 						<tr>
@@ -321,9 +321,9 @@
 							<td>array</td>
 							<td><pre class="php"><code>array('');</code></pre></td>
 							<td>
-								Array of attachment paths. When adding attachments,
-								the driver will look in these paths and attach the first on found.
-								Leave the empty ('') in there to allow absolute paths.
+								添付ファイルのパスの配列。
+								添付ファイルを加える時、ドライバはこれらのパスを調べて、最初に見つけたものを添付します。
+								絶対パスを許可するために、そこに空 ('') を入れたままにしておいてください。
 							</td>
 						</tr>
 						<tr>
@@ -331,7 +331,7 @@
 							<td>string|false</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								Use this to set a default return-path email address.
+								デフォルトの return-path メールアドレスにセットします。
 							</td>
 						</tr>
 						<tr>
@@ -339,7 +339,7 @@
 							<td>bool</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								When true, all comments inside the HTML body will be stripped.
+								true の場合、 HTML 本文内のすべてのコメントは削除されます。
 							</td>
 						</tr>
 						<tr>
@@ -347,9 +347,9 @@
 							<td>string|false</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								When set to a string, all relative protocol URI's (those starting with // instead of http://)
-								will be replaced by the value you specify here. This allows you to convert them to http:// or
-								https://, since some Email clients (Outlook!) do not support relative protocol URI's.
+								文字列を設定すると、すべての相対プロトコル URI(http:// の代わりに // で始まる) は、
+								ここで指定する値に置き換えられます。いくつかの電子メールクライアント (Outlook!) は、相対プロトコル URI
+								をサポートしていないために、それらを http:// もしくは https:// にそれらを変換することができます。
 							</td>
 						</tr>
 						<tr>
@@ -357,7 +357,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>'api_key'</code></pre></td>
 							<td>
-								Your Mandrill API Key.
+								あなたの Mandrill API キー。
 							</td>
 						</tr>
 						<tr>
@@ -365,7 +365,7 @@
 							<td>array</td>
 							<td><pre class="php"><code>array()</code></pre></td>
 							<td>
-								Check Mandrill <a href="https://mandrillapp.com/api/docs/messages.JSON.html#method=send">docs</a>. (Look for message struct)
+								Mandrill の <a href="https://mandrillapp.com/api/docs/messages.JSON.html#method=send">ドキュメント</a> を確認してください。 (メッセージ構造体を探してください)
 							</td>
 						</tr>
 						<tr>
@@ -373,7 +373,7 @@
 							<td>bool</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								Enable a background sending mode
+								バックグラウンド送信を有効にします。
 							</td>
 						</tr>
 						<tr>
@@ -381,7 +381,7 @@
 							<td>string</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								The name of the dedicated ip pool that should be used to send the message
+								メッセージを送信するために使用されるべき専用の IP プールの名前
 							</td>
 						</tr>
 						<tr>
@@ -389,33 +389,33 @@
 							<td>string</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								When this message should be sent as a UTC timestamp in YYYY-MM-DD HH:MM:SS format.
+								このメッセージを YYYY-MM-DD HH:MM:SS 形式の UTC タイムスタンプとして送信する必要がある場合。
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				
 				<p class="note">
-					Make sure to install <strong>mandrill/mandrill</strong> composer package if you want to use the mandrill driver.
+					マンドリルドライバを使用する場合は <strong>mandrill/mandrill</strong> コンポーザーパッケージをインストールしてください。
 				</p>
 
 
-                <h4 id="mailgun">Mailgun configuration</h4>
+                <h4 id="mailgun">Mailgun の構成</h4>
 
                 <table class="config">
                     <tbody>
                     <tr class="header">
-                        <th>Param</th>
-                        <th>Type</th>
-                        <th>Default</th>
-                        <th>Description</th>
+                        <th>パラメータ</th>
+                        <th>型</th>
+                        <th>デフォルト</th>
+                        <th>説明</th>
                     </tr>
                     <tr>
                         <th>key</th>
                         <td>string</td>
                         <td><pre class="php"><code>'YOUR KEY'</code></pre></td>
                         <td>
-                            The key of your mailgun account.
+                            あなたの mailgun アカウントのキー。
                         </td>
                     </tr>
                     <tr>
@@ -423,7 +423,7 @@
                         <td>string</td>
                         <td><pre class="php"><code>'YOUR DOMAIN'</code></pre></td>
                         <td>
-                            The domain of your website
+                            あなたのウェブサイトのドメイン
                         </td>
                     </tr>
                     </tbody>
@@ -435,6 +435,7 @@
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/email/introduction.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/email/introduction.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/email/introduction.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

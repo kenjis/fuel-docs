@@ -10,7 +10,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Introduction - Auth Package - FuelPHP Documentation</title>
+	<title>はじめに - Auth パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -43,118 +43,118 @@
 		</div>
 
 		<div id="main">
-			<h2>Auth package</h2>
+			<h2>Auth パッケージ</h2>
 
-			<p>The Auth package provides a standardized interface for authentication in Fuel. This allows our users to
-			write their own drivers and easily integrate a new driver to work with old code by keeping the basic methods
-			consistent.</p>
+			<p>Auth パッケージは Fuel における標準化された認証インターフェイスを提供します。
+			これにより、ユーザは自分自身で新しいドライバを書くことができ、
+			基本的なメソッドを保つことで、古いコードに新しいドライバを簡単に統合することもできます。</p>
 
 			<section>
-				<h2 id="intro">Introduction</h2>
+				<h2 id="intro">はじめに</h2>
 
-				<p>Creating an Auth package that will suit everyone or every implementation is impossible. As a framework
-				we don't want to force how you do Auth, but we do want to facilitate you creating your own or using the
-				work of others. This is where the Auth package comes in.</p>
+				<p>誰もが満足するかすべて実装されている Auth パッケージを作成することは不可能です。 フレームワークとして
+				我々はあなたが認証を行う方法を強制したくありませんが、あなた自身で作成したり他人の作品を使用することを
+				手助けしたい。 ここで Auth パッケージの出番です。</p>
 
-				<p>The interface contains 3 types of drivers (which can be extended to more types): <strong>login</strong>,
-				<strong>group</strong> &amp; <strong>ACL</strong>.
-				The login drivers handle a user login and can handle multiple login drivers at the same time. For example
-				one could make it possible for users to login through Twitter and their own native users at the same time
-				using 2 login drivers.</p>
+				<p>インターフェースには 3 つのタイプのドライバが含まれています (それ以上のタイプに拡張することもできる): <strong>login</strong>,
+				<strong>group</strong> そして <strong>ACL</strong> です。
+				login ドライバは、ユーザのログインを処理し同時に複数の login ドライバを扱うことができます。 たとえば、
+				1 ユーザが 2 つの login ドライバを使用して、同時に Twitter と独自のネイティブのユーザからログインすること
+				が可能です。</p>
 
-				<p>As a next step you could group those 2 types of logins using a group driver that doesn't care about the
-				type of login you're using. And last but not least you can use an Acl driver to give specific rights to
-				those groups.</p>
+				<p>次のステップとして、あなたが使用しているログインの種類を気にせず group ドライバを使用し、 2 つのタイプのログインを
+				グループ化することができる。 そして大事なことを言い忘れていましたが、あなたはそれらのグループに特定の権限を付与する ACL ドライバを
+				使用できます。</p>
 
-				<p>The above is just an example of how you might use it, not how you <em>have</em> to use it. Read on in
-				the next section to understand which methods are part of the generic interface and which will be driver
-				specific: <a href="drivers.html">Writing drivers</a>.</p>
+				<p>上記は使い方の 1 つの例にすぎませんし、それを使う必要もありません。 どのメソッドが
+				汎用インタフェースの一部であるかとドライバの仕様を理解するために次のセクションを
+				読んで下さい: <a href="drivers.html">ドライバを書く</a>.</p>
 
-				<h3 id="included">Included drivers</h3>
+				<h3 id="included">含まれているドライバ</h3>
 
-				<p>The Auth packages comes with two sets of drivers which provide local access, using one or more database tables.</p>
+				<p>Auth パッケージはローカルアクセスを提供する２つのドライバが含まれ、１つ以上のデータベースのテーブルを使用しています。</p>
 
 				<h4 id="simpleauth">Simpleauth</h4>
 
-				<p>As the same implies, this is a basic driver set. It uses a database table to store the user information, and
-				a configuration file to store information about groups, roles, and ACLs. It stores user metadata in a serialized
-				array in the user record. It doesn't have a lot of functionality, but for most applications it can do the job.
-				It is documented <a href="simpleauth/intro.html">here</a>.
+				<p>名前の通り、これは基本的なドライバセットです。ユーザの情報を収納するのにデータベーステーブルを使い、
+				グループ、ロール、 ACL に関しては設定ファイルに収納します。ユーザレコード内のシリアライズされた配列にユーザメタデータは
+				格納されます。それは多くの機能を持っていませんが、ほとんどのアプリケーションでは仕事をすることができます。
+				Simpleauth については<a href="simpleauth/intro.html">ここ</a>に記載されています。
 				</p>
 
 				<h4 id="ormauth">Ormauth</h4>
 
-				<p>This driver set provides similar functionality as the Simpleauth drivers, but stores all information about
-				users, groups, roles and permissions in the database and uses ORM models to access this information. In addition to
-				this, it doesn't store user metadata in an array, but in a separate table, using ORM's EAV container feature to
-				access it. It's API is almost compatible with Simpleauth, the difference is that methods that return user, group or role
-				data now return ORM objects instead of arrays.
-				It is documented <a href="ormauth/intro.html">here</a>
+				<p>このドライバセットは Simpleauth ドライバと同様の機能を提供しますが、ユーザ、グループ、ロール、
+				および権限に関するすべての情報をデータベースに収納し、この情報にアクセスするために ORM モデルを使用しています。
+				加えて、配列にユーザメタデータは収納しないですが、別のテーブルで ORM の EAV コンテナ機能を使いアクセスします。
+				API は Simpleauth とほとんど互換性がありますが、ユーザ、グループ、もしくはロールデータを返す関数は
+				ORM オブジェクトインスタンスの配列を返すように違いがあります。
+				Ormauth については<a href="ormauth/intro.html">ここ</a>に記載されています。
 				</p>
 
-				<p class="note">The Auth package contains the required migration files to create the table structures needed for these
-				drivers. It uses the Auth configuration file to determine what to create, so you need to configure that first.</p>
+				<p class="note">Auth パッケージは、これらのドライバに必要なテーブル構造を作成するためのマイグレーションファイルが含まれています。
+				それは作成すべきかを Auth 設定ファイルによって決めているので、最初に設定をする必要があります。</p>
 
-				<h3 id="supporting">Supporting classes</h3>
+				<h3 id="supporting">サポートクラス</h3>
 
-				<p>Besides full driver sets, the Auth package also contains supporting classes, classes that provide additional functionality
-				to one or all of the drivers.</p>
+				<p>完全なドライバセットに加え、Auth パッケージには、ドライバのいずれかまたはすべてに追加機能を提供するクラス、
+				サポートクラスが含まれています。</p>
 
 				<h4 id="opauth">Opauth</h4>
 
-				<p>Opauth is a multi-provider authentication framework for PHP, and is installed as a composer package. It provides generic
-				authentication using the OAuth or OpenID protocols, and has a substantial list of ready-made strategies for authentication
-				against popular OAuth platforms like Facebook, Twitter, Github, etc.</p>
+				<p>Opauth は、PHP 用のマルチプロバイダ認証フレームワークで、composer パッケージとしてインストールされます。
+				これは、OAuth または OpenID プロトコルを使用して汎用的な認証を提供し、Facebook や Twitter 、 GitHub などのような人気のある
+				OAuth プラットフォームに対する認証のための出来合いの Strategy の十分なリストを持っています。</p>
 
-				<p>The Opauth driver included in the Auth package will interface between Opauth and (currently) either Simpleauth or Ormauth,
-				so that you can link OAuth accounts to local accounts, use local ACL's for OAuth accounts, etc.
-				It is documented <a href="opauth/intro.html">here</a>.
+				<p>Opauth ドライバは Auth パッケージに含まれており、 Opauth と (現在のところ) Simpleauth または Ormauth いずれかとの間のインタフェースになります。
+				OAuth アカウントをローカルの ACL に使用するなど、ローカルアカウントに OAuth のアカウントをリンクできます。
+				Opauth については<a href="opauth/intro.html">ここ</a>に記載されています。
 				</p>
 
-				<h3 id="install">Installation</h3>
+				<h3 id="install">インストール</h3>
 
-				<p>The Auth package is included in the Fuel download. All you need to do is enable it in your config.</p>
+				<p>Auth パッケージは Fuel の配布物に含まれています。 設定で有効にするだけで利用できます。</p>
 				<pre class="php"><code>'always_load' => array(
 	'packages' => array(
 		'auth',
 	),
 ),</code></pre>
 
-				<h3 id="configuration">Configuration</h3>
+				<h3 id="configuration">設定</h3>
 
-				<p>Auth can be configured in a config/auth.php file and takes the following keys:</p>
+				<p>Auth は config/auth.php ファイルに、下記のキーで設定できます：</p>
 
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>Param</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>パラメータ</th>
+							<th>型</th>
+							<th>デフォルト</th>
+							<th>説明</th>
 						</tr>
 						<tr>
 							<th>driver</th>
-							<td>string|array</td>
+							<td>文字列 | 配列</td>
 							<td><pre class="php"><code>array('Simpleauth')</code></pre></td>
 							<td>
-								Login drivers to load, the first will also be the default returned by Auth::instance().
+								ロードする Login ドライバ、最初のドライバが Auth::instance() のデフォルト返り値にもなります。
 							</td>
 						</tr>
 						<tr>
 							<th>verify_multiple_logins</th>
-							<td>bool</td>
+							<td>論理型</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								Whether checking for login continues after one driver has validated a login successfully,
-								this makes it possible to login in multiple ways at the same time.
+								ひとつのドライバでログインの成功を確認したあとにも、継続してログインのチェックを行うかどうか。
+								これにより複数の方法でログインすることが可能。
 							</td>
 						</tr>
 						<tr>
 							<th>salt</th>
-							<td>string</td>
+							<td>文字列</td>
 							<td><pre class="php"><code>'put_your_salt_here'</code></pre></td>
 							<td>
-								The salt used for password hashing.
+								パスワードのハッシュ化のためにソルトは使用されます。
 							</td>
 						</tr>
 						<tr>
@@ -162,30 +162,30 @@
 							<td>integer</td>
 							<td><pre class="php"><code>10000</code></pre></td>
 							<td>
-								The number of iterations(number of "encryptions" made to the password) made in the password hashing process(Auth uses PBKDF2).
-								More iterations means safer passwords but using more time. Too many iterations may crash your server!
+								パスワードのハッシュ化処理で行われた繰り返し回数 (パスワード作成時の"暗号化"の回数) (Auth は PBKDF2 を使用)。
+								より多く繰り返す方がパスワードは安全になりますが、より多く時間がかかります。あまりに多く繰り返すとサーバーがクラッシュすることがあります！
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
 				<p class="note">
-					Note that 'verify_multiple_logins' is a driver level setting. It has no meaning for
-					login drivers, it does not mean "allow a user to be logged-in multiple times"!
+					'verify_multiple_logins' はドライバレベルの設定であることに注意。 Login ドライバ
+					そのものを意味していないし、「ユーザに多重ログインすることを許可する」ということではありません！
 				</p>
 
-				<p>Your auth config file should look like this:</p>
+				<p>auth.php ファイルはこのようになります：</p>
 
 				<pre class="php"><code>&lt;?php
 
 return array(
-	// The drivers
+	// ドライバ
 	'driver' => array('Simpleauth'),
 
-	// Set to true to allow multiple logins
+	// 複数ログインを有効にする場合、 true
 	'verify_multiple_logins' => true,
 
-	// Use your own salt for security reasons
+	// セキュリティのために、ソルトを設定しましょう
 	'salt' => 'Th1s=mY0Wn_$@|+',
 );
 </code></pre>
@@ -197,6 +197,7 @@ return array(
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/auth/intro.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/auth/intro.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/auth/intro.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

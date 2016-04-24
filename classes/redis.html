@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 		var class_prefix = "Redis_Db::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Redis_Db - Classes - FuelPHP Documentation</title>
+	<title>Redis_Db - クラス - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,21 +45,21 @@
 
 		<div id="main">
 
-			<h2>Redis_Db Class</h2>
+			<h2>Redis_Db クラス</h2>
 
-			<p>The Redis_Db class allows you to interact with a <a href="http://redis.io/">Redis</a> key-value store.</p>
+			<p>Redis_Db クラスは、key-value ストアである <a href="http://redis.io/">Redis</a> とデータをやり取りすることができます。</p>
 
-			<h3 id="configuration">Configuration</h3>
+			<h3 id="configuration">設定</h3>
 
-			<p>For every Redis database connection there must be a config in redis array in app/config/&lt;environment&gt;/db.php. Configuration options and explanation are listed below. Every config requires to contain a hostname and a port.</p>
+			<p>すべての Redis データベースの接続設定は、app/config/&lt;environment&gt;/db.php の redis 配列の中で設定されている必要があります。設定オプションと説明を下にリストアップしました。すべての設定には、ホスト名とポートが必須となります。</p>
 
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>Param</th>
-						<th>Type</th>
-						<th>Default</th>
-						<th>Description</th>
+						<th>パラメータ</th>
+						<th>型</th>
+						<th>デフォルト</th>
+						<th>説明</th>
 
 					</tr>
 					<tr>
@@ -67,7 +67,7 @@
 						<td>string</td>
 						<td><pre class="php"><code>'127.0.0.1'</code></pre></td>
 						<td>
-							Hostname
+							ホスト名
 						</td>
 					</tr>
 					<tr>
@@ -75,7 +75,7 @@
 						<td>integer</td>
 						<td><pre class="php"><code>6379</code></pre></td>
 						<td>
-							Port to use in the connection
+							接続を受け付けるポート
 						</td>
 					</tr>
 					<tr>
@@ -83,7 +83,7 @@
 						<td>mixed</td>
 						<td><pre class="php"><code>null</code></pre></td>
 						<td>
-							Connection timeout
+							接続のタイムアウト
 						</td>
 					</tr>
 					<tr>
@@ -91,7 +91,7 @@
 						<td>integer</td>
 						<td><pre class="php"><code>0</code></pre></td>
 						<td>
-							Database zero-based index
+							0 が基点となるデータベース番号
 						</td>
 					</tr>
 					<tr>
@@ -99,7 +99,7 @@
 						<td>mixed</td>
 						<td><pre class="php"><code>null</code></pre></td>
 						<td>
-							Optional password if the database requires authentication
+							データベースが認証を要求する場合のパスワード。
 						</td>
 					</tr>
 				</tbody>
@@ -107,43 +107,43 @@
 
 			<article>
 				<h4 class="method" id="method_forge">forge($name = 'default', $config = array())</h4>
-				<p>Create a new named redis instance, optionally with a custom configuration</p>
+				<p>新しい名前の redis インスタンスを作成します。必要に応じて、設定を変更することができます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><i><pre class="php"><code>'default'</code></pre></i></td>
-									<td>The name of the new redis instance, as defined the application config db.php file.</td>
+									<td>新しい redis インスタンスの名前。アプリケーションの db.php 設定ファイルであらかじめ定義しておくことができます。</td>
 								</tr>
 								<tr>
 									<th><kbd>$config</kbd></th>
 									<td><i><pre class="php"><code>array()</code></pre></i></td>
-									<td>custom configuration, which will override the values defined in the db.php file.</td>
+									<td>カスタム設定。 db.php 設定ファイルで定義されている値を上書きすることができます。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fuel\Core\Redis Object</td>
+						<th>返り値</th>
+						<td>Fuel\Core\Redis オブジェクト</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// create the Redis 'mystore' instance
+							<pre class="php"><code>// 'mystore' という Redis インスタンスを作成
 $redis = Redis_Db::forge('mystore');</code></pre>
 						</td>
 					</tr>
@@ -153,38 +153,38 @@ $redis = Redis_Db::forge('mystore');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_instance">instance($name = 'default')</h4>
-				<p>Return a named instance that was created earlier.</p>
+				<p>以前に作成したインスタンスを名前を指定して返します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><i><pre class="php"><code>'default'</code></pre></i></td>
-									<td>The name of the redis instance requested, as created using forge().</td>
+									<td>forge() メソッドで事前に作成されているインスタンスの名前。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fuel\Core\Redis Object</td>
+						<th>返り値</th>
+						<td>Fuel\Core\Redis オブジェクト</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// retrieve the Redis 'mystore' instance
+							<pre class="php"><code>// 'mystore' という Redis インスタンスを取り出す
 $redis = Redis_Db::instance('mystore');</code></pre>
 						</td>
 					</tr>
@@ -193,24 +193,24 @@ $redis = Redis_Db::instance('mystore');</code></pre>
 			</article>
 
 			<article>
-				<h4 id="redis_commands">Redis commands</h4>
-				<p>Once you have created a redis object using the instance() method, every valid redis command (see the <a href="http://redis.io/commands">Redis Documentation</a>) as a method of that object.</p>
-				<p>Some examples:</p>
-				<pre class="php"><code>// create the Redis 'mystore' instance
+				<h4 id="redis_commands">Redis のコマンド</h4>
+				<p>一度 redis オブジェクトを作成したらあとは instance() メソッドを使います。様々な redis コマンド (<a href="http://redis.io/commands">Redis ドキュメント</a>を参照のこと) はオブジェクトのメソッドのように使うことができます。</p>
+				<p>いくつかの例:</p>
+				<pre class="php"><code>// 'mystore' という Redis インスタンスを作成
 $redis = Redis_Db::forge('mystore');
 
-// create some test data
+// テストデータを作成
 $redis->rpush('particles', 'proton');
 $redis->rpush('particles', 'electron');
 $redis->rpush('particles', 'neutron');
 
-// fetch the range
+// 範囲を指定して取り出す
 $particles = $redis->lrange('particles', 0, -1);
 
-// count the number of elements
+// 要素の数をカウント
 $particle_count = $redis->llen('particles');
 
-// display the results
+// 結果を表示
 echo "&lt;p>The {$particle_count} particles that make up atoms are:&lt;/p>";
 echo "&lt;ul>";
 foreach ($particles as $particle) {
@@ -221,13 +221,13 @@ echo "&lt;/ul>";
 			</article>
 
 			<article>
-				<h4 id="redis_pipelining">Pipelining</h4>
-				<p>You can add multiple Redis commands into a command pipeline, and execute them all at once.</p>
-				<p>An example:</p>
-				<pre class="php"><code>// create the Redis 'mystore' instance
+				<h4 id="redis_pipelining">パイプライニング</h4>
+				<p>いくつかの Redis コマンドをつなげることができ、それは 1 度だけ実行されます。</p>
+				<p>例:</p>
+				<pre class="php"><code>// 'mystore' という Redis インスタンスを作成
 $redis = Redis_Db::forge('mystore');
 
-// pipeline some redis commands, then execute them
+// いくつかの redis コマンドをパイプラインして実行
 $result = $redis->pipeline()
 	->sadd('list', 4)
 	->sadd('list', 1)
@@ -239,6 +239,7 @@ $result = $redis->pipeline()
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/classes/redis.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/classes/redis.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/classes/redis.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

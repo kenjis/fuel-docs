@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 		var class_prefix = "Cache::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Cache Config - Classes - FuelPHP Documentation</title>
+	<title>Cache 設定 - クラス - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,33 +45,33 @@
 
 		<div id="main">
 
-			<h2>Cache Class</h2>
+			<h2>Cache クラス</h2>
 
-			<p>The cache class allows you to cache the result of a resource heavy operation.</p>
+			<p>Cache クラスを使用すると、リソースの重い操作の結果をキャッシュすることができます。</p>
 
 			<section>
-				<h3 id="config">Configuration</h3>
+				<h3 id="config">設定</h3>
 
-				<p>The cache class's defaults are configured through the fuel/core/config/cache.php configuration file. It
-				is already populated with a default configuration. You can override this configuration adding a config file
-				with the same name to your application config directory, and set the values you want to change there. These
-				will overwrite the core config but keep what you didn't overwrite.</p>
+				<p>Cache クラスは初期状態では fuel/core/config/cache.php の設定ファイルを使用して構成されており、
+				これは標準の設定が記述されています。アプリケーションの config ディレクトリに同じ名前の設定ファイルを
+				追加してこの設定の上書きを行い、これらの値を変更することができます。これらの core の設定は上書きを行わないで
+				そのまま使うこともできます。</p>
 
-				<p>The following global configuration values can be defined:</p>
+				<p>以下のようなグローバルな設定値を定義することができます:</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>Param</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>パラメータ</th>
+							<th>型</th>
+							<th>デフォルト</th>
+							<th>説明</th>
 						</tr>
 						<tr>
 							<th>driver</th>
 							<td>string</td>
 							<td><pre class="php"><code>'file'</code></pre></td>
 							<td>
-								The default storage driver used for saving the caches.
+								キャッシュの保存につかわれる標準のストレージドライバ。
 							</td>
 						</tr>
 						<tr>
@@ -79,8 +79,8 @@
 							<td>int</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								The default number of seconds until expiration, used when no lifetime is given. When set to
-								null it won't expire.
+								有効期限が与えられなかった時に使用される標準の有効期限。 null に設定されている場合には
+								有効期限はなし。
 							</td>
 						</tr>
 						<tr>
@@ -88,62 +88,62 @@
 							<td>string</td>
 							<td><pre class="php"><code>serialize</code></pre></td>
 							<td>
-								When caching strings nothing special happens unless when caching more complex things like
-								objects, or even more primitive like doubles. For those cases there are "content handlers"
-								included which can ensure you'll get your object back as the right kind of object. By
-								default handlers are included for using PHP serialization and JSON encoding.<br />
-								You can add your own or handle different kinds of objects/primitive types in different ways
-								by adding handlers for each of them: 'int_handler' => 'json', 'string_handler' => 'string',
-								'Model_Post' => 'serialize', etc...
+								オブジェクトのようなより複雑なもの、または混合ミックスのようなよりプリミティブなものを
+								キャッシュする場合でない限り、文字列でキャッシュして問題ない。これらの場合には、オブジェクト
+								を正しく返し取得する方法として "content handlers" を含むと良い。これは標準で、
+								PHP シリアライズと JSON エンコーディングを使用することができる。<br />
+								あなたは独自のハンドラや用意されたそれぞれのハンドラを追加することによって、オブジェクトやプリミティブな
+								タイプをそれぞれ異なる方法で扱うことができる。例: 'int_handler' => 'json' 、 'string_handler' => 'string' 、
+								'Model_Post' => 'serialize' など ...
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<p>For each of the cache storage drivers, a separate configuration section exists. This section contains
-				the driver specific parameters.</p>
+				<p>キャッシュストレージドライバごと、別々に構成セクションがあります。
+				ドライバ固有のパラメータについては以下の通りです。</p>
 
 				<section>
-					<h5 id="file_driver_config">File driver configuration</h5>
+					<h5 id="file_driver_config">ファイルドライバ設定</h5>
 
-					<p>Saves the caches to the filesystem.</p>
+					<p>ファイルシステムにキャッシュを保存します。</p>
 
-					<p>Specific driver configuration:</p>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>path</th>
 								<td>string</td>
 								<td><pre class="php"><code>APPPATH.'cache/'</code></pre></td>
-								<td>Basepath for saving the caches.</td>
+								<td>キャッシュを保存する基本パス。</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="memcache_driver_config">MemCached driver configuration</h5>
+					<h5 id="memcache_driver_config">MemCached ドライバ設定</h5>
 
-					<p>Specific driver configuration:</p>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>cache_id</th>
 								<td>string</td>
 								<td><pre class="php"><code>'fuel'</code></pre></td>
-								<td>Unique id to distinguish fuel cache items from others stored on the same server(s).</td>
+								<td>同じサーバー ( 群 ) に保存される他の fuel キャッシュと区別する為の一意の ID 。</td>
 							</tr>
 							<tr>
 								<th>servers</th>
@@ -151,29 +151,29 @@
 								<td><pre class="php"><code>array(
 		array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100)
 	)</code></pre></td>
-								<td>Array of servers and portnumbers that run the memcached service.</td>
+								<td>memcached サービスを実行するサーバー群とポート番号</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="redis_driver_config">Redis driver configuration</h5>
+					<h5 id="redis_driver_config">Redis ドライバ設定</h5>
 
-					<p>Specific driver configuration:</p>
+					<p>ドライバ固有の設定:</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Param</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Description</th>
+								<th>パラメータ</th>
+								<th>型</th>
+								<th>デフォルト</th>
+								<th>説明</th>
 							</tr>
 							<tr>
 								<th>database</th>
 								<td>string</td>
 								<td><pre class="php"><code>'default'</code></pre></td>
-								<td>Name of the redis database to use (as configured in config/db.php)</td>
+								<td>使用する redis のデータベース名 (config/db.php で定義されているように )</td>
 							</tr>
 						</tbody>
 					</table>
@@ -186,6 +186,7 @@
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/classes/cache/config.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/classes/cache/config.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/classes/cache/config.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

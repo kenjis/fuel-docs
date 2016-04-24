@@ -10,7 +10,7 @@
 		var path = './../../../';
 	</script>
 	<script src="./../../../assets/js/combined.js"></script>
-	<title>Introduction - Opauth - Auth Package - FuelPHP Documentation</title>
+	<title>はじめに - Opauth - Auth パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -43,43 +43,43 @@
 		</div>
 
 		<div id="main">
-			<h2>Opauth - Introduction</h2>
+			<h2>Opauth - はじめに</h2>
 
-			<p>Opauth is a multi-provider authentication framework that offers support for authentication against OAuth or OpenID providers.
-			By using Opauth in your application, you can allow your users to use their existing credentials from one of the major web
-			applications using OAuth, instead of having to create a new set of credentials, and a new password to remember. Web applications
-			that support OAuth include Facebook, Twitter, Google, Instagram, Paypal, LinkedIn, Vimeo, Foursquare and Flickr.
+			<p>Opauth は OAuth または OpenID プロバイダに対する認証のためのサポートを提供するマルチプロバイダ認証フレームワークです。
+			アプリケーションで Opauth を使用することにより、一連の新たな認証情報を作り、新しいパスワードを覚えておくことの代わりに、OAuth
+			を使うメジャーなウェブアプリケーションの 1 つからユーザーが既存の認証情報を利用することができます。 OAuth をサポートしているウェブアプリケーションには、
+			Facebook 、 Twitter 、 Google 、 Instagram 、 Paypal 、 LinkedIn 、 Vimeo 、 Foursquare や Flickr が含まれています。
 			</p>
-			<p>Besides using the OAuth service from one of these OAuth providers, Opauth also provides single-sign-on. When a user is already
-			logged-in on the website of one of these services (for example, Facebook), and they come to your website and indicate they want to
-			login using their Facebook account, Opauth will detect they are already logged in, and will not prompt the user for any
-			credentials. Instead, the user is logged into your application transparently.</p>
+			<p>これらの OAuth プロバイダのいずれかから、 OAuth のサービスを使用するだけでなく、シングルサインオンも同様に提供しています。
+			これらのサービスのいずれか (例えば、 Facebook) のウェブサイトにユーザが既にログインしている場合に、あなたのウェブサイトに来て
+			Facebook のアカウントを使用しログインをしようとすると Opauth は既にログインしていることを検出するため、認証情報の入力をユーザーに求めることはありません。
+			その代わりに、ユーザーが意識することなくアプリケーションへログインされます。</p>
 
-			<h3 id="integration">Integration</h3>
+			<h3 id="integration">統合</h3>
 
-			<p>The Auth package provides a wrapper class for the Opauth library, which makes it easy to use in your application, and which provides
-			seamless integration with both the Simpleauth and Ormauth driver sets.</p>
+			<p>Auth パッケージは、アプリケーションで簡単に使用できるような Opauth ライブラリのラッパークラスを提供し、
+			Simpleauth と Ormauth ドライバセットの両方とのシームレスな統合を提供します。</p>
 
-			<p>The complete integration means that when a user visits your application for the first time and chooses an OAuth provider as the means
-			to login, the Opauth integration class will transparently create a local user account, and logs the user in using that local account.
-			This means that all functionality of the Auth driver set you have selected (such as group assignments or ACL's) will also work for users
-			logging in through Opauth.
-			</p>
-
-			<p>You can also enable multiple provider support. This allows a user to link additional OAuth providers to an existing account,
-			whether it is an account transparently created, or an account created manually. So whether they want to use their Facebook, Twitter
-			or Google credentials, your application sees the same user account, and ACL's can be applied without having to worry about a user
-			being in your system multiple times, which would be more difficult to manage.
+			<p>完全な統合とは、ユーザが初めてアプリケーションを訪問し、ログインするための手段としての OAuth プロバイダを選択した時に、
+			Opauth 統合クラスがユーザーに意識させることなく、ローカルユーザーのアカウントを作成し、そのローカルアカウントを使用してユーザーをログインすることを意味します。
+			これは、選択した Auth ドライバセットの (グループの割り当てや ACL のような) すべての機能も Opauth
+			を通じてログインするユーザーで有効であることを意味します。
 			</p>
 
-			<h3 id="install_and_config">Installation and Configuration</h3>
+			<p>また、複数のプロバイダのサポートを有効にすることもできます。これは、ユーザーに意識させることなく作成されたアカウントであろうと、
+			手動で作成したアカウントであろうと、ユーザーが既存のアカウントに追加の OAuth プロバイダーをリンクすることができます。まあ、彼らは自分の Facebook 、 Twitter や Google
+			の認証情報を使用するにせよ使用しないにせよ、管理がより困難になるでしょうが、あなたのアプリケーションは、同じユーザーアカウントを見ており、
+			ユーザーが実在するかについての心配することなく、あなたのシステムに複数回 ACL を適用することができるでしょう。
+			</p>
 
-			<p>If this is your first encounter with the Auth package, check the sections on <a href="../simpleauth/intro.html">Simpleauth</a> and
-			<a href="../ormauth/intro.html">Ormauth</a> first, make a decision on which one you are going to use, and install that according to
-			the instructions. Once you have done that, come back here and read on.</p>
+			<h3 id="install_and_config">インストールと設定</h3>
 
-			<p>To be able to use Opauth, you need to install the Opauth library through composer first. Add it to your <strong>composer.json</strong>
-			file in the root of your FuelPHP installation:
+			<p>もしこれが Auth パッケージとの最初の出会いならば、最初に <a href="../simpleauth/intro.html">Simpleauth</a> と <a href="../ormauth/intro.html">Ormauth</a>
+			のセクションを確認し、どちらを利用するか決定し、指示に従ってインストールしてください。
+			一旦それをしたならば、ここに戻り読み進めてください。</p>
+
+			<p>Opauth を使用できるようにするには、最初に Composer から Opauth ライブラリをインストールする必要があります。
+			FuelPHP をインストールしたルートで <strong>composer.json</strong> ファイルに Opauth ライブラリを追加します：
 			</p>
 
 <pre class="javascript"><code>"require": {
@@ -89,10 +89,10 @@
 	"fuelphp/upload": "2.0"
 },</code></pre>
 
-			<p>Besides the Opauth library itself, you also need to install strategy packages for each of the OAuth providers you want to
-			support in your application. Check the <a href="https://packagist.org/packages/opauth/">Packagist</a> website to see which
-			ones are readily available as a composer package. Let's say you want to use Facebook, Google and Github. Your <strong>composer.json</strong>
-			should then look like this:</p>
+			<p>Opauth ライブラリ自体に加え、OAuth のプロバイダごとにアプリケーションでサポートしたいストラテジーのパッケージをインストールする必要があります。
+			Composer パッケージとして何がすぐに利用できるかどうかは <a href="https://packagist.org/packages/opauth/">Packagist</a> のウェブサイトを確認してください。
+			仮にあなたが Facebook や Google と Github を使いたいとしましょう。
+			あなたの <strong>composer.json</strong> はこのようになります：</p>
 
 <pre class="javascript"><code>"require": {
 	"php": ">=5.3.3",
@@ -104,31 +104,31 @@
 	"fuelphp/upload": "2.0"
 },</code></pre>
 
-			<p>After this, run composer to get it all installed:</p>
+			<p>この後、すべてをインストールするには Composer を実行します：</p>
 
 				<pre class="cli"><code>$ cd /data/www/myfuelwebsite
 $ php composer.phar update</code></pre>
 
-			<p>Opauth requires a database table in which the relation between the OAuth credentials and the local user account is stored.
-			This table is automatically created for you when you have installed either <a href="../simpleauth/intro.html#database">Simpleauth</a> or
-			<a href="../ormauth/intro.html#database">Ormauth</a>.</p>
+			<p>Opauth は OAuth の認証情報およびローカルユーザアカウントの関係が格納されているデータベーステーブルを必要とします。
+			<a href="../simpleauth/intro.html#database">Simpleauth</a> または <a href="../ormauth/intro.html#database">Ormauth</a>
+			のいずれかをインストールしている場合にはテーブルは自動的に作成されます。</p>
 
-			<h3 id="configuration">Configuration</h3>
+			<h3 id="configuration">設定</h3>
 
 			<p>
-				The Opauth wrapper class is configured through a configuration file, not suprisingly called
-				<strong>opauth.php</strong>. A default file is provided in the Auth package. You should copy this file
-				to your app/config folder before making any changes.
+				Opauth ラッパー認証システムは、設定ファイルを使用して構成されており、予想通り <strong>opauth.php</strong> を呼び出している。
+				デフォルトファイルは Auth パッケージで与えられている。
+				任意の変更を加える前には、app/config フォルダにこのファイルをコピーする必要があります。
 			</p>
 
-			<p>The following configuration values can be defined:</p>
+			<p>下記の設定値が定義されています：</p>
 			<table class="config">
 				<thead>
 					<tr class="header">
-						<th style="width:20%;">Param</th>
-						<th style="width:10%;">Type</th>
-						<th>Default</th>
-						<th>Description</th>
+						<th style="width:20%;">パラメータ</th>
+						<th style="width:10%;">型</th>
+						<th>デフォルト</th>
+						<th>説明</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -138,9 +138,9 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>true</code></pre>
 						</td>
 						<td>
-							Whether or not you want to support linking multiple OAuth providers to a single local account.
-							If it is set to <strong>false</strong> and a provider is already linked, the user will get an
-							error message when a second provider is used, and the login will be rejected.
+							単一のローカルアカウントへの複数の OAuth プロバイダのリンクをサポートするかどうか。
+							<strong>false</strong> に設定されていて、かつプロバイダが既にリンクされている場合に、
+							２つ目のプロバイダを使用した場合、ユーザへはエラーメッセージが表示されログインが拒否されます。
 						</td>
 					</tr>
 					<tr>
@@ -149,8 +149,8 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>false</code></pre>
 						</td>
 						<td>
-							If <strong>true</strong>, a login via a provider will automatically create a dummy local user account with a 
-							random password, if a nickname and an email address is present.
+							<strong>true</strong> の場合、ニックネームとメールアドレスが存在するのであれば、
+							プロバイダ経由でのログインは自動的にランダムなパスワードを使用しダミーのローカルユーザーアカウントが作成されます。
 						</td>
 					</tr>
 					<tr>
@@ -159,8 +159,8 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>1</code></pre>
 						</td>
 						<td>
-							Group ID to assign to new local user accounts transparently created when a user uses an OAuth
-							provider for the first time. By default this is the ID of the Simpleauth 'users' group.
+							ユーザーが初めて OAuth プロバイダを利用する時に、ユーザーが意識することなく作成された新しいローカルアカウントに割り当てられるグループ ID 。
+						デフォルトでは、 Simpleauth での 'users' グループの ID です。
 						</td>
 					</tr>
 					<tr>
@@ -169,8 +169,8 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>false</code></pre>
 						</td>
 						<td>
-							If <strong>true</strong> it enables the display of debugging messages within the Opauth library
-							and Strategy classes. Do not enable this on production sites!
+							<strong>true</strong> の場合には Opauth ライブラリとストラテジークラス内のデバッグメッセージを有効にします。
+							プロダクションサイトではこれを有効にしないでください！
 						</td>
 					</tr>
 					<tr>
@@ -179,8 +179,8 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>null</code></pre>
 						</td>
 						<td>
-							A random string of characters which is used to salt the signing key of the authentication response.
-							You are required to define one, make sure it is sufficiently long and completely random!
+							認証応答の署名鍵のソルトに利用されるランダムな文字列。
+							定義を必要としており、十分に長く、そして十分にランダムであることを確かめてください！
 						</td>
 					</tr>
 					<tr>
@@ -189,8 +189,8 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>300</code></pre>
 						</td>
 						<td>
-							Number of iterations to use when generating the signing hash. The higher the number, the more secure
-							your signing key is, but also the slower the login process is. This seems to be an acceptable default.
+							署名のハッシュを生成するときに使用する繰り返し回数。回数が多いほどより安全な署名鍵となりますが、
+							しかし、ログイン処理も同様に遅くなります。これは無難なデフォルト値であると思われます。
 						</td>
 					</tr>
 					<tr>
@@ -199,9 +199,9 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>'2 minutes'</code></pre>
 						</td>
 						<td>
-							Time limit allowed for an auth response to be considered valid. Starting from auth response generation
-							(ie. the time when callback is first requested) to the time when auth response is received and attempts
-							validation. Use any value compatible with <strong>strtotime()</strong>.
+							認証応答が有効と見なされる時間の制限。認証応答の受信と試行が
+							検証されたときの認証応答の生成 (つまり、コールバックが最初に要求された)
+							時間を開始とします。 <strong>strtotime()</strong> と互換性のある任意の値を使用します。
 						</td>
 					</tr>
 					<tr>
@@ -210,34 +210,35 @@ $ php composer.phar update</code></pre>
 						<td><pre class="php"><code>array()</code></pre>
 						</td>
 						<td>
-							The list of strategies supported by your application, which will include per stategy at your application ID
-							and application secret (as assigned to you by the OAuth provider), and any other optional configuration
-							items. It is possible to define multiple strategies for the same provider. See
-							<a href="https://github.com/opauth/opauth/wiki/Opauth-configuration#guide-to-multiple-configurations-for-a-single-strategy">this page</a>
-							for more information.
+							アプリケーションでサポートしているストラテジーのリストには、ストラテジー毎にあなたのアプリケーション ID
+							およびアプリケーションシークレット (として OAuth プロバイダからあなたに割り当てられた) 、そして、その他オプションの設定項目が含まれているでしょう。
+							これは同じプロバイダに対して複数のストラテジーを定義することができます。
+							詳細については、<a href="https://github.com/opauth/opauth/wiki/Opauth-configuration#guide-to-multiple-configurations-for-a-single-strategy">このページ</a>
+							を参照してください。
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
 			<p>
-				Pay attention to the differences in OpAuth Auth drivers when it comes to callbacks. For example, Facebook doesn't require you
-				to define a callback (redirect) URL, Twitter requires one in the form <strong>http://example.com/&lt;controller&gt;/callback/</strong>,
-				and Google one like this: <strong>http://example.com/&lt;controller&gt;/&lt;method&gt;/google/oauth2callback</strong> (where "method"
-				is the name of the method in your controller that instantiates the Auth_Opauth driver.
+				コールバックが来るときの OpAuth 認証ドライバの違いに注意をしてください。例えば、 Facebook は、コールバック (リダイレクト) URL
+				を定義する必要はありませんが、 Twitter は、 <strong>http://example.com/&lt;controller&gt;/callback/</strong> のような形で必要となり、
+				そして、 Google ではこのように： <strong>http://example.com/&lt;controller&gt;/&lt;method&gt;/google/oauth2callback</strong> ("method"
+				は、インスタンス化している Auth_Opauth ドライバのコントローラの中でのメソッド名) なります。
 			</p>
 
-			<p class="note">You should only use <strong>auto_registration = 'true'</strong> if you don't care about local account, and you don't want to 
-			link accounts. It's there for simple "login using <provider>" kind of scenario's.</p>
+			<p class="note">ローカルアカウントに関心がなく、アカウントにもリンクしたくない場合にのみ、 <strong>auto_registration = 'true'</strong> を利用すべきです。
+			これは、「 &lt;プロバイダ&gt; を使用してログイン」のための簡素なシナリオのような物です。</p>
 			
-			<p class="note">Pay very close attention to the value of <strong>default_group</strong>. For Ormauth, group id's are
-			not fixed as they are autoincrement in your database table. You don't want to define the wrong one, and ending up
-			giving every OAuth user administrator access!!!</p>
+			<p class="note">とくに <strong>default_group</strong> の値に細心の注意を払いましょう。Ormauth の場合、データーベーステーブルでは
+			group id は固定ではなく自動インクリメントされます。間違ったものを定義すると、管理者へのアクセス権をすべての OAuth
+			ユーザーに与えることになります！！！</p>
 		</div>
 
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/auth/opauth/intro.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/auth/opauth/intro.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/auth/opauth/intro.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

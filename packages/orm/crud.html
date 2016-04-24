@@ -10,7 +10,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>CRUD - Orm Package - FuelPHP Documentation</title>
+	<title>CRUD - Orm パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,81 +45,81 @@
 		<div id="main">
 			<h2>Orm</h2>
 
-			<p>Orm is short for <a href="http://en.wikipedia.org/wiki/Object_relational_mapper" target="_blank">Object
-				Relational Mapper</a> which does 2 things: it maps your database table rows to objects and it allows you
-				to establish relations between those objects.<br />
-				It follows closely the <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">
-				Active Record Pattern</a>, but was also influenced by other systems.</p>
+			<p>ORM は<a href="http://ja.wikipedia.org/wiki/オブジェクト関係マッピング" target="_blank">オブジェクト
+				関係マッピング</a>の略です。 これは、2 つのことを行います: オブジェクトにデータベースのテーブルの行をマップし、
+				それはあなたがそれらのオブジェクト間の関係を確立することができます。<br />
+				それは <a href="http://ja.wikipedia.org/wiki/Active_Record" target="_blank">
+				Active Record パターン</a>に従いますが、他のシステムに影響も受けます。</p>
 
 			<section>
-				<h2 id="crud">CRUD: Create, Read, Update and Delete</h2>
+				<h2 id="crud">CRUD: 作成、読み取り、更新、削除</h2>
 
-				<p>Once you've configured your Model it's time to start creating, reading, updating and deleting entries
-					in your database.</p>
+				<p>一度あなたのモデルを設定したそれは、作成、読み取り、更新、
+					およびデータベース内のエントリを行います。</p>
 
 				<article id="create">
-					<h2>Create</h2>
+					<h2>作成</h2>
 
-					<pre class="php"><code>// option 1
+					<pre class="php"><code>// オプション 1
 $new = new Model_Example();
 $new->property = 'something';
 $new->save();
 
-// option 2, use forge instead of new
+// オプション 2, forge メソッドでインスタンスを作成して使用する。
 $new = Model_Example::forge();
 $new->property = 'something';
 $new->save();</code></pre>
 
-					<p class="note">After <kbd>save()</kbd> the model has been saved to the database and if you're using an
-						<kbd>auto_increment</kbd> primary key it will automatically be set on the instance after successful
-						saving it.</p>
+					<p class="note"><kbd>save()</kbd> した後、 model がデータベースに保存されていて、
+						主キーに <kbd>auto_increment</kbd> を使用している場合は、保存後に自動的にインスタンスに設定されます。
+						</p>
 
-					<p>You can also set properties on the model from an array:</p>
+					<p>配列からモデルのプロパティを設定することができます:</p>
 
 					<pre class="php"><code>$props = array('property' =&gt; 'something');
 
-// using "new"
+// "new" を使用する。
 $new = new Model_Example($props);
 $new->save();
 
-// option 2, use forge instead of new
+// オプション 2, forge メソッドでインスタンスを作成して使用する。
 $new = Model_Example::forge($props);
 $new->save();</code></pre>
 				</article>
 
 				<article id="read">
-					<h2>Read</h2>
+					<h2>読み取り</h2>
 
-					<p>Or actually <kbd>find()</kbd>. The find method can be used in 3 ways: find a specific id (primary
-						key), find first/last or all entries with conditions. All possible selection methods (where,
-						or_where, order_by, etc) can be found at the bottom of the page.</p>
+					<p>使うのは <kbd>find()</kbd> メソッドです。指定した ID (主キー)、最初／最後、条件を満たすもの全部、の 3 通りの方法があります。
+						可能な選択方法 (where, or_where, order_by 等)
+						はこのページの下で説明します。</p>
 
-					<h3 id="find_by_id">Find by ID</h3>
+					<h3 id="find_by_id">IDから検索する</h3>
 
-					<pre class="php"><code>// you know there's an article with ID=2
+					<pre class="php"><code>// ID=2 の記事を検索する
 $entry = Model_Article::find(2);
 
-// ...or when using compound primary keys
+// 複合主キーを使用している場合
 $entry = Model_Article::find(array(2, 'foo'));</code></pre>
 
-					<p>In this example it will return either an instance of Model_Article or null when the ID wasn't found.</p>
+					<p>この例では、ID が見つからなかったときは Model_Article インスタンスまたは null を返します。</p>
 
-					<h3 id="find_first_last">Find first/last</h3>
+					<h3 id="find_first_last">最初と最後を検索する</h3>
 
-					<pre class="php"><code>// find the first entry
+					<pre class="php"><code>// 最初のエントリーを検索する
 $entry = Model_Article::find('first');
 
-// find the last entry added when ordered by date
+// date カラムで並び替えて最新のエントリーを検索する
 $entry = Model_Article::find('last', array('order_by' =&gt; 'date'));</code></pre>
 
-					<p>In this example it will return either an instance of Model_Article or null when the ID wasn't found.</p>
+					<p>この例では、ID が見つからなかったときは Model_Article のインスタンスまたは null を返します。</p>
 
-					<h3 id="find_all">Find all</h3>
+					<h3 id="find_all">すべてを検索する</h3>
 
-					<pre class="php"><code>// find all articles
+					<pre class="php"><code>// すべての記事を検索する。
 $entry = Model_Article::find('all');
 
-// find all articles from category 1 order descending by date
+// category_id カラムの値が 1 の記事を検索し、 date カラムを降順に並び替える。
 $entry = Model_Article::find('all', array(
 	'where' =&gt; array(
 		array('category_id', 1),
@@ -127,7 +127,7 @@ $entry = Model_Article::find('all', array(
 	'order_by' =&gt; array('date' =&gt; 'desc'),
 ));
 
-// find all articles from category 1 or category 2
+// category_id カラムの値が 1 か 2 の記事を検索する。
 $entry = Model_Article::find('all', array(
 	'where' =&gt; array(
 		array('category_id', 1),
@@ -137,65 +137,65 @@ $entry = Model_Article::find('all', array(
 	),
 ));</code></pre>
 
-					<p>In this example it will always return an array of instances of Model_Article.</p>
+					<p>この例では、それは常に Model_Article のインスタンスの配列を返します。</p>
 
-					<h3 id="find_chaining">Find using method chaining</h3>
+					<h3 id="find_chaining">メソッドチェーンを使用して見つける</h3>
 
 					<p class="note">
-						You can not call the <kbd>find()</kbd> method without properties, or call it with <kbd>null</kbd> or a variable
-						that contains <kbd>null</kbd> as argument. If you do, <kbd>null</kbd> is returned. If you want to chain methods,
-						use the <kbd>query()</kbd> method instead.</p>
+						<kbd>find()</kbd> メソッドをプロパティ無し、あるいは <kbd>null</kbd> プロパティ、あるいはパラメータに <kbd>null</kbd> が含まれる変数、で呼び出すことはできません。
+						もし、そうした場合、<kbd>null</kbd> が返ります。メソッドチェーンを使用したい場合、
+						<kbd>query()</kbd> メソッドを使用してください。</p>
 
 					<pre class="php"><code>$query = Model_Article::query()->where('category_id', 1)->order_by('date', 'desc');
 
-// We want to know the total number of articles for pagination
+// ページネーションのための記事の総数を知りたい場合。
 $number_of_articles = $query->count();
 
-// We want to know the last id issued
+// 最大の ID の値を知りたい場合。
 $number_of_articles = $query->max('id');
 
-// We want to know the date of the first article posted
+// 一番最初に投稿された記事の日付を知りたい場合。
 $number_of_articles = $query->min('date');
 
-// fetch one Article
+// 1 件だけ取得した場合。
 $newest_article = $query->get_one();
 
-// we re-use but add a return limitation to the previous query to fetch multiple articles
+// 以前のクエリに取得したい件数の制限を加えて、複数の記事を取得する場合。
 $all_articles = $query->limit(15)->get();</code></pre>
 
-					<p>All these methods are equally valid, the four other methods of find actually use the Query object as
-						well but don't return it.</p>
+					<p>これらのメソッドは等しく有効です。その他の 4 メソッドも Query オブジェクトを使いますが、
+						オブジェクトを返しません。</p>
 
-					<h3 id="partial_selects">Partial column selects</h3>
-					<p>By default all ORM find methods will select all table columns. You can use the <kbd>select</kbd> array
-						entry or the <kbd>select()</kbd> method to alter this behavior.
+					<h3 id="partial_selects">カラムを指定して部分的に取得</h3>
+					<p>デフォルトではすべての ORM の find メソッドはテーブルのすべてのカラムを取得します。 <kbd>select</kbd> 配列
+						エントリを使うかか、 <kbd>select()</kbd> メソッドを使うことでこの挙動を変更することができます。
 					</p>
 
-					<pre class="php"><code>// using the array method. select only the 'name' and 'date' columns
+					<pre class="php"><code>// 配列を使う方法。 'name' と 'date' のカラムのみを取得します
 $entry = Model_Article::find('last', array('select' =&gt; array('name', 'date')));
 
-// same, but then using the chaining method
+// 上記と同じですがメソッドチェーンを使っています
 $entry = Model_Article::query()->select('name', 'date')->get();
 
-// using the array method. select all columns except the 'date' column
+// 配列を使う方法。'date' カラム以外のすべてのカラムを選択します
 $entry = Model_Article::find('all', array('select' =&gt; array(array('date' =&gt; false))));
 
-// same, but then using the chaining method
+// 上記と同じですがメソッドチェーンを使っています
 $entry = Model_Article::query()->select(array('date' =&gt; false))->get();
 </code></pre>
 				</article>
 
 				<article id="update">
-					<h2>Update</h2>
+					<h2>更新</h2>
 
 					<pre class="php"><code>$entry = Model_Article::find(4);
 $entry->title = 'My first edit';
 $entry->author = 'Total n00b';
 $entry->save();</code></pre>
 
-					<p>That's it, nothing more to it: Find, change properties and save.</p>
+					<p>これだけです。特別なことはありません。検索して、プロパティを変更して、保存すれば良いのです。</p>
 
-					<p>You can also set properties on the model from an array:</p>
+					<p>モデルのプロパティは、配列で設定することもできます。</p>
 
 					<pre class="php"><code>$entry = Model_Article::find(4);
 $entry->set(array(
@@ -207,38 +207,38 @@ $entry->save();</code></pre>
 				</article>
 
 				<article id="delete">
-					<h2>Delete</h2>
+					<h2>削除</h2>
 
 					<pre class="php"><code>$entry = Model_Article::find(4);
 $entry->delete();</code></pre>
 
-					<p>Again nothing more to it: Find and delete.</p>
+					<p>ここもこれだけです。検索して、削除すれば良いのです。</p>
 
-					<p class="note">In the previous example the <kbd>$entry</kbd> variable and its object still exist. The
-						primary keys are however set to <kbd>null</kbd> and the object itself is considered a new instance. If
-						you save it after deletion it will be re-entered into the database and be given a new primary key when
-						<kbd>auto_increment</kbd> is switched on.</p>
+					<p class="note">直前の例では、 <kbd>$entry</kbd> 変数とそのオブジェクトは存在しています。
+						主キーは <kbd>null</kbd> にセットされており、オブジェクト自身はあたらしいインスタンスとみなされます。
+						削除した後に保存した場合、データベースに再挿入され、
+						<kbd>auto_increment</kbd> が on の場合は新しい主キーが割り当てられます。</p>
 				</article>
 
 				<article id="functions">
-					<h2>All selection methods when using find</h2>
+					<h2>find を使用するときの全ての選択メソッド</h2>
 
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>Method</th>
-								<th>Params</th>
-								<th>Examples</th>
+								<th>メソッド</th>
+								<th>パラメータ</th>
+								<th>例</th>
 							</tr>
 							<tr>
 								<th>select</th>
 								<td>string <kbd>$column</kbd>, [string <kbd>$more_columns</kbd>,] | array <kbd>$filter</kbd></td>
 								<td>
-									<pre class="php"><code>// Find only some columns
+									<pre class="php"><code>// いくつかのカラムだけを取得します。
 Model_Article::query()-&gt;select('id', 'name');
 Model_Article::find('all', array('select' =&gt; array('id', 'name')));
 
-// Find all columns except 'name'
+// 'name' を除く全てのカラムを取得します。
 Model_Article::query()-&gt;select(array('name' =&gt; false));
 Model_Article::find('all', array('select' =&gt; array(array('name' =&gt; false))));
 </code></pre>
@@ -248,32 +248,32 @@ Model_Article::find('all', array('select' =&gt; array(array('name' =&gt; false))
 								<th>related</th>
 								<td>string|array <kbd>$relation</kbd>, [array <kbd>$conditions</kbd>]</td>
 								<td>
-									<pre class="php"><code>// include related models in the find
+									<pre class="php"><code>// find に 関係するモデルを含めます。
 Model_Article::query()-&gt;related(array('author', 'comments'));
 Model_Article::find('all', array('related' =&gt; array('author', 'comments')));
 
 //=============================
-// Include one or more conditions on a relation (only supported when chaining)
+// リレーションにおいて、1 つ、または、複数の条件を含みます。 (メソッドチェーンでのみサーポートされています)
 //=============================
 
-// First method - using an array
+// 1 つ目の方法 - array を使用
 //----------------------------
-// one condition
+// 条件が 1 つの場合
 Model_Article::query()
     -&gt;related('author', array('where' =&gt; array(array('active', '=', 1))));
 
-// multiple conditions
+// 条件が複数の場合
 Model_Article::query()
     -&gt;related('author', array('where' =&gt; array(array('active', '=', 1), array('status', '=', 'X'))));
 
-// Second method - use dot notation
+// 2 つ目の方法 - ドット表記を使用
 //----------------------------
-// one condition
+// 条件が 1 つの場合
 Model_Article::query()
 	-&gt;related('author')
 	-&gt;where('author.active', 1);
 
-// multiple conditions
+// 条件が複数の場合
 Model_Article::query()
 	-&gt;related('author')
 	-&gt;where('author.active', 1);
@@ -285,7 +285,7 @@ Model_Article::query()
 								<th>use_view</th>
 								<td>string <kbd>$viewname</kbd></td>
 								<td>
-									<pre class="php"><code>// use a view to retrieve data
+									<pre class="php"><code>// データ取得のためにビューを使用
 Model_Article::query()-&gt;use_view('with_comments');
 Model_Article::find('all', array('use_view' =&gt; 'with_comments'));
 </code></pre>
@@ -295,16 +295,16 @@ Model_Article::find('all', array('use_view' =&gt; 'with_comments'));
 								<th>where</th>
 								<td>string <kbd>$column</kbd>, [string <kbd>$operator</kbd>,] mixed <kbd>$value</kbd></td>
 								<td>
-									<pre class="php"><code>// Single where
+									<pre class="php"><code>// 1 つの where 
 Model_Article::query()-&gt;where('id', 4);
 Model_Article::find('all', array('where' =&gt; array('category_id' =&gt; 5)));
 
-// Multiple where usage examples
+// 複数の where の使用例
 Model_Article::query()-&gt;where('id', 4)->where('category_id', '&gt;', 1);
 Model_Article::query()-&gt;where(array('id' =&gt; 4, 'category_id' =&gt; 6));
 Model_Article::find('all', array('where' =&gt; array(array('category_id', '=', 5), array('publish', '&lt;', time()))));
 
-// Using or where
+// or where を使用する。
 Model_Article::query()-&gt;where('id', 4)-&gt;or_where('id', 5);
 </code></pre>
 								</td>
@@ -312,11 +312,11 @@ Model_Article::query()-&gt;where('id', 4)-&gt;or_where('id', 5);
 								<th>order_by</th>
 								<td>string <kbd>$column</kbd>, [string <kbd>$direction</kbd>]</td>
 								<td>
-									<pre class="php"><code>// Single order_by
+									<pre class="php"><code>// 1 つの order_by
 Model_Article::query()-&gt;order_by('name', 'desc');
 Model_Article::find('all', array('order_by' =&gt; array('name' =&gt; 'desc')));
 
-// Multiple order_by usage examples
+// 複数の order_by の使用例
 Model_Article::query()-&gt;order_by('name', 'desc')->order_by('category_id', 'asc');
 Model_Article::query()-&gt;order_by(array('name' => 'desc', 'category_id' =&gt; 'asc'));
 Model_Article::find('all', array('order_by' => array(array('name' =&gt; 'desc', 'category_id' =&gt; 'asc'))));
@@ -327,7 +327,7 @@ Model_Article::find('all', array('order_by' => array(array('name' =&gt; 'desc', 
 								<th>from_cache</th>
 								<td>bool<kbd>$cache</kbd></td>
 								<td>
-									<pre class="php"><code>// disable the ORM object cache on this query
+									<pre class="php"><code>// このクエリでは ORM オブジェクトのキャッシュを行わなくする
 Model_Article::query()-&gt;from_cache(false);
 Model_Article::find('all', array('from_cache' =&gt; false));
 </code></pre>
@@ -337,7 +337,7 @@ Model_Article::find('all', array('from_cache' =&gt; false));
 								<th>limit</th>
 								<td>int <kbd>$limit</kbd></td>
 								<td>
-									<pre class="php"><code>// limit with relation consistence
+									<pre class="php"><code>// 関係一貫性のある件数制限
 Model_Article::query()-&gt;limit(10);
 Model_Article::find('all', array('limit' =&gt; 10));
 </code></pre>
@@ -347,7 +347,7 @@ Model_Article::find('all', array('limit' =&gt; 10));
 								<th>rows_limit</th>
 								<td>int <kbd>$limit</kbd></td>
 								<td>
-									<pre class="php"><code>// limit without relation consistence
+									<pre class="php"><code>// 関係一貫性ののない件数制限
 Model_Article::query()-&gt;rows_limit(10);
 Model_Article::find('all', array('rows_limit' =&gt; 10));
 </code></pre>
@@ -357,7 +357,7 @@ Model_Article::find('all', array('rows_limit' =&gt; 10));
 								<th>offset</th>
 								<td>int <kbd>$offset</kbd></td>
 								<td>
-									<pre class="php"><code>// offset with relation consistence
+									<pre class="php"><code>// 関係一貫性のあるオフセット
 Model_Article::query()-&gt;offset(10);
 Model_Article::find('all', array('offset' =&gt; 10));
 </code></pre>
@@ -367,7 +367,7 @@ Model_Article::find('all', array('offset' =&gt; 10));
 								<th>rows_offset</th>
 								<td>int <kbd>$offset</kbd></td>
 								<td>
-									<pre class="php"><code>// offset without relation consistence
+									<pre class="php"><code>// 関係一貫性のないオフセット
 Model_Article::query()-&gt;rows_offset(10);
 Model_Article::find('all', array('rows_offset' =&gt; 10));
 </code></pre>
@@ -376,23 +376,23 @@ Model_Article::find('all', array('rows_offset' =&gt; 10));
 						</tbody>
 					</table>
 					<p class="note">
-						Do not mix the two limit/offset types! A combination of <kbd>limit</kbd> and <kbd>rows_offset</kbd> (or the other way around) will
-						lead to unexpected results!
+						2つの limit/offset タイプを混在させないでください！ <kbd>limit</kbd> と <kbd>rows_offset</kbd> (もしくはその逆) の組み合わせは
+						予期せぬ結果につながるでしょう！
 					</p>
 					<p class="note">
-						In this context, <kbd>relation consistence</kbd> means that by default when you query including related models,
-						the ORM will make sure the related results are consistent. This means that your results aren't always exactly
-						limited. For example, if the first parent in the result has 12 children, your resultset will contain 12 records
-						even if you have used <kbd>limit(10)</kbd>. When you use <kbd>rows_limit(10)</kbd>, the resultset will only contain
-						10 records, but 2 related records will be missing, and can not be retrieved later because the results will be cached
-						and the cache handler doesn't know the results were incomplete!
+						この文脈において、関係モデルを含んだクエリを実行するとき、デフォルトでは、
+						ORM は関係する結果が一致することを確認する、ということを<kbd>関係一貫性</kbd>は意味しています。 これは検索結果がいつも正確に
+						件数制限されているわけではないことを意味します。例えば、検索結果において最初の親が 12 件の子を持っている場合、たとえ <kbd>limit(10)</kbd> を使ったとしても
+						結果セットは 12 レコード含みます。 <kbd>rows_limit(10)</kbd> を使うと、結果セットは
+						10 レコードだけ含みますが、関係のある 2 レコードは失われ、後に取得することはできません。
+						この理由は、結果がキャッシュされ、キャッシュハンドラは結果が不完全であることを知らないためです！
 					</p>
 
-					<h3 id="complex_wheres">Complex where clauses</h3>
+					<h3 id="complex_wheres">複雑な where 句</h3>
 
-					<p>Using chaining you can create more complex where clauses, using and, or and nesting</p>
+					<p>and、or、そしてネストを使ったチェーンにより、さらに複雑な where 句を作ることができます。</p>
 
-					<pre class="php"><code>// complex where clause
+					<pre class="php"><code>// 複雑な where 句
 Model_Article::query()
   -&gt;where('author', '=', 16)
   -&gt;and_where_open()
@@ -400,17 +400,17 @@ Model_Article::query()
       -&gt;or_where('draft', '=', 1)
   -&gt;and_where_close();
 
-// creates WHERE `author` = 16 AND (`date` &lt; 1348404127 OR `draft` = 1)
+// WHERE `author` = 16 AND (`date` &lt; 1348404127 OR `draft` = 1) が生成されます。
 </code></pre>
 					<p class="note">
-						To create a nested OR, use <kbd>or_where_open()</kbd> and <kbd>or_where_close()</kbd>. Always make sure
-						your open and close methods match!
+						ネストされた OR を作るには <kbd>or_where_open()</kbd> と <kbd>or_where_close()</kbd> を使ってください。
+						必ず open メソッドと close メソッドが一致するように気をつけてください。
 					</p>
 				</article>
 
                                 <article>
-                                    <h3 id="subqueries"><a class="internal_link" href="#/subqueries">Subqueries</a></h3>
-                                    <p>Subqueries can be created by constructing a seperate query object and using get_query() to parse it.</p>
+                                    <h3 id="subqueries"><a class="internal_link" href="#/subqueries">サブクエリ</a></h3>
+                                    <p>別々のクエリオブジェクトを構築し、パースするために get_query() を使うことによって、サブクエリを作ることができます。</p>
                                     <pre id="php"><code>$subQuery = Model_Article::query()
         -&gt;select('author')
         -&gt;where('date', '&lt;', time())
@@ -423,10 +423,10 @@ Model_Article::query()
                                 </article>
 
                                 <article>
-                                    <h3 id="custom_sql"><a class="internal_link" href="#/custom_sql">Custom SQL</a></h3>
-                                    <p>It is also possible to perform custom SQL statements and have the result returned as an Orm model (or list of models). Although this is not part of the Orm itself it is useful to know. Take a look at the <a href="../../classes/database/db.html#/method_query">DB::query()</a> function for more information.</p>
+                                    <h3 id="custom_sql"><a class="internal_link" href="#/custom_sql">カスタム SQL</a></h3>
+                                    <p>カスタム SQL 文を実行し、 ORM モデル (または、モデルのリスト) として結果を得ることも可能です。これは ORM 自体の一部ではありませんが、知っておくと便利です。 詳細は <a href="../../classes/database/db.html#/method_query">DB::query()</a> 関数を見てください。</p>
                                     <pre class="php"><code>DB::query('SELECT * FROM `articles` WHERE `id` = 1')-&gt;as_object('Model_Article')-&gt;execute();</code></pre>
-                                    <p class="note">It is recommended that you use the <kbd>query()</kbd> function where ever possible though</p>
+                                    <p class="note">可能であれば、 <kbd>query()</kbd> 関数を使うことが推奨されています。 </p>
                                </article>
 			</section>
 
@@ -435,6 +435,7 @@ Model_Article::query()
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/orm/crud.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/orm/crud.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/orm/crud.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

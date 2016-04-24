@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 		var class_prefix = "Arr::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Arr - Classes - FuelPHP Documentation</title>
+	<title>Arr - クラス - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,65 +45,65 @@
 
 		<div id="main">
 
-			<h2>Arr Class</h2>
+			<h2>Arr クラス</h2>
 
-			<p>The arr class is a set of helper functions for working with arrays.</p>
+			<p>Arr クラスは、配列を扱うヘルパー関数を集めたものです。</p>
 
 			<article>
 				<h4 class="method" id="method_is_multi">is_multi($arr, $all_keys = false)</h4>
-				<p>The <strong>is_multi</strong> method checks if the array passed is multi-dimensional array or not.</p>
+				<p><strong>is_multi</strong> メソッドは、与えられた配列が多次元配列であるかチェックします。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$arr</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to check.</td>
+									<td><em>必須</em></td>
+									<td>チェックする配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$all_keys</kbd></th>
 									<td>
 										<pre class="php"><span class="keyword">false</span></pre>
 									</td>
-									<td>Check that all elements are arrays.</td>
+									<td>trueの場合は全ての要素が多次元配列かをチェックします。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>bool</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// Single array
+							<pre class="php"><code>// 1 次元配列
 $arr = array('one' => 1, 'two' => 2);
 echo Arr::is_multi($arr);
-// Result: false
+// 実行結果: false
 
-// Multi-dimensional array
+// 多次元配列
 $arr = array('one' => array('test' => 1), 'two' => array('test' => 2), 'three' => array('test' => 3));
 echo Arr::is_multi($arr);
-// Result: true
+// 実行結果: true
 
-// Multi-dimensional array with elements check
+// 多次元配列で全ての要素をチェック
 $arr = array('one' => array('test' => 1), 'two' => array('test' => 2), 'three' => 3);
 
-echo Arr::is_multi($arr, false); // Result: true
-echo Arr::is_multi($arr, true);  // Result: false
+echo Arr::is_multi($arr, false); // 実行結果: true
+echo Arr::is_multi($arr, true);  // 実行結果: false
 </code></pre>
 						</td>
 					</tr>
@@ -113,52 +113,52 @@ echo Arr::is_multi($arr, true);  // Result: false
 
 			<article>
 				<h4 class="method" id="method_is_assoc">is_assoc($arr)</h4>
-				<p>The <strong>is_assoc</strong> method checks if the array passed is an associative array or not.</p>
+				<p><strong>is_assoc</strong> メソッドは、与えられた配列が連想配列であるかチェックします。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$arr</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to check.</td>
+									<td><em>必須</em></td>
+									<td>チェックする配列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>bool</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array('foo', 'bar', 'baz', 'yay');
 echo Arr::is_assoc($arr);
-// Result: false
+// 実行結果: false
 
 $arr = array('foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz', 'yay' => 'yay');
 echo Arr::is_assoc($arr);
-// Result: true
+// 実行結果: true
 
 /*
- * Note that even if the '2' is defined as a string, PHP will store this internally
- * as an integer, and therefore this is NOT seen as an assoc array!
+ * たとえもし '2' が string で定義されていたとしても、PHP は内部的に integer として保管するため、
+ * 連想配列とは認識されません!
  */
 $arr = array(0 => 'foo', 1 => 'bar', '2' => 'baz', 3 => 'yay');
 echo Arr::is_assoc($arr);
-// Result: false!
+// 実行結果: false!
 </code></pre>
 						</td>
 					</tr>
@@ -168,46 +168,46 @@ echo Arr::is_assoc($arr);
 
 			<article>
 				<h4 class="method" id="method_to_assoc">to_assoc($arr)</h4>
-				<p>The <strong>to_assoc</strong> method turns a non-associative array into an associative array if it has an even number of segments.</p>
+				<p><strong>to_assoc</strong> メソッドは連想配列でない配列を連想配列に変換します。もし元の配列に数値が入っていたとしても変換します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$arr</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to convert.</td>
+									<td><em>必須</em></td>
+									<td>変換する配列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array|null</td>
 					</tr>
 					<tr>
-						<th>Throws</th>
-						<td><kbd>BadMethodCallException</kbd> when the number of values in the given array is
-							uneven</td>
+						<th>例外</th>
+						<td><kbd>BadMethodCallException</kbd> 引数の配列の要素数が
+							奇数のとき</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array('foo', 'bar', 'baz', 'yay');
 print_r(Arr::to_assoc($arr));
 
-// Result:
+// 実行結果:
 Array
 (
 	["foo"] => 'bar'
@@ -216,7 +216,7 @@ Array
 
 $arr = array('foo', 'bar', 'baz');
 echo Arr::to_assoc($arr);
-// Result: null
+// 実行結果: null
 </code></pre>
 						</td>
 					</tr>
@@ -226,51 +226,51 @@ echo Arr::to_assoc($arr);
 
 			<article>
 				<h4 id="method_assoc_to_keyval" class="method">assoc_to_keyval($assoc, $key_field, $val_field)</h4>
-				<p>The <strong>assoc_to_keyval</strong> method turns a multi-dimensional array into a key=>val array.</p>
+				<p><strong>assoc_to_keyval</strong> メソッドは多次元配列を key=&gt;val の配列に変換します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$assoc</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to transform.</td>
+									<td><em>必須</em></td>
+									<td>変換する配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$key_field</kbd></th>
-									<td><em>required</em></td>
-									<td>The associative array field to map as the key.</td>
+									<td><em>必須</em></td>
+									<td>key となる連想配列の添字。</td>
 								</tr>
 								<tr>
 									<th><kbd>$val_field</kbd></th>
-									<td><em>required</em></td>
-									<td>The associative array field to map as the value.</td>
+									<td><em>必須</em></td>
+									<td>value となる連想配列の添字。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Throws</th>
-						<td><kbd>InvalidArgumentException</kbd> when the first argument isn't an array or doesn't
-							implement the Iterator interface.</td>
+						<th>例外</th>
+						<td><kbd>InvalidArgumentException</kbd> 1 番目の引数が配列でないか、
+							Iterator インターフェイスを実装していないとき。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$people = array(
 	array(
@@ -285,7 +285,7 @@ echo Arr::to_assoc($arr);
 
 print_r(Arr::assoc_to_keyval($people, 'name', 'age'));
 
-// Result:
+// 実行結果:
 Array
 (
 	["Jack"] => 21
@@ -300,51 +300,51 @@ Array
 
 			<article>
 				<h4 id="method_keyval_to_assoc" class="method">keyval_to_assoc($array, $key_field, $val_field)</h4>
-				<p>The <strong>keyval_to_assoc</strong> method turns an array of key => values into a multi-dimensional associative array with the provided field names.</p>
+				<p><strong>keyval_to_assoc</strong> メソッドは key =&gt; values の配列を与えられたフィールド名と共に多次元配列へ変換します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to transform.</td>
+									<td><em>必須</em></td>
+									<td>変換する配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$key_field</kbd></th>
-									<td><em>required</em></td>
-									<td>The associative array field to map the key to.</td>
+									<td><em>必須</em></td>
+									<td>キーをマッピングする連想配列の添え字。</td>
 								</tr>
 								<tr>
 									<th><kbd>$val_field</kbd></th>
-									<td><em>required</em></td>
-									<td>The associative array field to map the value to.</td>
+									<td><em>必須</em></td>
+									<td>値をマッピングする連想配列の添え字。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Throws</th>
-						<td><kbd>InvalidArgumentException</kbd> when the first argument isn't an array or doesn't
-							implement the Iterator interface.</td>
+						<th>例外</th>
+						<td><kbd>InvalidArgumentException</kbd> 1 番目の引数が配列でないか、
+							Iterator インターフェイスを実装していないとき。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$people = array(
 	"Jack" => 21,
@@ -353,7 +353,7 @@ Array
 
 print_r(Arr::keyval_to_assoc($people, 'name', 'age'));
 
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Array
@@ -376,39 +376,39 @@ Array
 
 			<article>
 				<h4 id="method_average" class="method">average($array)</h4>
-				<p>The <strong>average</strong> method takes all values of an array and returns the average value.</p>
+				<p><strong>average</strong> メソッドは配列のすべての値をとり、その平均値を返します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>Array of values to average.</td>
+									<td><em>必須</em></td>
+									<td>平均値を求める配列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>echo Arr::average(array('1', 2, 4, '8'));
-// Result: 3.75</code></pre>
+// 実行結果: 3.75</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -417,46 +417,46 @@ Array
 
 			<article>
 				<h4 id="method_flatten" class="method">flatten($array, $glue = ':', $reset = true)</h4>
-				<p>The <strong>flatten</strong> method flattens a multi-dimensional array (both associative and indexed) down into a 1 dimensional array.</p>
+				<p><strong>flatten</strong> メソッドは、多次元配列 (連想配列と数値インデックス両方とも) を 1 次元配列に変換します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to flatten.</td>
+									<td><em>必須</em></td>
+									<td>変換する配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$glue</kbd></th>
 									<td><pre class="php"><code>:</code></pre></td>
-									<td>The string used to glue the keys together with</td>
+									<td>複数のキーを連結するための文字列</td>
 								</tr>
 								<tr>
 									<th><kbd>$reset</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>Should we create a new array of values instead of merging them into the last array created by <strong>flatten</strong>?</td>
+									<td><strong>flatten</strong> が内部で保持している配列に値を追加していく代わりに、新しく配列を作って値を格納します。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$indexed = array(
 	array("a"),
@@ -466,7 +466,7 @@ Array
 
 print_r(Arr::flatten($indexed, '_'));
 
-// Result:
+// 実行結果:
 Array
 (
 	[0_0] => a
@@ -481,46 +481,46 @@ Array
 
 			<article>
 				<h4 id="method_flatten_assoc" class="method">flatten_assoc($array, $glue = ':', $reset = true)</h4>
-				<p>The <strong>flatten_assoc</strong> method flattens a multi-dimensional associative array down into a 1 dimensional associative array.</p>
+				<p><strong>flatten_assoc</strong> メソッドは、多次元連想配列を 1 次元の連想配列に落とし込みます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to flatten.</td>
+									<td><em>必須</em></td>
+									<td>変換する配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$glue</kbd></th>
 									<td><pre class="php"><code>:</code></pre></td>
-									<td>The string used to glue the keys together with</td>
+									<td>キーをまとめて 1 つにするために使われる文字列</td>
 								</tr>
 								<tr>
 									<th><kbd>$reset</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>Should we create a new array of values instead of merging them into the last array created by <strong>flatten_assoc</strong>?</td>
+									<td><strong>flatten_assoc</strong> が内部で保持している配列に値を追加していく代わりに、新しく配列を作って値を格納します。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$people = array(
 	array(
@@ -535,7 +535,7 @@ Array
 
 print_r(Arr::flatten_assoc($people));
 
-// Result:
+// 実行結果:
 Array
 (
 	[0:name] => Jack
@@ -544,10 +544,10 @@ Array
 	[1:age]  => 23
 )
 
-// Let's flatten another array on top
+// 別の配列を先頭にして変換してみましょう
 print_r(Arr::flatten_assoc(array(array("name" => "Humpty", "age" => 11)), ":", false));
 
-// Result:
+// 実行結果:
 Array
 (
 	[0:name] => Humpty
@@ -564,41 +564,41 @@ Array
 
 			<article>
 				<h4 id="method_reverse_flatten" class="method">reverse_flatten($array, $glue = ':')</h4>
-				<p>The <strong>reverse_flatten</strong> method unflattens a flattened multi-dimensional array (both associative and indexed) into its original form.</p>
+				<p><strong>reverse_flatten</strong></p> メソッドは、flatten によってまとめられた 1 次元配列を元の多次元配列 (連想配列含む) に戻します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to unflatten.</td>
+									<td><em>必須</em></td>
+									<td>戻す 1 次元配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$glue</kbd></th>
 									<td><pre class="php"><code>:</code></pre></td>
-									<td>The string used to glue the keys together with</td>
+									<td>キーを合成するために使われた文字</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$flattened = array(
 	'0_name' => 'James',
@@ -609,7 +609,7 @@ Array
 
 print_r(Arr::reverse_flatten($flattened, '_'));
 
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Array
@@ -632,46 +632,46 @@ Array
 
 			<article>
 				<h4 id="method_filter_prefixed" class="method">filter_prefixed($array, $prefix, $remove_prefix = true)</h4>
-				<p>The <strong>filter_prefixed</strong> method filters the array on a prefix. It returns an array where the key starts with the specified prefix.</p>
+				<p><strong>filter_prefixed</strong> メソッドはプレフィックスによって配列をフィルタします。設定されたプレフィックスから始まるキーを持つ値のみの配列を返します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to filter.</td>
+									<td><em>必須</em></td>
+									<td>フィルタする配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$prefix</kbd></th>
-									<td><em>required</em></td>
-									<td>The string used to filter on</td>
+								<td><em>必須</em></td>
+									<td>フィルタのためのプレフィックス文字列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$remove_prefix</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>Remove or keep the prefix in the array key?</td>
+									<td>配列のキーからプレフィックスを取り除くかどうか。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 	"user_name" => "John",
@@ -682,17 +682,17 @@ Array
 
 print_r(Arr::filter_prefixed($arr, "user_"));
 
-// Result:
+// 実行結果:
 Array
 (
 	[name] => John
 	[surname] => Lastname
 )
 
-// Let's keep the prefix
+// プレフィックスをそのまま保持しましょう
 print_r(Arr::filter_prefixed($arr, "project_", false);
 
-// Result:
+// 実行結果:
 Array
 (
 	[project_name] => Fuel
@@ -707,41 +707,41 @@ Array
 
 			<article>
 				<h4 id="method_remove_prefixed" class="method">remove_prefixed($array, $prefix)</h4>
-				<p>The <strong>remove_prefixed</strong> method removes values from an array if they match a given prefix.</p>
+				<p><strong>remove_prefixed</strong> メソッドは、与えられたプレフィックスにマッチするキーを持つ値を配列から取り除きます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to remove from.</td>
+									<td><em>必須</em></td>
+									<td>値が取り除く配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$prefix</kbd></th>
-									<td><em>required</em></td>
-									<td>The string used to filter on</td>
+								<td><em>必須</em></td>
+									<td>フィルタに使うプレフィックス文字列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 	"user_name" => "John",
@@ -752,7 +752,7 @@ Array
 
 print_r(Arr::remove_prefixed($arr, "project"));
 
-// Result:
+// 実行結果:
 Array
 (
 	[user_name] => John
@@ -767,46 +767,46 @@ Array
 
 			<article>
 				<h4 id="method_filter_suffixed" class="method">filter_suffixed($array, $suffix, $remove_suffix = true)</h4>
-				<p>The <strong>filter_suffixed</strong> method filters the array on a suffix. It returns an array where the key ends with the specified suffix.</p>
+				<p><strong>filter_suffixed</strong> メソッドはサフィックスで配列をフィルタします。与えられたサフィックス文字列で終わるキーを持つ配列を返します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to filter.</td>
+									<td><em>必須</em></td>
+									<td>フィルタする配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$suffix</kbd></th>
-									<td><em>required</em></td>
-									<td>The string used to filter on</td>
+									<td><em>必須</em></td>
+									<td>フィルタに使用する文字列</td>
 								</tr>
 								<tr>
 									<th><kbd>$remove_suffix</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>Remove or keep the suffix in the array key?</td>
+									<td>配列のキーからサフィックスを取り除くかどうか。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 								"name_1" => "John",
@@ -817,17 +817,17 @@ Array
 
 								print_r(Arr::filter_suffixed($arr, "_1"));
 
-								// Result:
+								// 実行結果:
 								Array
 								(
 								[name] => John
 								[surname] => Lastname
 								)
 
-								// Let's keep the suffix
+								// サフィックスを保持したままにしてみましょう
 								print_r(Arr::filter_suffixed($arr, "_1", false);
 
-								// Result:
+								// 実行結果:
 								Array
 								(
 								[name_1] => John
@@ -842,41 +842,41 @@ Array
 
 			<article>
 				<h4 id="method_remove_suffixed" class="method">remove_suffixed($array, $suffix)</h4>
-				<p>The <strong>remove_suffixed</strong> method removes values from an array if they match a given suffix.</p>
+				<p><strong>remove_suffixed</strong> メソッドは配列から与えられたサフィックスで終了するキーを持つ値を削除します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to remove from.</td>
+									<td><em>必須</em></td>
+									<td>値を取り除く配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$suffix</kbd></th>
-									<td><em>required</em></td>
-									<td>The string used to filter on</td>
+									<td><em>必須</em></td>
+									<td>フィルタに使うサフィックス文字列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 								"name_1" => "John",
@@ -887,7 +887,7 @@ Array
 
 								print_r(Arr::remove_suffixed($arr, "_1"));
 
-								// Result:
+								// 実行結果:
 								Array
 								(
 								[name_2] => Ted
@@ -902,46 +902,46 @@ Array
 
 			<article>
 				<h4 id="method_filter_keys" class="method">filter_keys($array, $keys, $remove = false)</h4>
-				<p>The <strong>filter_keys</strong> method filters a given array to a set of keys. It returns an array that contains only the items whose keys are in the <kbd>$keys</kbd> array. Can also remove the specified <kbd>$keys</kbd> from an array.</p>
+				<p><strong>filter_keys</strong> メソッドは、与えられた配列に含まれた複数のキーで配列をフィルタします。$keys に含まれるキーを持つ値のみの配列を返します。また $keys によって元の配列の値を削除することもできます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to filter.</td>
+									<td><em>必須</em></td>
+									<td>フィルタする配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$keys</kbd></th>
-									<td><em>required</em></td>
-									<td>Array of keys to filter the above array with.</td>
+									<td><em>必須</em></td>
+									<td>配列をフィルタするためのキーを持つ配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$remove</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>If true, removes the <kbd>$keys</kbd> from the <kbd>$array</kbd> instead of fetching them.</td>
+									<td>もし true ならば、フィルタされた配列を新しく作る代わりに、 $array から直接 $keys に含まれるキーを削除します。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 	"user_name" => "John",
@@ -952,17 +952,17 @@ Array
 
 print_r(Arr::filter_keys($arr, array('project_name', 'user_name')));
 
-// Result:
+// 実行結果:
 Array
 (
 	[project_name] => Fuel
 	[user_name] => John
 )
 
-// Let's remove some keys
+// いくつかのキーを削除してみましょう
 print_r(Arr::filter_keys($arr, array('user_name', 'user_surname'), true));
 
-// Result:
+// 実行結果:
 Array
 (
 	[project_name] => Fuel
@@ -977,41 +977,41 @@ Array
 
 			<article>
 				<h4 id="method_filter_recursive" class="method">filter_recursive($array, $callback = null)</h4>
-				<p>The <strong>filter_recursive</strong> method provides a recursive version of PHP's array_filter() function. Like its counterpart, you can optionally pass a callback function to determine what should be filtered.</p>
+				<p><strong>filter_recursive</strong> メソッドは、PHP の array_filter() 関数の再帰バージョンです。 array_filter() と同様に、フィルタするかどうかを決めるコールバック関数を渡すことができます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to filter.</td>
+									<td><em>必須</em></td>
+									<td>フィルタする配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$callback</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>A valid callback that returns a boolean.</td>
+									<td>ブール値を返すコールバック関数</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 	"user_name" => "John",
@@ -1031,7 +1031,7 @@ Array
 
 print_r(Arr::filter_recursive($arr));
 
-// Result:
+// 実行結果:
 Array
 (
 	[user_name] => John
@@ -1045,10 +1045,10 @@ Array
 	)
 )
 
-// Let's use a callback
+// コールバック関数を指定してみましょう
 print_r(Arr::filter_recursive($arr, function($item){ return $item !== ""; }));
 
-// Result:
+// 実行結果:
 Array
 (
 	[user_name] => John
@@ -1077,48 +1077,48 @@ Array
 
 			<article>
 				<h4 id="method_subset" class="method">subset($array, $keys, $default = null)</h4>
-				<p>Similar to <a href="#method_filter_keys"><strong>filter_keys</strong></a>, the <strong>subset</strong> method uses the values in <kbd>$keys</kbd> to access this array and return the associated values. The difference is that <strong>subset</strong> returns all requested keys, providing <kbd>$default</kbd> for any missing keys.</p>
-				<p>This method uses <a href="#method_get"><strong>get</strong></a> and <a href="#method_set"><strong>set</strong></a> internally, so <kbd>$keys</kbd> may contain dotted notation.</p>
+				<p><strong>subset</strong> メソッドは、<a href="#method_filter_keys"><strong>filter_keys</strong></a> と同様に <kbd>$keys</kbd> で渡された値を用いて配列にアクセスし、その結果得られた連想配列を返します。異なる点は <strong>subset</strong> が、渡されたキーがもし見つからなかった場合 <kbd>$default</kbd> 値を使って全ての要求されたキーが埋められることです。</p>
+				<p>このメソッドは内部的に <a href="#method_get"><strong>get</strong></a> と <a href="#method_set"><strong>set</strong></a> を使います。 <kbd>$keys</kbd> はドット区切り表記を用いることができます。</p>
 
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to filter.</td>
+									<td><em>必須</em></td>
+									<td>フィルタする配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$keys</kbd></th>
-									<td><em>required</em></td>
-									<td>Array of keys to filter the above array with.</td>
+									<td><em>必須</em></td>
+									<td>配列をフィルタするためのキーを持つ配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>Keys not found in <kbd>$array</kbd> are given this value instead.</td>
+									<td>キーが <kbd>$array</kbd> 中に見つからなかった場合に代わりに用いる値</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 	"user" => array(
@@ -1133,7 +1133,7 @@ Array
 
 print_r(Arr::subset($arr, array('project.name', 'user.name')));
 
-// Result:
+// 返り値:
 Array
 (
  	[project] => Array
@@ -1148,7 +1148,7 @@ Array
 
 print_r(Arr::subset($arr, array('project.name', 'project.manager')));
 
-// Result:
+// 返り値:
 Array
 (
  	[project] => Array
@@ -1160,7 +1160,7 @@ Array
 
 print_r(Arr::subset($arr, array('project.name', 'project.manager', 'user', 'not_provided'), 'Not Provided'));
 
-// Result:
+// 返り値:
 Array
 (
  	[project] => Array
@@ -1184,46 +1184,46 @@ Array
 
 			<article>
 				<h4 id="method_get" class="method">get($array, $key, $default = false)</h4>
-				<p>The <strong>get</strong> method returns the element of the given array using dot-notation, or a default if it is not set.</p>
+				<p><strong>get</strong> メソッドは指定された配列の要素を返します。多次元配列には、階層をドット (.) で区切ることでアクセスできます。また、値がセットされていない場合、初期値を返します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to access</td>
+									<td><em>必須</em></td>
+									<td>アクセスする配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The key requested in $array. If <strong>null</strong> is passed as key, the entire array is returned.</td>
+									<td><em>必須</em></td>
+									<td>$array 配列のキー。もし <strong>null</strong> が渡された場合は全体が配列として返されます。</td>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>The value to be returned if the requested key does not exist</td>
+									<td>指定された要素が存在しない場合に返す値を指定します。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed. If you pass an array of keys, the return value will be an array with the result of all requested keys.</td>
+						<th>返り値</th>
+						<td>mixed. もし $key に配列を渡した場合は、その配列内のキーで得られた結果を各キーごとの連想配列で返します。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$person = array(
 	"name" => "Jack",
@@ -1236,14 +1236,14 @@ Array
 );
 
 echo Arr::get($person, "name", "Unknown Name");
-// Result: "Jack"
+// 実行結果: "Jack"
 
 echo Arr::get($person, "job", "Unknown job");
-// Result: "Unknown job"
+// 実行結果: "Unknown job"
 
-// This method can also dive into arrays by using a dot to separate between keys
+// このメソッドは、キーの間を ドット (.) で区切ることで、より深い配列に潜ることが可能
 echo Arr::get($person, "location.city", "Unknown City");
-// Result: "Pittsburgh"</code></pre>
+// 実行結果: "Pittsburgh"</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -1252,47 +1252,47 @@ echo Arr::get($person, "location.city", "Unknown City");
 
 			<article>
 				<h4 id="method_set" class="method">set(&amp;$array, $key, $value = null)</h4>
-				<p>The <strong>set</strong> method sets the element of the given array using dot-notation.</p>
-				<p class="note"><strong>WARNING</strong>: The original array is edited by reference</p>
+				<p><strong>set</strong> メソッドは指定された配列に要素をセットします。多次元配列には、階層をドット (.) で区切ることでアクセスできます。</p>
+				<p class="note"><strong>警告</strong>: 元の配列は参照によって編集されます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to access</td>
+									<td><em>必須</em></td>
+									<td>アクセスする配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The key requested in $array. If no key is passed, or <strong>null</strong> is passed as key value, the array is unset. If you pass an array of key -> value pairs, all the values in the array will be set.</td>
+									<td><em>必須</em></td>
+									<td>$array 配列のキー。もし、キーが渡されなかった場合や <strong>null</strong> が渡された場合、配列は破棄されます。また、 key -> value のペアが渡された場合はすべての値が配列にセットされます。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>The value to be set. Ignored if $key is an array.</td>
+									<td>セットする値。 $key が配列の場合は無視されます。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>void</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$person = array(
 	"name" => "Jack",
@@ -1305,13 +1305,13 @@ echo Arr::get($person, "location.city", "Unknown City");
 );
 
 Arr::set($person, "name", "John");
-// $person['name'] is set to "John"
+// $person['name'] には "John" がセットされます。
 
-// This method can also dive into arrays by using a dot to separate between keys
+// このメソッドは、キーの間を ドット (.) で区切ることで、より深い配列に潜ることが可能
 Arr::set($person, "location.city", "Philadelphia");
-// $person['location']['city'] is set to "Philadelphia"
+// $person['location']['city'] には "Philadelphia" がセットされます。
 
-// or set multiple values in one go
+// また、一度に複数の値をセットすることも出来ます。
 Arr::set($person, array("name" => "John", "location.city" => "Philadelphia"));</code></pre>
 						</td>
 					</tr>
@@ -1321,46 +1321,46 @@ Arr::set($person, array("name" => "John", "location.city" => "Philadelphia"));</
 
 			<article>
 				<h4 id="method_pluck" class="method">pluck($array, $key, $index = null)</h4>
-				<p>The <strong>pluck</strong> method plucks values from a collection of arrays or objects.</p>
+				<p><strong>pluck</strong> メソッドは、配列かオブジェクトのコレクションから値をピックアップします。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to pluck from</td>
+									<td><em>必須</em></td>
+									<td>ピックアップする配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The key to pluck from the arrays.</td>
+									<td><em>必須</em></td>
+									<td>配列からピックアップするキー。</td>
 								</tr>
 								<tr>
 									<th><kbd>$index</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>Optional return array index.</td>
+									<td>返り値の配列キーに入れる値をオプション指定できます</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>void</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$collection = array(
 	array(
@@ -1380,11 +1380,11 @@ Arr::set($person, array("name" => "John", "location.city" => "Philadelphia"));</
 	),
 );
 
-// Get an array of id's
+// id の配列を返します
 $ids = \Arr::pluck($collection, 'id');
 // array(2, 5, 7);
 
-// Get an array of names with the id as the index
+// name の配列を返しますがそのキーは id にします
 $names = \Arr::pluck($collection, 'name', 'id');
 // array(2 => 'Bill', 5 => 'Chris', 7 => 'Bert');
 </code></pre>
@@ -1396,42 +1396,42 @@ $names = \Arr::pluck($collection, 'name', 'id');
 
 			<article>
 				<h4 id="method_delete" class="method">delete(&amp;$array, $key)</h4>
-				<p>The <strong>delete</strong> method the element of the given array using dot-notation.<br />
-				<u>WARNING</u>: The original array is edited by reference, only boolean success is returned</p>
+				<p><strong>delete</strong> メソッドは指定された配列の要素を削除します。多次元配列には、階層をドット (.) で区切ることでアクセスできます。<br />
+				<u>警告</u>: 元の配列は参照によって編集され、結果のみが返されます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to access</td>
+									<td><em>必須</em></td>
+									<td>アクセスする配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The key requested in $array. If no key is passed, or <strong>null</strong> is passed as key value, the array is unset.</td>
+									<td><em>必須</em></td>
+									<td>$array 配列のキー。もし、キーが渡されなかった場合や null が渡された場合、配列は破棄されます。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed, <strong>true</strong> if the key was deleted, <strong>false</strong> if the key didn't exist. If you pass an array of keys, the return value will be an array with the result of all requested deletes.</td>
+						<th>返り値</th>
+						<td>mixed, <strong>true</strong> の場合、そのキーは削除されました。 <strong>false</strong> の場合、そのキーは存在しませんでした。もし、あなたがキーの配列を渡した場合、戻り値は要求された全ての削除結果を持つ配列になります。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$person = array(
 	"name" => "Jack",
@@ -1444,15 +1444,15 @@ $names = \Arr::pluck($collection, 'name', 'id');
 );
 
 $result = Arr::delete($person, "name");
-// deleted $person['name'] from the array, returns true
+// $person['name'] は配列から削除され、 true が返されます。
 
-// This method can also dive into arrays by using a dot to separate between keys
+// このメソッドは、キーの間を ドット (.) で区切ることで、より深い配列に潜ることが可能
 $result = Arr::delete($person, "location.city");
-// deleted $person['location']['city'] from the array, returns true
+// $person['location']['city'] は配列から削除され、 true が返されます。
 
-// or delete multiple values in one go
+// また、一度に複数の値を削除する事もできます。
 $result = Arr::delete($person, array("name", "location.doesnotexist"));
-// deleted $person['name'], returns array('name' => true, 'location.doesnotexist' => false)</code></pre>
+// $person['name'] は削除され、 array('name' => true, 'location.doesnotexist' => false) が返されます。</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -1461,54 +1461,54 @@ $result = Arr::delete($person, array("name", "location.doesnotexist"));
 
 			<article>
 				<h4 id="method_insert" class="method">insert(Array &amp;$original, $value, $pos)</h4>
-				<p>The <strong>insert</strong> method is mainly an array_splice alias with added error checking <br />
-				<u>WARNING</u>: The original array is edited by reference, only boolean success is returned</p>
+				<p><strong>insert</strong> メソッドは、主にはエラーチェック付きの array_splice() 関数です。<br />
+				<u>警告</u>: 元の配列は参照渡しされるので直接書き換えられます。成功かどうかを表すブール値のみが返ります。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$original</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>変更する配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
-									<td><em>required</em></td>
-									<td>The value(s) to insert</td>
+									<td><em>必須</em></td>
+									<td>挿入する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$pos</kbd></th>
-									<td><em>required</em></td>
-									<td>The numeric position at which to insert, negative to count from the end backwards</td>
+									<td><em>必須</em></td>
+									<td>挿入するオフセットを表す数値。マイナス値の場合は配列の末尾から数えた位置となります。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>boolean</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$people = array("Jack", "Jill");
 
-// Add one value
+// 値をひとつ追加
 Arr::insert($people, "Humpty", 0);
 print_r($people);
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Humpty
@@ -1516,10 +1516,10 @@ Array
 	[2] => Jill
 )
 
-// Add multiple values
+// 複数の値を追加
 Arr::insert($people, array("Hansel", "Gretel"), 1);
 print_r($people);
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Humpty
@@ -1529,11 +1529,11 @@ Array
 	[4] => Jill
 )
 
-// Add an array
+// 配列をひとつ追加
 Arr::insert($people, array( array("name" => "Wolf", "teeth" => "sharp")), 0);
 print_r($people);
 
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Array
@@ -1558,56 +1558,56 @@ Array
 
 			<article>
 				<h4 id="method_insert_assoc" class="method">insert_assoc(array &amp;$original, array $values, $pos)</h4>
-				<p>The <strong>insert_assoc</strong> method inserts elements into an associative array, at the specified position.<br />
-				<u>WARNING</u>: The original array is edited by reference, only boolean success is returned.</p>
+				<p><strong>insert_assoc</strong> メソッドは連想配列の特定の場所に要素を追加します。<br />
+				<u>警告</u>: 元の配列は参照渡しされるので直接書き換えられます。成功したかどうかを表すブール値のみが返ります。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$original</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>変更する連想配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$values</kbd></th>
-									<td><em>required</em></td>
-									<td>Array with value(s) to insert</td>
+									<td><em>必須</em></td>
+									<td>挿入する連想配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$pos</kbd></th>
-									<td><em>required</em></td>
+									<td><em>必須</em></td>
 									<td>
-										The location in the original array where the new values should be inserted.
-										If a negative value is given, the position is counted from the back of the array.</td>
+									  配列を新たに挿入する位置。
+									  負の値の場合は配列の最後尾より数えた場所に挿入されます。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>boolean, true on success, false if $pos is out of bounds.</td>
+						<th>返り値</th>
+						<td>boolean。成功の場合は true 、$pos が無効な位置の場合は false</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>$character = array("name" =&gt; "Jack", "surname" =&gt; "Reacher");
+							<pre class="php"><code>$people = array("name" =&gt; "Jack", "surname" =&gt; "Reacher");
 
 Arr::insert_assoc($character, array("initial" =&gt; "P."), 1);
 print_r($character);
 
-// Result:
+// 実行結果:
 Array
 (
 	[name] =&gt; Jack
@@ -1623,54 +1623,54 @@ Array
 
 			<article>
 				<h4 id="method_insert_before_key" class="method">insert_before_key(Array &amp;$original, $value, $key)</h4>
-				<p>The <strong>insert_before_key</strong> method adds an element to an array before the key specified.<br />
-				<u>WARNING</u>: The original array is edited by reference, only boolean success is returned.</p>
+				<p><strong>insert_before_key</strong> メソッドは与えられたキーの手前に要素を 1 つ追加します。<br />
+				<u>警告</u>: 元の配列は参照渡しされるので直接書き換えられます。成功かどうかを表すブール値のみが返ります。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$original</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>変更する配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
-									<td><em>required</em></td>
-									<td>The value(s) to insert</td>
+									<td><em>必須</em></td>
+									<td>挿入する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The key before which to insert</td>
+									<td><em>必須</em></td>
+									<td>このキーの手前に挿入されます。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>boolean</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$people = array("Jack", "Jill");
 
 Arr::insert_before_key($people, "Humpty", 1);
 print_r($people);
 
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Jack
@@ -1686,59 +1686,59 @@ Array
 
 			<article>
 				<h4 id="method_insert_after_key" class="method">insert_after_key(Array &amp;$original, $value, $key, $is_assoc = false)</h4>
-				<p>The <strong>insert_after_key</strong> method adds an element to an array after the key specified <br />
-				<u>WARNING</u>: The original array is edited by reference, only boolean success is returned</p>
+				<p><strong>insert_after_key</strong> メソッドは与えられたキーの直後に値を１つ追加します。<br />
+				<u>警告</u>: 元の配列は参照渡しされるので直接書き換えられます。成功かどうかを表すブール値のみが返ります。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$original</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>変更する配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
-									<td><em>required</em></td>
-									<td>The value(s) to insert</td>
+									<td><em>必須</em></td>
+									<td>挿入する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The key after which to insert</td>
+									<td><em>必須</em></td>
+									<td>このキーの直後に挿入されます。</td>
 								</tr>
 								<tr>
 									<th><kbd>$is_assoc</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Whether the array is assoc</td>
+									<td>$value が連想配列かどうか。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>boolean</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$people = array("Jack", "Jill");
 
 Arr::insert_after_key($people, "Humpty", 1);
 print_r($people);
 
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Jack
@@ -1754,59 +1754,59 @@ Array
 
 			<article>
 				<h4 id="method_insert_after_value" class="method">insert_after_value(Array &amp;$original, $value, $search, $is_assoc = false)</h4>
-				<p>The <strong>insert_after_value</strong> method adds an element to an array after the value specified <br />
-				<u>WARNING</u>: The original array is edited by reference, only boolean success is returned</p>
+				<p><strong>insert_after_value</strong> メソッドは与えられた値の直後に要素を１つ追加します。<br />
+				<u>警告</u>: 元の配列は参照渡しされるので直接書き換えられます。成功かどうかを表すブール値のみが返ります。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$original</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>変更する配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
-									<td><em>required</em></td>
-									<td>The value(s) to insert</td>
+									<td><em>必須</em></td>
+									<td>挿入する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$search</kbd></th>
-									<td><em>required</em></td>
-									<td>The value after which to insert</td>
+									<td><em>必須</em></td>
+									<td>この値を持つ要素の直後に挿入されます</td>
 								</tr>
 								<tr>
 									<th><kbd>$is_assoc</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Whether the array is assoc</td>
+									<td>値が連想配列かどうか</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>boolean</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$people = array("Jack", "Jill");
 
 Arr::insert_after_value($people, "Humpty", "Jack");
 print_r($people);
 
-// Result:
+// 実行結果:
 Array
 (
 	[0] => Jack
@@ -1822,51 +1822,51 @@ Array
 
 			<article>
 				<h4 id="method_sort" class="method">sort($array, $key, $order = 'asc', $sort_flags = SORT_REGULAR)</h4>
-				<p>The <strong>sort</strong> method sorts a multi-dimensional array by its values.</p>
+				<p><strong>sort</strong> メソッドは多次元配列を値によってソートします。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to sort</td>
+									<td><em>必須</em></td>
+									<td>ソートする配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The key requested to sort by in $array.</td>
+									<td><em>必須</em></td>
+									<td>$array どのキーの値をソートに使用するか。</td>
 								</tr>
 								<tr>
 									<th><kbd>$order</kbd></th>
 									<td><pre class="php"><code>'asc'</code></pre></td>
-									<td>The order (asc or desc).</td>
+									<td>ソート順 (asc か desc) 。</td>
 								</tr>
 								<tr>
 									<th><kbd>$sort_flags</kbd></th>
 									<td><pre class="php"><code>SORT_REGULAR</code></pre></td>
-									<td>The php sort type flags (<a href="http://php.net/manual/en/function.sort.php">http://php.net/manual/en/function.sort.php</a>)</td>
+									<td>PHP のソート型のフラグ。 (<a href="http://php.net/manual/ja/function.sort.php">http://php.net/manual/ja/function.sort.php</a>)</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>mixed</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$data = array(
 	array(
@@ -1893,7 +1893,7 @@ Array
 );
 
 $data = Arr::sort($data, 'info.pet.type');
-// Result:
+// 実行結果:
 array(
 	array(
 		'info' => array(
@@ -1925,46 +1925,46 @@ array(
 
 			<article>
 				<h4 id="method_multisort" class="method">multisort($array, $conditions, $ignore_case = false)</h4>
-				<p>The <strong>sort</strong> method sorts a multi-dimensional array by multiple values.</p>
+				<p><strong>multisort</strong> メソッドは多次元配列を複数の値でソートします。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to sort</td>
+									<td><em>必須</em></td>
+									<td>ソートする配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$conditions</kbd></th>
-									<td><em>required</em></td>
-									<td>Array of sorting conditions.</td>
+									<td><em>必須</em></td>
+									<td>ソート条件を表す配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$ornire_case</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Whether to sort case insensitive.</td>
+									<td>大文字/小文字を区別するかどうか。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$collection = array(
 	'i5' => array(
@@ -2000,7 +2000,7 @@ $collection = \Arr::multisort($collection, array(
 ), true);
 print_r($collection);
 
-// Result
+// 実行結果:
 Array
 (
 	[i2] => Array
@@ -2047,57 +2047,57 @@ Array
 
 			<article>
 				<h4 id="method_in_array_recursive" class="method">in_array_recursive($needle, $haystack, $strict = false)</h4>
-				<p>The <strong>in_array_recursive</strong> method checks whether a value is in an array recursively.</p>
+				<p><strong>in_array_recursive</strong> メソッドは値が配列に含まれているかどうか再帰的にチェックします。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$needle</kbd></th>
-									<td><em>required</em></td>
-									<td>The value to search for</td>
+									<td><em>必須</em></td>
+									<td>配列の中から探す値。</td>
 								</tr>
 								<tr>
 									<th><kbd>$haystack</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to search in.</td>
+									<td><em>必須</em></td>
+									<td>検索する配列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Whether to use == or ===.</td>
+									<td>値の比較に == を用いるか === を用いるか。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>bool</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array('one' => 1, 2, 3, array(56), 87);
 
 echo Arr::in_array_recursive('56', $arr);
-// Result: true
+// 実行結果: true
 
 echo Arr::in_array_recursive('87', $arr, true);
-// Result: false
+// 実行結果: false
 
 echo Arr::in_array_recursive(87, $arr, true);
-// Result: true</code></pre>
+// 実行結果: true</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -2105,46 +2105,46 @@ echo Arr::in_array_recursive(87, $arr, true);
 			</article>
 			<article>
 				<h4 id="method_merge" class="method">merge($array)</h4>
-				<p>The <strong>merge</strong> method merges 2 arrays recursively, differs in 2 important ways from array_merge_recursive(): <br />
-				- When there's 2 different values and not both arrays, the latter value overwrites the earlier
-	 			  instead of merging both into an array<br />
-	 			- Numeric keys that don't conflict aren't changed, only when a numeric key already exists is the
-				  value added using array_push()</p>
+				<p><strong>merge</strong> メソッドは 2 つの配列を再帰的にマージしますが、array_merge_recursive() とは 2 つの重要な点が異なります。<br />
+				- 2つの異なる値が両者とも配列でない場合は、
+				  マージされる変わりに前者の値は後者の値で上書きされます。<br />
+	 			- 競合していない数字のキーは変更されません、
+				  数字キーがすでに存在する場合のみ array_push() を使用して値が追加されます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Type</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>型</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
 									<td><em>array</em></td>
-									<td><em>required</em></td>
-									<td>Multiple variables all of which must be arrays</td>
+									<td><em>必須</em></td>
+									<td>可変個の引数で配列を渡せるが、すべての型は配列でなければならない。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Throws</th>
-						<td><kbd>InvalidArgumentException</kbd> when one of the passed arguments is no array.</td>
+						<th>例外</th>
+						<td>渡された引数のどれかが配列ではなかった場合 <kbd>InvalidArgumentException</kbd> が投げられる。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr1 = array(
 	'one' => 1,
@@ -2167,7 +2167,7 @@ $arr2 = array(
 );
 
 print_r( Arr::merge($arr1, $arr2) );
-// Result:
+// 実行結果:
 Array
 (
 	[one] => 1
@@ -2192,46 +2192,46 @@ Array
 				</table>
 			</article>
 			<article>
-				<h4 id="method_merge_assoc" class="method">merge_assoc($array)</h4>
-				<p>The <strong>merge_assoc</strong> method merges 2 or more arrays recursively, differs in 2 important ways from array_merge_recursive(): <br />
-				- When there's 2 different values and not both arrays, the latter value overwrites the earlier
-	 			  instead of merging both into an array<br />
-	 			- Numeric keys aren't changed</p>
+				<h4 id="method_merge_assoc" class="method">merge_assoc($array, ...)</h4>
+				<p><strong>merge_assoc</strong> メソッドは 2 個以上の配列を再帰的にマージします。ただし array_merge_recursive() とは 2 つの重要な点が異なります。<br/>
+				- それぞれの配列に同じキーで異なる値が含まれていた場合は、
+				  新たな配列を作ってマージすることはせずに、単純に後者が前者を上書きします。<br />
+				- 数字のキーは変更されません</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Type</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>型</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
 									<td><em>array</em></td>
-									<td><em>required</em></td>
-									<td>Multiple variables all of which must be arrays</td>
+									<td><em>必須</em></td>
+									<td>複数の値はすべて配列でなければなりません</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Throws</th>
-						<td><kbd>InvalidArgumentException</kbd> when one of the passed arguments is no array.</td>
+						<th>例外</th>
+						<td><kbd>InvalidArgumentException</kbd> 引数のどれかが配列ではない。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr1 = array(
 	'one' => 1,
@@ -2254,7 +2254,7 @@ $arr2 = array(
 );
 
 print_r( Arr::merge_assoc($arr1, $arr2) );
-// Result:
+// 実行結果:
 Array
 (
 	[one] => 1
@@ -2277,77 +2277,77 @@ Array
 			</article>
 			<article>
 				<h4 id="method_search" class="method">search($array, $value, $default = null, $recursive = true, $delimiter = '.', $strict = false)</h4>
-				<p>The <strong>search</strong> method searches the array for a given value and returns the corresponding key or default value.<br />
-				- If $recursive is set to true, then the <strong>search</strong> method will return a delimiter-notated key using $delimiter.</p>
+				<p><strong>search</strong> メソッドは、与えられた値によって配列を検索し、対応するキーまたはデフォルト値を返します。<br />
+					- $recursive が true の場合は、区切り文字として $delimiter を使った合成キーを用います。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Type</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>型</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
 									<td><em>array</em></td>
-									<td><em>required</em></td>
-									<td>The array to search</td>
+									<td><em>必須</em></td>
+									<td>検索される配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><em>mixed</em></td>
-									<td><em>required</em></td>
-									<td>The searched value</td>
+									<td><em>必須</em></td>
+									<td>検索する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><em>string</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>The key to be returned if the requested value does not exist</td>
+									<td>もし値が存在しなかった場合に返されるデフォルト値</td>
 								</tr>
 								<tr>
 									<th><kbd>$recursive</kbd></th>
 									<td><em>boolean</em></td>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>Whether to get keys recursively</td>
+									<td>再帰的に取得するかどうか</td>
 								</tr>
 								<tr>
 									<th><kbd>$delimiter</kbd></th>
 									<td><em>string</em></td>
 									<td><pre class="php"><code>'.'</code></pre></td>
-									<td>The delimiter when $recursive is true</td>
+									<td>$recursive が true の場合の区切り文字</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
 									<td><em>bool</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Do a strict comparison on key values</td>
+									<td>キーに厳密な比較を用いるかどうか</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>int|string|null</td>
 					</tr>
 					<tr>
-						<th>Throws</th>
+						<th>例外</th>
 						<td>
-							<kbd>InvalidArgumentException</kbd> when first argument is not array.
-							<kbd>InvalidArgumentException</kbd> $default argument is not string or int or null.
-							<kbd>InvalidArgumentException</kbd> $delimiter argument is not string.
+							<kbd>InvalidArgumentException</kbd> 第 1 引数が配列ではない。<br />
+							<kbd>InvalidArgumentException</kbd> $default 引数が文字、 int 、 null のいずれでもない。<br />
+							<kbd>InvalidArgumentException</kbd> $delimiter 引数が文字列ではない。
 						</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$arr = array(
 	'one' => 1,
@@ -2397,44 +2397,44 @@ echo Arr::search($arr, 'deep', null, true);
 			<article>
 				<h4 id="method_unique" class="method">unique($array)</h4>
 				<p>
-					The <strong>unique</strong> returns an array with all unique values in the source array.
-					The first value matched will be kept, duplicates will be discarded. Keys will be preserved.
-					This method works like <kbd>array_unique()</kbd>, but doesn't sort the array first, and
-					allows you to dedup arrays that contain objects or closures.
+					<strong>unique</strong> メソッドは、与えられた配列に含まれるすべての一意な値を返します。
+					最初に見つかった値は保持され、重複したものは破棄されます。その場合のキーはそのまま残ります。
+					このメソッドは <kbd>array_unique()</kbd> のように動作しますが、まず第一に配列をソートすることはしませんし、
+					配列中のオブジェクトやクロージャを取り除くこともしません。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Type</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>型</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
 									<td><em>array</em></td>
-									<td><em>required</em></td>
-									<td>the array to de-duplicate</td>
+									<td><em>必須</em></td>
+									<td>重複を取り除く配列</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$array = array(
 	'val1' => 'hello', 'val2' => 'hello', 'val3' => 'bye',
 );
 
-// Result: array('val1' => 'hello', 'val3' => 'bye')
+// 実行結果: array('val1' => 'hello', 'val3' => 'bye')
 $result = Arr::unique($array);
 </code></pre>
 						</td>
@@ -2445,48 +2445,48 @@ $result = Arr::unique($array);
 
 			<article>
 				<h4 id="method_sum" class="method">sum($array, $key)</h4>
-				<p>The <strong>sum</strong> method calculate the sum of values in an array plucked by the $key.</p>
+				<p><strong>sum</strong> メソッドは $key によって指定された値の合計値を計算します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Type</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>タイプ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
 									<td><em>array</em></td>
-									<td><em>required</em></td>
-									<td>the array containing the values</td>
+									<td><em>必須</em></td>
+									<td>値を保持している配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><em>string</em></td>
-									<td><em>required</em></td>
-									<td>The key to pluck from the arrays</td>
+									<td><em>必須</em></td>
+									<td>合算する値を取得するキー</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>int</td>
 					</tr>
 					<tr>
-						<th>Throws</th>
-						<td><kbd>InvalidArgumentException</kbd> when one of the passed arguments is no array.</td>
+						<th>例外</th>
+						<td><kbd>InvalidArgumentException</kbd> 第一引数が配列ではなかった場合。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$collection = array(
 	array(
@@ -2512,10 +2512,10 @@ $result = Arr::unique($array);
 	),
 );
 
-// Calculate sum of an array of age's
+// 配列中の age の値を合計値を計算する
 $total_age = Arr::sum($collection, 'age'); // 83
 
-// Calculate sum of an array plucked by 'scores.math'
+// 配列中の 'scores.math' の合計値を計算する
 $total_score = Arr::sum($collection, 'scores.math'); // 30
 </code></pre>
 						</td>
@@ -2526,38 +2526,38 @@ $total_score = Arr::sum($collection, 'scores.math'); // 30
 
 			<article>
 				<h4 id="method_reindex" class="method">reindex($array)</h4>
-				<p>The <strong>reindex</strong> method recusively re-indexes the numeric keys of an array. It will not alter string keys.</p>
+				<p><strong>reindex</strong> メソッドは、配列内の整数キーの数値の振り直しを再帰的に行います。文字列キーには何も行いません。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Type</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>型</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
 									<td><em>array</em></td>
-									<td><em>required</em></td>
-									<td>the array to re-index</td>
+									<td><em>必須</em></td>
+									<td>再インデックスする配列</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>array</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$array = array(
 	2 => 2,
@@ -2570,9 +2570,9 @@ $total_score = Arr::sum($collection, 'scores.math'); // 30
 	7 => 7
 );
 
-// reindex the array
+// 配列を再インデックスします
 print_r( Arr::reindex($array) );
-// Result:
+// 実行結果:
 Array
 (
 	[0] => 2
@@ -2595,69 +2595,69 @@ Array
 
 			<article>
 				<h4 id="method_previous_by_key" class="method">previous_by_key($array, $key, $get_value = false, $strict = false)</h4>
-				<p>The <strong>previous_by_key</strong> method allows you to fetch the key or the value of the previous element of an array,
-				 given an existing key value.
+				<p><strong>previous_by_key</strong> メソッドを用いると、
+				  配列中のあるキーの 1 つ前の要素のキーまたは値を得ることができます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>調べる配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The current key value to use as lookup reference</td>
+									<td><em>必須</em></td>
+									<td>起点となる要素を特定するキー</td>
 								</tr>
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>If false, return the previous array key, if true, return its value</td>
+									<td>false なら見つかった要素のキーを、true ならば値を返す</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Do a strict comparison on key values</td>
+									<td>キーに厳密な比較を用いるかどうか</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed, the returned value, null if there is no previous array element, or false if the current key does not exist.</td>
+						<th>返り値</th>
+						<td>目的のキーまたは値、配列に目的の要素が存在しない場合は null 、渡されたキーが配列内に存在しない場合は false 。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// array to lookup in
+							<pre class="php"><code>// 検索対象の配列
 $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 
-// returns false, there is no key 1 in the array
+// 返り値は false 、配列内に 1 のキーは存在しない
 $result = Arr::previous_by_key($arr, 1);
 
-// returns null, there is no previous key
+// 返り値は null 、手前の要素が存在しない
 $result = Arr::previous_by_key($arr, 2);
 
-// returns false, there is no key '2' in the array
+// 返り値は false 、配列内に '2' (文字列) のキーは存在しない
 $result = Arr::previous_by_key($arr, '2', false, true);
 
-// returns 2, it's the key in the array before key 4
+// 返り値は 2 、配列内のキー 4 の手前の要素のキー
 $result = Arr::previous_by_key($arr, 4);
 
-// returns 'A', it's the value the previous key in the array points to
+// 返り値は 'A' 、指定された手前の要素の値
 $result = Arr::previous_by_key($arr, 4, true);
 </code></pre>
 						</td>
@@ -2668,69 +2668,69 @@ $result = Arr::previous_by_key($arr, 4, true);
 
 			<article>
 				<h4 id="method_next_by_key" class="method">next_by_key($array, $key, $get_value = false, $strict = false)</h4>
-				<p>The <strong>next_by_key</strong> method allows you to fetch the key or the value of the next element of an array,
-				 given an existing key value.
+				<p><strong>next_by_key</strong> メソッドを用いると、
+				  配列中のあるキーの 1 つ次の要素のキーまたは値を得ることができます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>調べる配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>The current key value to use as lookup reference</td>
+									<td><em>必須</em></td>
+									<td>1 つ次を調べる対象となるキー</td>
 								</tr>
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>If false, return the next array key, if true, return its value</td>
+									<td>false なら見つかった要素のキーを、true ならば値を返す</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Do a strict comparison on key values</td>
+									<td>キーに厳密な比較を用いるかどうか</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed, the returned value, null if there is no next array element, or false if the current key does not exist.</td>
+						<th>返り値</th>
+						<td>目的のキーまたは値、配列に目的の要素が存在しない場合は null 、渡されたキーが配列内に存在しない場合は false 。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// array to lookup in
+							<pre class="php"><code>// 検索対象の配列
 $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 
-// returns false, there is no key 1 in the array
+// 返り値は false 、配列内に 1 のキーは存在しない
 $result = Arr::next_by_key($arr, 1);
 
-// returns null, there is no next key
+// 返り値は null 、次の要素は存在しない
 $result = Arr::next_by_key($arr, 6);
 
-// returns false, there is no key '2' in the array
+// 返り値は false 、配列内に '2' (文字列) のキーは存在しない
 $result = Arr::next_by_key($arr, '2', false, true);
 
-// returns 6, it's the key in the array after key 4
+// 返り値は 6 、配列内の 4 のキーの次の要素のキー
 $result = Arr::next_by_key($arr, 4);
 
-// returns 'C', it's the value the next key in the array points to
+// 返り値は 'C' 、指定された次の要素の値
 $result = Arr::next_by_key($arr, 4, true);
 </code></pre>
 						</td>
@@ -2741,69 +2741,69 @@ $result = Arr::next_by_key($arr, 4, true);
 
 			<article>
 				<h4 id="method_previous_by_value" class="method">previous_by_value($array, $value, $get_value = true, $strict = false)</h4>
-				<p>The <strong>previous_by_value</strong> method allows you to fetch the key or the value of the previous element of an array,
-				 given an existing element value.
+				<p><strong>previous_by_value</strong> メソッドを用いると、
+				  配列中のある値を持つ要素の 1 つ前の要素のキーまたは値を得ることができます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>調べる配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
-									<td><em>required</em></td>
-									<td>The current element value to use as lookup reference</td>
+									<td><em>必須</em></td>
+									<td>起点となる要素を特定する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>If false, return the previous array key, if true, return its value</td>
+									<td>false なら見つかった要素のキーを、true ならば値を返す</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Do a strict comparison on element values</td>
+									<td>値にに厳密な比較を用いるかどうか</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed, the returned value, null if there is no previous array element, or false if the current value could not be found.</td>
+						<th>返り値</th>
+						<td>目的のキーまたは値、配列に目的の要素が存在しない場合は null 、渡された値が配列内に存在しない場合は false 。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// array to lookup in
+							<pre class="php"><code>// 検索対象の配列
 $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 
-// returns false, there is no value 'Z' in the array
+// 返り値は false 、配列内に 'Z' の値は存在しない
 $result = Arr::previous_by_value($arr, 'Z');
 
-// returns null, there is no previous value
+// 返り値は null 、手前の要素が存在しない
 $result = Arr::previous_by_value($arr, 'A');
 
-// returns false, there is no value 2 in the array, only '2'
+// 返り値は false 、配列内には 2 の値を持つ要素は存在しない、あるのは '2' (文字列) のみ
 $result = Arr::previous_by_value($arr, 2, false, true);
 
-// returns 'A', it's the value the previous key in the array points to
+// 返り値は 'A' 、指定された要素の手前の値
 $result = Arr::previous_by_value($arr, '2');
 
-// returns 2, it's the key of the previous array element
+// 返り値は 2 、指定された要素の手前の要素のキー
 $result = Arr::previous_by_value($arr, '2', false);
 </code></pre>
 						</td>
@@ -2814,123 +2814,123 @@ $result = Arr::previous_by_value($arr, '2', false);
 
 			<article>
 				<h4 id="method_next_by_value" class="method">next_by_value($array, $value, $get_value = true, $strict = false)</h4>
-				<p>The <strong>next_by_value</strong> method allows you to fetch the key or the value of the next element of an array,
-				 given an existing element value.
+				<p><strong>next_by_value</strong> メソッドを用いると、
+				  配列中のある値を持つ要素の 1 つ次の要素のキーまたは値を得ることができます。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<Th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$array</kbd></th>
-									<td><em>required</em></td>
-									<td>The array to use</td>
+									<td><em>必須</em></td>
+									<td>調べる配列</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
-									<td><em>required</em></td>
-									<td>The current element value to use as lookup reference</td>
+									<td><em>必須</em></td>
+									<td>起点となる要素を特定する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>If false, return the next array key, if true, return its value</td>
+									<td>false なら見つかった要素のキーを、true ならば値を返す</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>Do a strict comparison on element values</td>
+									<td>値に厳密な比較を用いるかどうか</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed, the returned value, null if there is no next array element, or false if the current value could not be found.</td>
+						<th>返り値</th>
+						<td>目的のキーまたは値、配列に目的の要素が存在しない場合は null 、渡された値が配列内に存在しない場合は false 。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// array to lookup in
+							<pre class="php"><code>// 検索対象の配列
 $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 
-// returns false, there is no value 'Z' in the array
+// 返り値は false 、配列内に 'Z' の値は存在しない
 $result = Arr::next_by_value($arr, 'Z');
 
-// returns null, there is no next value
+// 返り値は null 、次の要素は存在しない
 $result = Arr::next_by_value($arr, 'C');
 
-// returns false, there is no value 2 in the array, only '2'
+// 返り値は false 、配列内に 2 の値を持つ要素は存在しない、あるのは '2' (文字列) のみ
 $result = Arr::next_by_value($arr, 2, false, true);
 
-// returns 'C', it's the value the next key in the array points to
+// 返り値は 'C' 、指定された要素の次の要素の値
 $result = Arr::next_by_value($arr, '2');
 
-// returns 6, it's the key of the next array element
+// 返り値は 6 、指定された要素の次の要素のキー
 $result = Arr::next_by_value($arr, '2', false);
 </code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">Note that the 'by_key' and 'by_value' methods use the return values <strong>null</strong> and <strong>false</strong> to signal error
-				conditions. Therefore the array passed may not contain keys or values that are <strong>null</strong> or <strong>false</strong>.</p>
+				<p class="note">'by_key' と 'by_value' のメソッドはエラーを通知するために <strong>null</strong> と <strong>false</strong> を返すことに注意して下さい。
+				  このために、渡される配列に <strong>null</strong> と <strong>false</strong> を含めることはできません。</p>
 			</article>
 
-			<h3 id="procedural_helpers">Procedural helpers</h3>
+			<h3 id="procedural_helpers">一般的なヘルパー</h3>
 
 			<article>
 				<h4 id="function_in_arrayi" class="method" data-class="">in_arrayi($needle, $haystack)</h4>
-				<p>The <strong>in_arrayi</strong> function is a case-insensitive version of in_array.</p>
+				<p><strong>in_arrayi</strong> 関数は in_array の大小文字を区別しないバージョンです。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Type</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>型</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$needle</kbd></th>
 									<td><em>string</em></td>
-									<td><em>required</em></td>
-									<td>the value to search for</td>
+									<td><em>必須</em></td>
+									<td>検索する値</td>
 								</tr>
 								<tr>
 									<th><kbd>$haystack</kbd></th>
 									<td><em>array</em></td>
-									<td><em>required</em></td>
-									<td>the array to search in</td>
+									<td><em>必須</em></td>
+									<td>検索対象の配列</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>bool</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>echo in_arrayi('This', array('something','tHis'));
-// Result: true
+// 実行結果: true
 
 echo in_arrayi('Thi', array('something','tHis'));
-// Result: false</code></pre>
+// 実行結果: false</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -2942,6 +2942,7 @@ echo in_arrayi('Thi', array('something','tHis'));
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/classes/arr.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/classes/arr.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/classes/arr.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

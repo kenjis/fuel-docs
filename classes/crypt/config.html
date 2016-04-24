@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 		var class_prefix = "Crypt::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Crypt Configuration - Classes - FuelPHP Documentation</title>
+	<title>Crypt 設定 - クラス - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,37 +45,37 @@
 
 		<div id="main">
 
-			<h2>Crypt Class</h2>
+			<h2>Crypt クラス</h2>
 
 			<p>
-				The Crypt class allows encrypt or decrypt a string. The Crypt class is also used internally by for example the Fuel Sessions class.
+				Crypt クラスにより文字列を暗号化や複号が可能になります。例えば、Sessions クラスにおいても Crypt クラスが内部で使用されています。
 			</p>
-			<p>It uses the encryption and hashing methods provided by PHPSecLib, so it's not dependent on external modules being available, such as mcrypt.</p>
+			<p>PHPSecLib により提供される暗号化とハッシング関数が使われているため、mcrypt のような外部モジュールに依存していません。</p>
 
 			<section>
-				<h3 id="configuration">Configuration</h3>
+				<h3 id="configuration">設定</h3>
 
 				<p>
-					The Crypt class is configured through the <kbd>app/config/crypt.php</kbd> configuration file. It will be generated and populated with random values when you first use the Crypt class or if one of the required configuration values is missing.
+					Crypt クラスの設定は <kbd>app/config/crypt.php</kbd> にて行います。これは、Crypt クラスを初めて利用するときか、必要な設定ファイルが無い場合に、乱数とともに生成・追加されます。
 				</p>
 				<p class="note">
-					Note that this will require write access to app/config/crypt.php! If this is not possible, make sure all configuration settings are set!
+					app/config/crypt.php への書き込み権限が必要です！ もし不可能な場合、全ての設定項目が設定されているかどうか確認してください！
 				</p>
-				<p>The following configuration settings can be defined:</p>
+				<p>以下の設定項目を定義できます：</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>Param</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>パラメータ</th>
+							<th>型</th>
+							<th>デフォルト</th>
+							<th>説明</th>
 						</tr>
 						<tr>
 							<th>crypto_key</th>
 							<td>string</td>
 							<td>n/a</td>
 							<td>
-								Random encryption key value used in the encryption routines. Make sure you set this to something unique and random!
+								暗号ルーチンで使われるランダムな暗号キー。ユニークでランダムな値を設定するようにしてください！
 							</td>
 						</tr>
 						<tr>
@@ -83,7 +83,7 @@
 							<td>string</td>
 							<td>n/a</td>
 							<td>
-								Random encryption initialisation vector used in the encryption routines. Make sure you set this to something unique and random!
+								暗号ルーチンにおけるランダムな暗号の初期化ベクトル。ユニークでランダムな値を設定するようにしてください！
 							</td>
 						</tr>
 						<tr>
@@ -91,13 +91,13 @@
 							<td>string</td>
 							<td>n/a</td>
 							<td>
-								Random value used in the Hash-based Message Authentication Code (HMAC) routines. Make sure you set this to something unique and random!
+								ハッシュに基づくメッセージ認証コード (HMAC) にて使われる乱数。ユニークでランダムな値を設定するようにしてください！
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<p class="note">
-					If you assign keys manually, note that they are base64_encoded, and the length must be a multiple of 4 to be able to decode it. Make sure the length is correct!
+					もしキーを手入力で指定する場合、キーは base64 エンコードした文字列で、デコードするために長さは 4 の倍数でなければなりません。必ず正しい長さになるよう指定してください！
 				</p>
 			</section>
 
@@ -106,6 +106,7 @@
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/classes/crypt/config.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/classes/crypt/config.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/classes/crypt/config.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

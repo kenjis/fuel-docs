@@ -10,7 +10,7 @@
 		var path = './../../../';
 	</script>
 	<script src="./../../../assets/js/combined.js"></script>
-	<title>Auth Controller example - Auth Package - FuelPHP Documentation</title>
+	<title>Auth コントローラの例 - Auth パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -43,155 +43,155 @@
 		</div>
 
 		<div id="main">
-			<h2>Using Auth in your application</h2>
+			<h2>Auth をアプリケーションで使う</h2>
 
-			<p>On this page you will find an example of an Auth controller, which you can use in your application to provide basic user
-			authentication using either Simpleauth or Ormauth.</p>
+			<p>このページにある Auth コントローラの例を使うと、Simpleauth や
+				Ormauth を使った基本的なユーザー認証をアプリケーションで利用できます。</p>
 
-			<h3>Assumptions</h3>
+			<h3>前提</h3>
 
-			<p>This example it taken from a real application and shows you the methods for login, logout, new user registration and lost
-			password recovery, based on an Ormauth implementation. It supports the remember-me feature and uses Fieldsets to generate the
-			forms needed. To make it easier to explain the different sections, the controller has been broken up into different parts.
-			You can simply copy all example sections back into a single controller class to use it.</p>
+			<p>実際のアプリケーションを基にしたこの例では、Ormauth の実装に基づいて、ログイン、ログアウト、新規ユーザー登録、パスワードを忘れた場合の復旧措置について説明します。
+				「remember-me」(ログイン状態を保持)機能をサポートし、必要なフォームを生成するために
+				フィールドセットを利用します。異なるセクションを説明しやすくするために、コントローラは別のパーツに分けられています。
+				使う時には、すべての例をコピーしてひとつのコントローラにまとめてかまいません。</p>
 
-			<p>It also uses language files for all data strings (it assumes you have a language file called <i>login</i> that contains all
-			the language strings used, a central <i>application</i> configuration file to configure application	behaviour and a <i>Message</i>
-			class that deals with messaging in the application, which are all outside the scope of this example. You can replace that with
-			whatever mechanism you use in your application control behaviour and to relay messages back to the user.</p>
+			<p>また、すべてのデータ列で言語ファイル (それは使用された言語文字列すべてを含んいる <i>login</i> と呼ばれた言語ファイルを持っていると仮定)
+			を利用しており、アプリケーションの動作を設定する <i>application</i> 構成ファイルやアプリケーションでのメッセージを扱う <i>Message</i> クラス、
+			それらは完全にこの例の範囲外です。アプリケーションのコントロールの動きとユーザーへのメッセージの伝達で
+			あなたが利用するどのようなメカニズムにも置き換えることができます。</p>
 
-			<p>The original code uses the Theme class, but the example has been adapted to use standard Views for simplicity reasons. If you
-			prefer to use Controller_Template, set the template content instead of returning View objects. If you're using the theme class,
-			set the required partial instead.</p>
+			<p>元のコードはテーマクラスを利用しますが、例は簡単にするために標準的なビューを利用するように合わせてあります。
+			Controller_Template を利用したい場合は、 View オブジェクトを返す代わりにテンプレートコンテンツを設定します。
+			テーマクラスを使用している場合は、必要な部分を代わりに設定します。</p>
 
-			<h3 id="login">Login</h3>
+			<h3 id="login">ログイン</h3>
 
-			<p>This is the example code for the login method. It expects input from a form that contains the input fields
-			<strong>username</strong> (which may contain either username or email address), <strong>password</strong> and
-			<strong>remember</strong> (which is used as a toggle, so it can be a checkbox). If no form input is present,
-			or if a login failure is detected, it falls through and displays the login view.</p>
+			<p>これはログインメソッドのコード例です。入力フィールドに
+			<strong>username</strong> (ユーザー名かメールアドレスのどちらか一方を含んでいてもよい)、 <strong>password</strong> そして、
+			<strong>remember</strong> (トグルとして使用されるのでチェックボックスであること) が含まれているフォームからの入力を想定しています。
+			まだフォームに入力が存在しない場合や、ログインの失敗が検出された場合、それは失敗しログインビューが表示されます。</p>
 
 <pre class="php"><code>public function action_login()
 {
-	// already logged in?
+	// すでにログイン済み？
 	if (\Auth::check())
 	{
-		// yes, so go back to the page the user came from, or the
-		// application dashboard if no previous page can be detected
+		// そうです、ユーザーが居た以前のページか、以前のページが
+		// 検出できない場合はアプリケーションのダッシュボードへ戻ります
 		\Messages::info(__('login.already-logged-in'));
 		\Response::redirect_back('dashboard');
 	}
 
-	// was the login form posted?
+	// ログインフォームが投稿された？
 	if (\Input::method() == 'POST')
 	{
-		// check the credentials.
+		// 資格情報のチェック
 		if (\Auth::instance()->login(\Input::param('username'), \Input::param('password')))
 		{
-			// did the user want to be remembered?
+			// ユーザーを覚えてほしい？
 			if (\Input::param('remember', false))
 			{
-				// create the remember-me cookie
+				// remember-me クッキーを作成
 				\Auth::remember_me();
 			}
 			else
 			{
-				// delete the remember-me cookie if present
+				// 存在する場合、 remember-me クッキーを削除
 				\Auth::dont_remember_me();
 			}
 
-			// logged in, go back to the page the user came from, or the
-			// application dashboard if no previous page can be detected
+			// ログイン、ユーザーが居た以前のページか、以前のページが
+			// 検出できない場合はアプリケーションのダッシュボードへ戻ります
 			\Response::redirect_back('dashboard');
 		}
 		else
 		{
-			// login failed, show an error message
+			// ログイン失敗、エラーメッセージを表示
 			\Messages::error(__('login.failure'));
 		}
 	}
 
-	// display the login page
+	// ログインページを表示
 	return \View::forge('login/login');
 }</code></pre>
 
-			<h3 id="logout">Logout</h3>
+			<h3 id="logout">ログアウト</h3>
 
-			<p>This is the example code for the logout method. It will remove the remember-me cookie (as that would cause an automatic re-login on
-			the next page request), </p>
+			<p>これはログアウトメソッドのコード例です。 (次にページを要求した時に自動再ログインを引き起されるため)
+			remember-me クッキーを削除します。</p>
 
 <pre class="php"><code>public function action_logout()
 {
-	// remove the remember-me cookie, we logged-out on purpose
+	// remember-me クッキーを削除し、意図的にログアウト
 	\Auth::dont_remember_me();
 
-	// logout
+	// ログアウト
 	\Auth::logout();
 
-	// inform the user the logout was successful
+	// ログアウトの成功をユーザーに知らせる
 	\Messages::success(__('login.logged-out'));
 
-	// and go back to where you came from (or the application
-	// homepage if no previous page can be determined)
+	// そして、あなたがやってきたところに (もしくは、前のページを
+	// 決定することができない場合はアプリケーションのホームページに) 戻る
 	\Response::redirect_back();
 }</code></pre>
 
-			<h3 id="registration">Registration</h3>
+			<h3 id="registration">登録</h3>
 
-			<p>This is the example code for the new user registration method. As this example uses Ormauth, it's obvious that we can use the
-			Auth user model to create the fieldset for the registration form. If you're using Simpleauth, you can still use the model as a
-			fieldset template, as we're not using it to interact with the database. Using it does mean you need to have the Orm package loaded
-			though, otherwise the Model class can't be loaded.
+			<p>これは新規ユーザー登録メソッドのコード例です。この例は Ormauth を利用するので、登録フォームのフィールドセットを作成するために
+			認証ユーザーモデルが利用できるのは明らかです。あなたが Simpleauth を使用している場合、またフィールドセットのテンプレートとしてモデルを利用できますが、
+			我々はデータベースと対話するためにそれを利用していません。それを使用するということは Orm
+			パッケージが読み込まれている必要があることを意味し、そうでなければモデルクラスは読み込まれません。
 			</p>
 
 <pre class="php"><code>public function action_register()
 {
-	// is registration enabled?
+	// 登録が有効？
 	if ( ! \Config::get('application.user.registration', false))
 	{
-		// inform the user registration is not possible
+		// ユーザ登録ができないことをお知らせ
 		\Messages::error(__('login.registation-not-enabled'));
 
-		// and go back to the previous page (or the homepage)
+		// そして、前のページ (またはホームページ) に戻る
 		\Response::redirect_back();
 	}
 
-	// create the registration fieldset
+	// 登録用フィールドセットを作成
 	$form = \Fieldset::forge('registerform');
 
-	// add a csrf token to prevent CSRF attacks
+	// CSRF 攻撃を防ぐために CSRF トークンを追加
 	$form->form()->add_csrf();
 
-	// and populate the form with the model properties
+	// そしてモデルのプロパティを持つフォームを投入
 	$form->add_model('Model\\Auth_User');
 
-	// add the fullname field, it's a profile property, not a user property
+	// そして、フルネームフィールド、それは、ユーザーのプロパティではなくプロファイルのプロパティ
 	$form->add_after('fullname', __('login.form.fullname'), array(), array(), 'username')->add_rule('required');
 
-	// add a password confirmation field
+	// パスワードの確認フィールドを追加
 	$form->add_after('confirm', __('login.form.confirm'), array('type' => 'password'), array(), 'password')->add_rule('required');
 
-	// make sure the password is required
+	// パスワードは必要なので確認
 	$form->field('password')->add_rule('required');
 
-	// and new users are not allowed to select the group they're in (duh!)
+	// そして、新規ユーザーは彼らが属しているグループを選択できない (当たり前じゃないか)
 	$form->disable('group_id');
 
-	// since it's not on the form, make sure validation doesn't trip on its absence
+	// それはフォーム上にはないので、それの不足で検証が失敗しないように
 	$form->field('group_id')->delete_rule('required')->delete_rule('is_numeric');
 
-	// was the registration form posted?
+	// 登録フォームが投稿された？
 	if (\Input::method() == 'POST')
 	{
-		// validate the input
+		// 入力を検証
 		$form->validation()->run();
 
-		// if validated, create the user
+		// 検証済みの場合、ユーザーを作成
 		if ( ! $form->validation()->error())
 		{
 			try
 			{
-				// call Auth to create this user
+				// ユーザーを作成するために Auth を呼び出す
 				$created = \Auth::create_user(
 					$form->validated('username'),
 					$form->validated('password'),
@@ -202,39 +202,39 @@
 					)
 				);
 
-				// if a user was created succesfully
+				// ユーザーが正常に作成された場合
 				if ($created)
 				{
-					// inform the user
+					// ユーザに通知
 					\Messages::success(__('login.new-account-created'));
 
-					// and go back to the previous page, or show the
-					// application dashboard if we don't have any
+					// そして、前のページか、前のページがない場合は
+					// アプリケーションのダッシュボードを表示
 					\Response::redirect_back('dashboard');
 				}
 				else
 				{
-					// oops, creating a new user failed?
+					// おっと、新しいユーザーの作成に失敗しました？
 					\Messages::error(__('login.account-creation-failed'));
 				}
 			}
 
-			// catch exceptions from the create_user() call
+			// create_user() の呼び出し時の例外を捕捉
 			catch (\SimpleUserUpdateException $e)
 			{
-				// duplicate email address
+				// メールアドレスが重複
 				if ($e->getCode() == 2)
 				{
 					\Messages::error(__('login.email-already-exists'));
 				}
 
-				// duplicate username
+				// ユーザー名が重複
 				elseif ($e->getCode() == 3)
 				{
 					\Messages::error(__('login.username-already-exists'));
 				}
 
-				// this can't happen, but you'll never know...
+				// これは起こり得ないが、ずっとそうとは限らない...
 				else
 				{
 					\Messages::error($e->getMessage());
@@ -242,41 +242,41 @@
 			}
 		}
 
-		// validation failed, repopulate the form from the posted data
+		// 検証失敗、ポストされたデータをフォームへ再投入
 		$form->repopulate();
 	}
 
-	// pass the fieldset to the form, and display the new user registration view
+	// フォームにフィールドセットを渡し、新規ユーザの登録ビューを表示
 	return \View::forge('login/registration')->set('form', $form, false);
 }</code></pre>
 
-			<p>With this code, new user accounts are immediately active. You can add a validation stage by creating a separate group for users
-			in that stage, and send a confirmation email out. That email should then contain a link to a new 'confirm' method with a hash,
-			that after validation of the hash changes the group from 'validating' to 'active'. How to do this is left to the reader. You can
-			have a look at the password recovery method below to get some pointers on how to generate this hash, where to store it, and how
-			to send an email out.</p>
+			<p>このコードでは、新しいユーザーのアカウントはすぐさまアクティブになります。その段階でユーザーごとに別のグループを作成することで
+			検証段階を追加することや確認メールの送信をすることができます。そのメールには、新しい 'confirm' メソッドへのリンクがハッシュと
+			共に含まれている必要があり、そのハッシュの検証後、'validating' から 'active' へグループを変更します。これらのやり方は読者に委ねられています。
+			このハッシュを生成する方法や、どこに収納するか、どのようにメールを送信するか、
+			についていくつかの助言を得るために以下のパスワードの回復方法を見ることができます。</p>
 
-			<h3 id="password-recovery">Password recovery</h3>
+			<h3 id="password-recovery">パスワードの復元</h3>
 
-			<p>This is the example code for the password-recovery method. It requires a form with an 'email' input field on which the user can
-			enter his email address. This is then used to lookup the user, and send out an email with a recovery link. There is no visible
-			feedback to the user whether or not the email was correct, to avoid account and email guessing.</p>
+			<p>これはパスワード復元メソッドのコード例です。 これはユーザーが自分の電子メールアドレスを入力することができる 'email'
+			入力フィールドを持つフォームが必要です。これはユーザを検索し、復元用リンクを含むメールを送信するために使用されます。
+			アカウントおよびメールの推測を避けるために、メールが正しかったかどうかについてユーザーに目に見えるフィードバックはありません。</p>
 
 <pre class="php"><code>public function action_lostpassword($hash = null)
 {
-	// was the lostpassword form posted?
+	// lostpassword フォームが投稿された？
 	if (\Input::method() == 'POST')
 	{
-		// do we have a posted email address?
+		// 投稿されたメールアドレスを持っている？
 		if ($email = \Input::post('email'))
 		{
-			// do we know this user?
+			// このユーザーを知っている？
 			if ($user = \Model\Auth_User::find_by_email($email))
 			{
-				// generate a recovery hash
+				// 復元ハッシュを生成
 				$hash = \Auth::instance()->hash_password(\Str::random()).$user->id;
 
-				// and store it in the user profile
+				// そして、ユーザープロファイルに格納
 				\Auth::update_user(
 					array(
 						'lostpassword_hash' => $hash,
@@ -285,11 +285,11 @@
 					$user->username
 				);
 
-				// send an email out with a reset link
+				// リセットリンクを記載したメールを送信
 				\Package::load('email');
 				$email = \Email::forge();
 
-				// use a view file to generate the email message
+				// 電子メールメッセージを生成するためにビューファイルを使用
 				$email->html_body(
 					\Theme::instance()->view('login/lostpassword')
 						->set('url', \Uri::create('login/lostpassword/' . base64_encode($hash) . '/'), false)
@@ -297,32 +297,32 @@
 						->render()
 				);
 
-				// give it a subject
+				// それに件名を与える
 				$email->subject(__('login.password-recovery'));
 
-				// add from- and to address
+				// 差出人と宛先を追加
 				$from = \Config::get('application.email-addresses.from.website', 'website@example.org');
 				$email->from($from['email'], $from['name']);
 				$email->to($user->email, $user->fullname);
 
-				// and off it goes (if all goes well)!
+				// そして (すべてがうまくいけば) それを出す！
 				try
 				{
-					// send the email
+					// メールを送信
 					$email->send();
 				}
 
-				// this should never happen, a users email was validated, right?
+				// このようなことは起こりません。ユーザーのメールは検証済み、そうでしょう？
 				catch(\EmailValidationFailedException $e)
 				{
 					\Messages::error(__('login.invalid-email-address'));
 					\Response::redirect_back();
 				}
 
-				// what went wrong now?
+				// 何かが間違っていた？
 				catch(\Exception $e)
 				{
-					// log the error so an administrator can have a look
+					// エラーを管理者が確認できるログに記録
 					logger(\Fuel::L_ERROR, '*** Error sending email ('.__FILE__.'#'.__LINE__.'): '.$e->getMessage());
 
 					\Messages::error(__('login.error-sending-email'));
@@ -331,35 +331,35 @@
 			}
 		}
 
-		// posted form, but email address posted?
+		// フォームは投稿されたがメールアドレスは投稿した？
 		else
 		{
-			// inform the user and fall through to the form
+			// フォームに失敗を渡しユーザーに通知
 			\Messages::error(__('login.error-missing-email'));
 		}
 
-		// inform the user an email is on the way (or not ;-))
+		// 今メールしたこと (か、そうでないこと ;-)) をユーザーに通知
 		\Messages::info(__('login.recovery-email-send'));
 		\Response::redirect_back();
 	}
 
-	// no form posted, do we have a hash passed in the URL?
+	// フォームの投稿が無く、 URL で渡されたハッシュを持っていますか？
 	elseif ($hash !== null)
 	{
 	
-		// decode the hash
+		// ハッシュをデコード
 		$hash = base64_decode($hash);
 	
-		// get the userid from the hash
+		// ハッシュからユーザーIDを取得
 		$user = substr($hash, 44);
 
-		// and find the user with this id
+		// そして、この ID を持つユーザーを見つける
 		if ($user = \Model\Auth_User::find_by_id($user))
 		{
-			// do we have this hash for this user, and hasn't it expired yet (we allow for 24 hours response)?
+			// このユーザーは、このハッシュを持っていて、かつ、まだ失効していないか (24 時間未満の応答を許可) ？
 			if (isset($user->lostpassword_hash) and $user->lostpassword_hash == $hash and time() - $user->lostpassword_created &lt; 86400)
 			{
-				// invalidate the hash
+				// ハッシュを無効に
 				\Auth::update_user(
 					array(
 						'lostpassword_hash' => null,
@@ -368,7 +368,7 @@
 					$user->username
 				);
 
-				// log the user in and go to the profile to change the password
+				// ユーザーをログインさせ、パスワードを変更させるためにプロフィールに行く
 				if (\Auth::instance()->force_login($user->id))
 				{
 					\Messages::info(__('login.password-recovery-accepted'));
@@ -377,44 +377,45 @@
 			}
 		}
 
-		// something wrong with the hash
+		// ハッシュがおかしい
 		\Messages::error(__('login.recovery-hash-invalid'));
 		\Response::redirect_back();
 	}
 
-	// no form posted, and no hash present. no clue what we do here
+	// フォームの投稿が無く、ハッシュも提供されていない。何をすべきか見当もつかない
 	else
 	{
 		\Response::redirect_back();
 	}
 }</code></pre>
 
-		<p>As mentioned before, this example uses Ormauth, and can therefore use the provided Orm models to access the users table. If you
-		use Simpleauth, use this code instead:</p>
+		<p>前述のように、この例では、 Ormauth を使用しているのでユーザーがテーブルにアクセスするために提供された
+		ORM モデルを利用することができます。 Simpleauth を使用する場合は、このコードを代わりに使用します：</p>
 
 <pre class="php"><code>$user = \DB::select_array(\Config::get('simpleauth.table_columns', array('*')))
 	->where('email', '=', $email)
 	->from(\Config::get('simpleauth.table_name'))
 	->as_object()->execute(\Config::get('simpleauth.db_connection'))->current();
 
-	// do we know this user?
+	// このユーザーを知っている？
 	if ($user)
 	{
-		// etc...
+		// その他...
 </code></pre>
 
-		<p>and likewise for the second lookup, which is on 'id'. You will also have to modify the check on the lostpassword fields, as with
-		Simpleauth they are stored in the profile fields array. This means that you have to the profile_fields column from the query result,
-		unserialize it if it's not empty, and get the hash and timestamp out of it.</p>
+		<p>そして、 'id' のための 2 つ目の検索も同様です。 lostpassword フィールドのチェックもまた変更する必要があり、
+		Simpleauth では同様にそれらはプロファイルフィールドの配列に格納されます。これは、クエリ結果が profile_fields カラムを持つことを意味し、
+		それをアンシリアライズし、それが空でなければ、そこからハッシュとタイムスタンプを取得します。</p>
 
-		<p>You may also notice that the user-id is added to the hash. This is done to be able to support Simpleauth. With Ormauth, you could do
-		a metadata lookup, and get the related user object from the metadata. With Simpleauth, there is no lookup possible since the data is
-		stored in a serialized array inside the profile_fields column.</p>
+		<p>ユーザ ID がハッシュに追加されていることにあなたは気が付くでしょう。これは Simpleauth をサポートするために行っています。
+		Ormauth を使用すると、メタデータの検索を行うことができ、メタデータから関連するユーザーオブジェクトを取得できます。
+		Simpleauth を使用すると、データは profile_fields カラムの内部にシリアル化された配列で格納されているため検索することができません。</p>
 		</div>
 
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/auth/examples/auth.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/auth/examples/auth.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/auth/examples/auth.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

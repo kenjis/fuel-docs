@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 		var class_prefix = "Fieldset_Field::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Fieldset_Field - Classes - FuelPHP Documentation</title>
+	<title>Fieldset_Field - クラス - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -48,52 +48,52 @@
 			<h2>Fieldset_Field Class</h2>
 
 			<p>
-				The Fieldset_Field class defines a single field inside a fieldset. It defines the type of field, how the field
-				should be rendered, and which validation rules should be used when validating field input.
+				Fieldset_Field クラスは、フィールドセットの単一のフィールドを定義します。フィールドの種類、
+				フィールドのレンダリング方式、フィールド入力をバリデーションするときに使用されるルール、を定義します。
 			</p>
 
 			<p class="note">
-				Although it is technically possible to create stand-alone Fieldset_Field instances, normally they will be created
-				as part of a Fieldset, using the Fieldsets <kbd>add_field()</kbd> method.
+				技術的にはスタンドアロンの Fieldset_Field インスタンスを作成することが可能ですが、通常は
+				Fieldsets の <kbd>add_field()</kbd> メソッドを使用して Fieldset の一部として作成されます。
 			</p>
 
 			<article>
 				<h4 class="method" id="method_set_fieldset">set_fieldset(Fieldset $fieldset)</h4>
 				<p>
-					If you have created a standalone Fieldset_Field object (i.e. not via the Fieldset class), you can use the
-					<strong>set_fieldset</strong> method to assign the field object to a fieldset object.
+					スタンドアロンの Fieldset_Field オブジェクトを (Fieldset クラス経由ではなく) 作成した場合、
+					<strong>set_fieldset</strong> メソッドを使用してフィールドセットオブジェクトにフィールドオブジェクトを割り当てできます。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$fieldset</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Instance of Fieldset you want to assign this Field object to.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>このフィールドオブジェクトに割り当てたい Fieldset のインスタンス</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$fieldset = \Fieldset::forge('myfieldset');
 $field = new \Fieldset_Field('client', 'Name of the client');
@@ -108,39 +108,39 @@ $field-&gt;set_fieldset($fieldset);
 			<article>
 				<h4 class="method" id="method_set_label">set_label($label)</h4>
 				<p>
-					Set or change the label of a field.
+					フィールドのラベルを設定／変更します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$label</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Label to be displayed for the field when generating the HTML for this field.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>このフィールドの HTML を生成するときに表示されるラベル。</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$fieldset-&gt;field('fieldname')-&gt;set_label('New Label');</code></pre>
 						</td>
@@ -152,41 +152,41 @@ $field-&gt;set_fieldset($fieldset);
 			<article>
 				<h4 class="method" id="method_set_type">set_type($type)</h4>
 				<p>
-					Set or change the HTML form field type.
+					HTML フォームフィールドタイプを設定／変更します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$type</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Input field type used when generating the HTML for this field.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>このフィールドの HTML を生成するときに使用する入力フィールドタイプ</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// will generate &lt;input type="hidden"... &gt;
+							<pre class="php"><code>// &lt;input type="hidden"... &gt; を生成
 $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 						</td>
 					</tr>
@@ -197,45 +197,45 @@ $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 			<article>
 				<h4 class="method" id="method_set_value">set_value($value, $repopulate = false)</h4>
 				<p>
-					Set or changes the value of the field. For radio buttons and checkboxes, you can choose to repopulate, which
-					will recalculate the "checked" value of the field based on the current and the passed value.
+					フィールドの値を設定／変更します。ラジオボタン、チェックボックスの場合、 repopulate を選択すると、
+					現在の値と渡された値に応じて "checked" を再計算します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$type</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Input field type used when generating the HTML for this field.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>このフィールドの HTML を生成するときに使用する入力フィールドタイプ</td>
 									</tr>
 									<tr>
 										<th><kbd>$repopulate</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>If true, the field will be repopulated based on the value (only for radio buttons and checkboxes).</td>
+										<td>true にすると、値に応じてフィールドを再計算する (ラジオボタンとチェックボックスの場合のみ)</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$fieldset-&gt;field('fieldname')-&gt;set_value('this is the new value');</code></pre>
 						</td>
@@ -247,44 +247,44 @@ $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 			<article>
 				<h4 class="method" id="method_set_description">set_description($description)</h4>
 				<p>
-					Set or changes the fields description. The description is mapped to the <strong>{description}</strong>  ta
-					in the form field template, and can for example be used to display a help text.
+					フィールドの説明を設定／変更します。説明は、フィールドテンプレートの <strong>{description}</strong> タグに
+					マッピングされます。たとえばヘルプテキストを表示する、などに使用できます。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$description</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Field description.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>フィールドの説明</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$fieldset
 	-&gt;field('fieldname')
-	-&gt;set_description('We would like you to enter something here');</code></pre>
+	-&gt;set_description('ここに何か入力してください。');</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -294,39 +294,39 @@ $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 			<article>
 				<h4 class="method" id="method_set_template">set_template($template = null)</h4>
 				<p>
-					Sets or resets a custom form field template for this field.
+					このフィールドのカスタムフィールドテンプレートを設定またはリセットします。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$template</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>The template to be used to render the HTML for this field.</td>
+										<td>このフィールドを HTML レンダリングするのに使用するテンプレート</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>$fieldset
 	-&gt;field('fieldname')
@@ -335,41 +335,41 @@ $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">If you don't pass anything, or pass <kbd>null</kbd>, the default field template as defined in the <strong>form.php</strong> config file will be used.</p>
+				<p class="note">値を渡さないか、 <kbd>null</kbd> を渡した場合、 <strong>form.php</strong> 設定ファイルに定義されているデフォルトテンプレートを使用します。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_set_error_message">set_error_message($rule, $msg)</h4>
 				<p>
-					Set a custom error message for a specific validation rule.
+					指定したバリデーションルールのカスタムエラーメッセージを設定します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$rule</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Validation rule for which you want to override the default error message.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>デフォルトのエラーメッセージを上書きしたいバリデーションルール</td>
 									</tr>
 									<tr>
 										<th><kbd>$msg</kbd></th>
-										<td><pre class="php">required</pre></td>
+										<td><pre class="php">必須</pre></td>
 										<td>
-											The message to display. You can use <strong>:label</strong> as a placeholder for the field label, and
-											<strong>:param:&lt;number&gt;</strong> for the parameters passed to the rule.
+											表示するメッセージ。フィールドラベルは <strong>:label</strong> を、
+											ルールに渡すパラメータは <strong>:param:&lt;number&gt;</strong> をプレースホルダに使用できます。
 										</td>
 									</tr>
 								</tbody>
@@ -377,22 +377,22 @@ $fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// set a custom error message for the "valid_string" validation rule
+							<pre class="php"><code>// "valid_string" バリデーションルールのカスタムエラーメッセージを設定
 $fieldset
 	-&gt;field('fieldname')
-	-&gt;set_error_message('valid_string', ':label must contain both upper and lowercase characters!');
+	-&gt;set_error_message('valid_string', ':label は大文字と小文字の両方が含まれている必要があります！');
 
-// set a custom error message for "exact_length"
+// "exact_length" 用のカスタムエラーメッセージを設定
 
 $fieldset
 	-&gt;field('fieldname')
-	-&gt;set_error_message('exact_length', ':label is not exactly :param:1 long!');</code></pre>
+	-&gt;set_error_message('exact_length', ':label は必ずしも :param:1 ではありません！');</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -402,46 +402,46 @@ $fieldset
 			<article>
 				<h4 class="method" id="method_get_error_message">get_error_message($rule)</h4>
 				<p>
-					Checks if a custom message for a validation rule is defined, and if so, the message is returned.
+					バリデーションルールにカスタムメッセージがあるかどうかをチェックします。存在する場合、そのメッセージを返します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$rule</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>The name of the validation rule who's message should be fetched.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>メッセージを取得したいバリデーションルール名。</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Mixed, string if there is a custom message, or <kbd>null</kbd> if not</td>
+						<th>返り値</th>
+						<td>Mixed, カスタムメッセージがある場合は文字列、そうでなければ <kbd>null</kbd></td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// set a custom error message for the "valid_string" validation rule
+							<pre class="php"><code>// "valid_string" バリデーションルールのカスタムエラーメッセージを設定
 $fieldset
 	-&gt;field('fieldname')
-	-&gt;set_error_message('valid_string', ':label must contain both upper and lowercase characters!');
+	-&gt;set_error_message('valid_string', ':label は大文字と小文字の両方が含まれている必要があります！');
 
-// returns: :label must contain both upper and lowercase characters!
+// 返り値： :label は大文字と小文字の両方が含まれている必要があります！
 $message = $fieldset-&gt;field('fieldname')-&gt;get_error_message('valid_string');</code></pre>
 						</td>
 					</tr>
@@ -452,155 +452,155 @@ $message = $fieldset-&gt;field('fieldname')-&gt;get_error_message('valid_string'
 			<article>
 				<h4 class="method" id="method_add_rule">add_rule($callback)</h4>
 				<p>
-					Add a validation rule to a field, either an internal validation rule identified by name, or a valid callback that
-					validates the field.
+					フィールドにバリデーションルールを追加します。規定のバリデーションルール名か、あるいは
+					このフィールドをバリデーションするコールバックを指定します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$callback</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Either a string with a valid validation rule name, or full callback.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>バリデーションルール名、または完全なコールバックのいずれか。</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// set a valid_string rule on the field
+							<pre class="php"><code>// フィールド上の valid_string ルールを設定
 $fieldset-&gt;field('fieldname')-&gt;add_rule('valid_string', array('alpha-numeric', 'dots', 'spaces'));
 
-// and make the field required
+// そして必須なフィールドを作成
 $message = $fieldset->field('fieldname')->add_rule('required');</code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">When you set the required rule, the "required" attribute of the form input tag will be set.</p>
+				<p class="note">required ルールを設定すると、フォームの input タグに "required" 属性がセットされます。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_delete_rule">delete_rule($callback, $set_attr = true)</h4>
 				<p>
-					Removes a validation rule to a field, identified by either an internal validation rule identified by name, or a valid callback that
-					validates the field.
+					フィールドのバリデーションルールを取り除きます。規定のバリデーションルール名か、あるいは
+					このフィールドをバリデーションするコールバックを指定します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$callback</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Either a string with a valid validation rule name, or full callback.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>バリデーションルール名、または完全なコールバックのいずれか。</td>
 									</tr>
 									<tr>
 										<th><kbd>$set_attr</kbd></th>
 										<td><pre class="php"><code>true</code></pre></td>
-										<td>If true, attributes related to the rule are updated too.</td>
+										<td>true に設定すると、ルールに関連する属性も更新します。</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// remove the valid_string rule from the field
+							<pre class="php"><code>// フィールドから valid_string ルールを取り除く
 $fieldset-&gt;field('fieldname')-&gt;delete_rule('valid_string');
 
-// and make the field no longer required
+// そして、必須項目の指定を取り除く
 $message = $fieldset->field('fieldname')->delete_rule('required', true);</code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">When you remove the required rule, the "required" attribute of the form input tag will be removed if <kbd>$set_attr</kbd> is set to <kbd>true</kbd>.</p>
+				<p class="note">required ルールを取り除くとき、 <kbd>$set_attr</kbd> が <kbd>true</kbd> に設定されているとフォームの input タグの "required" 属性も取り除かれます。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_set_attribute">set_attribute($attr, $value = null)</h4>
 				<p>
-					Set one or more HTML field attributes for the field.
+					このフィールドに、 1 つ以上の HTML 属性を設定します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$attr</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Either a string with the name of the attribute, or an assoc array of attributes and values.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>属性名(文字列)、または属性と値からなる連想配列</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>The attributes value. Ignored if $attr is an array.</td>
+										<td>属性値。$attr が配列の場合は無効</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// add a custom CSS style
+							<pre class="php"><code>// カスタムな CSS スタイルを追加
 $fieldset-&gt;field('fieldname')
 	-&gt;set_attribute('style', 'font-weight:bold;color:yellow;');
 
-// or multiple attributes at once
+// もしくは一度に複数の属性を追加
 $fieldset-&gt;field('fieldname')-&gt;set_attribute(array(
 	'style' => 'font-weight:bold;color:yellow;',
 	'disabled' => 'disabled'
@@ -609,52 +609,52 @@ $fieldset-&gt;field('fieldname')-&gt;set_attribute(array(
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">If you pass <kbd>null</kbd> as a value, the attribute will be removed from the field attribute list.</p>
+				<p class="note"><kbd>null</kbd> を値として渡した場合、属性リストから属性を取り除きます。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_get_attribute">get_attribute($key = null, $default = null)</h4>
 				<p>
-					Get one or all HTML field attributes of the field.
+					このフィールドの、 1 つ以上の HTML 属性を取得します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>Name or array of names of attribute(s) to get. If null, all attributes set are returned.</td>
+										<td>属性名または属性名の配列。null の場合はすべての属性を返す。</td>
 									</tr>
 									<tr>
 										<th><kbd>$default</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>Value to return if the requested attribute has not been set.</td>
+										<td>属性が設定されていない場合に返す値。</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Mixed, a single attribute value, or multiple values in an array if $key was an array of attributes</td>
+						<th>返り値</th>
+						<td>Mixed 単一の属性値、あるいは $key が属性の配列の場合は、配列</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// get any custom style defined, or false if no style is set
+							<pre class="php"><code>// カスタムスタイルが定義されていたら取得、スタイルが未定義なら false
 $style = $fieldset-&gt;field('fieldname')
 	-&gt;get_attribute('style', false);</code></pre>
 						</td>
@@ -666,52 +666,52 @@ $style = $fieldset-&gt;field('fieldname')
 			<article>
 				<h4 class="method" id="method_set_options">set_options($value, $label = null, $replace_options = false)</h4>
 				<p>
-					Set one or more options. Only valid for radio buttons, checkboxes and selects.
+					オプションを設定します。ラジオボタン、チェックボックス、セレクトボックスのみ有効。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>Param</th>
-										<th>Default</th>
-										<th class="description">Description</th>
+										<th>パラメータ</th>
+										<th>デフォルト</th>
+										<th class="description">説明</th>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
-										<td><pre class="php">required</pre></td>
-										<td>Value of the option, or an assoc array of values and labels.</td>
+										<td><pre class="php">必須</pre></td>
+										<td>オプションの値、または値とラベルの連想配列。</td>
 									</tr>
 									<tr>
 										<th><kbd>$label</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>Label to be set on the value. Only used if $value is not an array.</td>
+										<td>値に設定するラベル。 $value が配列でない場合のみ使用する。</td>
 									</tr>
 									<tr>
 										<th><kbd>$replace_options</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>If true, existing options will be deleted before setting the new one(s).</td>
+										<td>true の場合は既存のオプションを削除して新しいオプションを設定する。</td>
 									</tr>
 								</tbody>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset_Field Object, for chaining</td>
+						<th>返り値</th>
+						<td>Fieldset_Field オブジェクト、メソッドチェーン用</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// if the field is a select: &lt;option value="1"&gt;Label&lt;/option&gt;
-// if the field is a checkbox: &lt;label&gt;Label&lt;/label&gt;&lt;input type="checkbox" ... /&gt;
+							<pre class="php"><code>// フィールドが select の場合： &lt;option value="1"&gt;Label&lt;/option&gt;
+// フィールドが checkbox の場合： &lt;label&gt;Label&lt;/label&gt;&lt;input type="checkbox" ... /&gt;
 $style = $fieldset-&gt;field('fieldname')-&gt;set_options('1', 'Label');</code></pre>
 						</td>
 					</tr>
@@ -722,26 +722,26 @@ $style = $fieldset-&gt;field('fieldname')-&gt;set_options('1', 'Label');</code><
 			<article>
 				<h4 class="method" id="method_fieldset">fieldset()</h4>
 				<p>
-					Get the Fieldset object this Field is associated with.
+					このフィールドが関連付けられたフィールドセットオブジェクトを取得します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
-						<td>None</td>
+						<th>パラメータ</th>
+						<td>なし</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>Fieldset instance</td>
+						<th>返り値</th>
+						<td>Fieldset インスタンス</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// returns true
+							<pre class="php"><code>// true が返る
 $same = ($fieldset === $fieldset-&gt;field('fieldname')-&gt;fieldset());</code></pre>
 						</td>
 					</tr>
@@ -752,48 +752,48 @@ $same = ($fieldset === $fieldset-&gt;field('fieldname')-&gt;fieldset());</code><
 			<article>
 				<h4 class="method" id="method_add">add($name, $label = '', array $attributes = array(), array $rules = array())</h4>
 				<p>
-					Alias for the <a href="fieldset.html#method_add">Fieldset add()</a> method.
+					<a href="fieldset.html#method_add">Fieldset add()</a> メソッドのエイリアス。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_add_before">add_before($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)</h4>
 				<p>
-					Alias for the <a href="fieldset.html#method_add_before">Fieldset add_before()</a> method.
+					<a href="fieldset.html#method_add_before">Fieldset add_before()</a> メソッドのエイリアス。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_add_after">add_after($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)</h4>
 				<p>
-					Alias for the <a href="fieldset.html#method_add_after">Fieldset add_after()</a> method.
+					<a href="fieldset.html#method_add_after">Fieldset add_after()</a> メソッドのエイリアス。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_build">build()</h4>
 				<p>
-					Generates the form HTML for the field.
+					このフィールドのフォーム HTML を生成します。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
-						<td>None</td>
+						<th>パラメータ</th>
+						<td>なし</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>string, the generated HTML</td>
+						<th>返り値</th>
+						<td>文字列、生成される HTML</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// if the field is a select: &lt;option value="1"&gt;Label&lt;/option&gt;
-// if the field is a checkbox: &lt;label&gt;Label&lt;/label&gt;&lt;input type="checkbox" ... /&gt;
+							<pre class="php"><code>// フィールドが select の場合： &lt;option value="1"&gt;Label&lt;/option&gt;
+// フィールドが checkbox の場合： &lt;label&gt;Label&lt;/label&gt;&lt;input type="checkbox" ... /&gt;
 $style = $fieldset-&gt;field('fieldname')-&gt;set_options('1', 'Label');</code></pre>
 						</td>
 					</tr>
@@ -804,27 +804,27 @@ $style = $fieldset-&gt;field('fieldname')-&gt;set_options('1', 'Label');</code><
 			<article>
 				<h4 class="method" id="method_input">input()</h4>
 				<p>
-					Alias for the <a href="../validation/methods.html#method_input">Validation input()</a> method,
-					and returning the input value for the current field. Returns <kbd>null</kbd> if no input value
-					is present.
+					<a href="../validation/methods.html#method_input">Validation input()</a> メソッドのエイリアス。
+					現在のフィールドの入力値を返す。入力値が無い場合は <kbd>null</kbd>
+					を返す。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_validated">validated()</h4>
 				<p>
-					Alias for the <a href="../validation/methods.html#method_validated">Validation validated()</a> method,
-					and returning the validated input value for the current field. Returns <kbd>null</kbd> if no validated
-					input value is present.
+					<a href="../validation/methods.html#method_validated">Validation validated()</a> メソッドのエイリアス。
+					現在のフィールドのバリデーションされた入力値を返す。バリデーションされた入力値が無い場合は <kbd>null</kbd>
+					を返す。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_error">error()</h4>
 				<p>
-					Alias for the <a href="../validation/methods.html#method_error">Validation error()</a> method,
-					and any error messages present after the validation of this field has run. Returns <kbd>false</kbd>
-					if no errors were detected.
+					<a href="../validation/methods.html#method_error">Validation error()</a> メソッドのエイリアス。
+					このフィールドのバリデーション実行後のエラーメッセージを返す。エラーが検出されない場合は <kbd>false</kbd>
+					を返す。
 				</p>
 			</article>
 		</div>
@@ -832,6 +832,7 @@ $style = $fieldset-&gt;field('fieldname')-&gt;set_options('1', 'Label');</code><
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/classes/fieldset/field.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/classes/fieldset/field.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/classes/fieldset/field.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

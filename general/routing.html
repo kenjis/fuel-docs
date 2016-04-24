@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 		var path = './../';
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Routing - General - FuelPHP Documentation</title>
+	<title>ルーティング - 概要 - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -24,7 +24,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -33,7 +33,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -44,31 +44,31 @@
 
 		<div id="main">
 
-			<h2>Routing</h2>
+			<h2>ルーティング</h2>
 
-			<p>Fuel's routing can range from simple static routes to advanced routes using HTTP verb based routing.</p>
+			<p>Fuel では、単純な静的なルート設定から HTTP の動詞によるルーティングを用いた高度なルート設定に至るまで、様々なルーティングが可能です。</p>
 
-			<p>Routes are set in <kbd>fuel/app/config/routes.php</kbd>.</p>
+			<p>ルート設定は、<kbd>fuel/app/config/routes.php</kbd> で行います。</p>
 
-			<h3 id="reserved">Reserved Routes</h3>
+			<h3 id="reserved">予約済みルート</h3>
 
-			<p>In Fuel there are 4 reserved routes.	 They are <kbd>_root_</kbd>, <kbd>_403_</kbd>, <kbd>_404_</kbd> and <kbd>_500_</kbd>.</p>
+			<p>Fuel では次の4つの予約済みルート設定があります。<kbd>_root_</kbd>, <kbd>_403_</kbd>, <kbd>_404_</kbd>, <kbd>_500_</kbd>.</p>
 
 			<ul>
-				<li><kbd>_root_</kbd> - The default route when no URI is specified.</li>
-				<li><kbd>_403_</kbd> - The route used when the application throws an HttpNoAccessException that isn't caught.</li>
-				<li><kbd>_404_</kbd> - The route used when the application throws an HttpNotFoundException that isn't caught.</li>
-				<li><kbd>_500_</kbd> - The route used when the application throws an HttpServerErrorException that isn't caught.</li>
+				<li><kbd>_root_</kbd> - URI が指定されなかったときのデフォルトルート。</li>
+				<li><kbd>_403_</kbd> - アプリケーションが投げた HttpNoAccessException がキャッチされなかったときに使われるルート。</li>
+				<li><kbd>_404_</kbd> - アプリケーションが投げた HttpNotFoundException がキャッチされなかったときに使われるルート。</li>
+				<li><kbd>_500_</kbd> - アプリケーションが投げた HttpServerErrorException がキャッチされなかったときに使われるルート。</li>
 			</ul>
 
 			<p class="note">
-				The request class throws an HttpNotFoundException when you request a URI (a route) that your application
-				can't resolve.
+				リクエストした URI （ルーティング）がアプリケーション内で解決できないとき、
+				request クラスが HttpNotFoundException を投げます。
 			</p>
 			<p class="note">
-				If no <kbd>_404_</kbd> route is defined, the framework uses it's own error handler to display
-				a "page not found" message. If no <kbd>_403_</kbd> or <kbd>_500_</kbd> route is defined, these
-				exceptions remain uncaught, and are handled like any other exception your application might throw.
+				<kbd>_404_</kbd> ルートが未定義の場合、フレームワーク自身のエラーハンドラを使って "page not found" メッセージが表示されます。
+				<kbd>_403_</kbd> または <kbd>_500_</kbd> ルートが未定義の場合、
+				これらの例外はキャッチされないまま、あなたのアプリケーションが投げる他の例外と同様に処理されます。
 			</p>
 
 			<pre class="php"><code>return array(
@@ -76,11 +76,11 @@
     '_404_'   => 'welcome/404',
 );</code></pre>
 
-			<h3 id="basics">Basic Routing</h3>
+			<h3 id="basics">基本的なルーティング</h3>
 
-			<p>The route on the left is compared to the request URI.  If a match is found, the request is routed to the URI on the right.</p>
+			<p>左辺に記述されたルートは、リクエストされた URI と比較されます。もし一致していれば、そのリクエストは右辺の URI に経路づけられます。</p>
 
-			<p>This allows you to do things like the following:</p>
+			<p>このルーティングによって、次のようなことが可能になります。:</p>
 
 			<pre class="php"><code>return array(
     'about'   => 'site/about',
@@ -89,124 +89,124 @@
 );</code></pre>
 
 
-			<h3 id="slightly_advanced">Slightly Advanced Routing</h3>
+			<h3 id="slightly_advanced">やや高度なルーティング</h3>
 
-			<p>You can include any regex into your routes.	The left side is matched against the
-			requests URI, and the right side is the replacement for the left, so you can use
-			backreferences in the right side from the regex on the left.  There are also a few
-			special statements that allow you match anything or just a segment:</p>
+			<p>ルート設定には正規表現を含めることが出来ます。
+			左辺とリクエストされた URI が一致したら、その一致した部分を右辺に代入するといったような、
+			左辺の正規表現による右辺の後方参照が利用可能です。また、次のようないくつかの特別な宣言があり、それを用いて何かに一致させたり、
+			あるいは特定セグメントに一致させたりすることが出来ます。</p>
 
 			<ul>
-				<li><kbd>:any</kbd> - This matches anything from that point on in the URI, does not match "nothing"</li>
-				<li><kbd>:everything</kbd> - Like <kbd>:any</kbd>, but also matches "nothing"</li>
-				<li><kbd>:segment</kbd> - This matches only 1 segment in the URI, but that segment can be anything</li>
-				<li><kbd>:num</kbd> - This matches any numbers</li>
-				<li><kbd>:alpha</kbd> - This matches any alpha characters, including UTF-8</li>
-				<li><kbd>:alnum</kbd> - This matches any alphanumeric characters, including UTF-8</li>
+				<li><kbd>:any</kbd> - URI の任意の部分と一致、"何もない" には一致しない</li>
+				<li><kbd>:everything</kbd> - <kbd>:any</kbd> と同様、しかし "何もない" にも一致</li>
+				<li><kbd>:segment</kbd> - URI の 1 つのセグメントのみに一致、しかしそのセグメントは任意のものであっていい</li>
+				<li><kbd>:num</kbd> - 任意の数値と一致</li>
+				<li><kbd>:alpha</kbd> - UTF-8 を含む、任意のアルファベットと一致</li>
+				<li><kbd>:alnum</kbd> - UTF-8 を含む、任意のアルファベットや数字と一致</li>
 			</ul>
 
-			<p>Here are some examples. Notice the subtle differences between <kbd>:any</kbd> and <kbd>:everything</kbd>:</p>
+			<p>ここにいくつかの例があります。 <kbd>:any</kbd> と <kbd>:everything</kbd> の間の微妙な違いに注意:</p>
 
 			<pre class="php"><code>return array(
-    'blog/(:any)'       => 'blog/entry/$1', // Routes /blog/entry_name to /blog/entry/entry_name
-                                            //   matches /blog/, does not match /blogging and /blog
-    'blog(:any)'        => 'blog/entry$1',  // Routes /blog/entry_name to /blog/entry/entry_name
-                                            //   matches /blog/ and /blogging, does not match /blog
-    'blog(:everything)' => 'blog/entry$1',  // Routes /blog/entry_name to /blog/entry/entry_name
-                                            //   matches /blog/, /blogging and /blog
-    '(:segment)/about'  => 'site/about/$1', // Routes /en/about to /site/about/en
-    '(\d{2})/about'     => 'site/about/$1', // Routes /12/about to /site/about/12
+    'blog/(:any)'       => 'blog/entry/$1', // /blog/entry_name が /blog/entry/entry_name に経路付けられ、
+                                            //   /blog/ と一致します。 /blogging や /blog とは一致しません。
+    'blog(:any)'        => 'blog/entry$1',  // /blog/entry_name が /blog/entry/entry_name に経路付けられ、
+                                            //   /blog/ や /blogging と一致します。 /blog とは一致しません。
+    'blog(:everything)' => 'blog/entry$1',  // /blog/entry_name が /blog/entry/entry_name に経路付けられ、
+                                            //   /blog/ 、 /blogging や /blog と一致します。
+    '(:segment)/about'  => 'site/about/$1', // /en/about が /site/about/en に経路付けられる
+    '(\d{2})/about'     => 'site/about/$1', // /12/about が /site/about/12 に経路付けられる
 );</code></pre>
 
 
-			<h3 id="advanced">Advanced Routing</h3>
+			<h3 id="advanced">高度なルーティング</h3>
 
-			<p>You can also have named parameters in your routes.  This allows you to give your URI segments
-			names which can then be accessed from within your actions.</p>
+			<p>ルート設定では、名前付きパラメータを使えます。これより、URI セグメントに対して名前を与えることができ、
+			アクションメソッドの中でアクセスできます。</p>
 
-			<p>Example:</p>
+			<p>例:</p>
 
 			<pre class="php"><code>return array(
-    'blog/:year/:month/:id' => 'blog/entry', // Routes /blog/2010/11/entry_name to /blog/entry
+    'blog/:year/:month/:id' => 'blog/entry', // /blog/2010/11/entry_name が /blog/entry に経路付けられる
 );</code></pre>
 
-			<p>In the above example it would catch the following <kbd>/blog/2010/11/entry_name</kbd>.  It would then
-			route that request to your 'entry' action in your 'blog' controller.  There, the named params
-			will be available like this:</p>
+			<p>上の例では、<kbd>/blog/2010/11/entry_name</kbd> が捕捉され、
+			'blog' コントローラ内の 'entry' アクションにルーティングされます。
+			そこでは、下記のような名前付きパラメータを使うことができます。:</p>
 
 			<pre class="php"><code>$this->param('year');
 $this->param('month');
 $this->param('id');</code></pre>
 
 			<p class="note">
-				Note that as a named parameter is a regex, every named parameter counts as a backreference.
-				So in a route like ':name/(\d{2})', the backreference for your two-digit segment is $2, not $1!</p>
+				名前付きパラメータは正規表現で、後方参照として数えられることに注意しましょう。
+				例えば ':name/(\d{2})' において、2 桁の数字への後方参照は $2 であって、$1 ではありません。</p>
 
 
-			<h3 id="http_verb">HTTP verb based routing</h3>
+			<h3 id="http_verb">HTTP の動詞によるルーティング</h3>
 
-			<p>You can route your URLs to controllers and actions based on the HTTP verb used to call them.
-			This makes it quick and easy to make RESTful controllers.</p>
+			<p>アクセスされた HTTP の動詞に基づいて、URL をコントローラとアクションに経路付けることができます。
+			このことによって、素早く簡単に RESTful なコントローラを作成できます。</p>
 
-			<p>Example:</p>
+			<p>例:</p>
 
 			<pre class="php"><code>return array(
-    // Routes GET /blog to /blog/all and POST /blog to /blog/create
+    // GET /blog が /blog/all に、POST /blog が /blog/create に経路付けられる
     'blog' => array(array('GET', new Route('blog/all')), array('POST', new Route('blog/create'))),
 );</code></pre>
 
-			<p>You can use named parameters and regexes within your URL just like normal:</p>
+			<p>URL には、名前付きパラメータと正規表現を普通に使えます:</p>
 
 	        <pre class="php"><code>return array(
     'blog/(:any)' => array(array('GET', new Route('blog/show/$1'))),
 );</code></pre>
 
-			<p>You can also specify if this route is supported for only http, or only https, by passing <kbd>false</kbd> or <kbd>true</kbd> as third parameter:</p>
+			<p>3 つめパラメータに <kbd>false</kbd> あるいは <kbd>true</kbd> を渡すことで、ルートが HTTP のみをサポートするのか、あるいは HTTPS のみをサポートするのかを指定することもできます。</p>
 
-	        <pre class="php"><code>// route only valid if this is an https request
+	        <pre class="php"><code>// HTTPS のリクエストであった場合のみルートが有効になります
 return array(
     'blog/(:any)' => array(array('GET', new Route('blog/show/$1'), true)),
 );</code></pre>
 
 
-			<h3 id="named_routes">Named routes and reverse routing</h3>
+			<h3 id="named_routes">名前付きルートとリバースルーティング</h3>
 
-			<p>The idea of reversed routing is like this: say you got an admin area and you have a route setup for it.
-			In your views, you would like to that admin area using an HTML anchor that links to for example 'admin/start/overview'.
-			Now you decide to move stuff around and end up moving that specific page to 'admin/overview'.
-			As a result of this now you need to update the links in all your views...</p>
+			<p>リバースルーティングというのは、次のような考え方を指します。たとえば管理エリアを作ろうとし、そのルートをセットアップします。
+			ビューにおいて、管理エリアで例えば 'admin/start/overview' という HTML アンカーを使いたいとしましょう。
+			ところが、気が変わって、そのページを 'admin/overview' という風に変えることにします。
+			その結果、全てのビューで、そのリンクを更新しなければならなくなってしまいました...</p>
 
-			<p>When using reverse routing with these name routes you can link an anchor to a named route, so that when the route changes,
-			the links in your views will automatically follow the change</p>
+			<p>名前付きルートとリバースルーティングを用いると、名前付きルートをアンカーリンクにすることができ、
+			ルートが変わっても、各ビューの中でのリンクはその変更を自動的に追随します。</p>
 
-			<p>Example route:</p>
+			<p>ルートの例:</p>
 
 			<pre class="php"><code>return array(
-    'admin/start/overview' => array('admin/overview', 'name' => 'admin_overview'), // add a named route for the admin/overview page
+    'admin/start/overview' => array('admin/overview', 'name' => 'admin_overview'), // admin/overview ページに対して名前付きルート名を追加する
 );</code></pre>
 
-			<p>Example anchor:</p>
+			<p>アンカーの例:</p>
 
-			<pre class="php"><code>// produces &lt;a href="http://your_base_url/admin/start/overview"&gt;Overview&lt;/a&gt;
+			<pre class="php"><code>// &lt;a href="http://your_base_url/admin/start/overview"&gt;Overview&lt;/a&gt; を生成する
 echo Html::anchor(Router::get('admin_overview'), 'Overview');</code></pre>
 
 			<p class="note">
-				Note that this currently only works for routes that are defined in <kbd>app/config/routes.php</kbd>, not for module routes.
+				今のところ、 <kbd>app/config/routes.php</kbd> に定義されているルートのみで動作することに注意しましょう。モジュールのルートでは動作しません。
 			</p>
 
-			<h3 id="inline_routes">Inline routes</h3>
+			<h3 id="inline_routes">インラインルート</h3>
 
 			<p>
-				A route does not have to resolve to a controller method. FuelPHP also supports inline routes, which are defined as a Closure
-				that replaces the controller method. Like controller methods, inline routes MUST return a Response object, either by forging
-				one manually, or as the result of executing a forged Request.
+				ルートはコントローラのメソッドに解決される必要はありません。 FuelPHP はコントローラメソッドを置き換える Closure として定義される
+				インラインルートもサポートします。コントローラのメソッドと同様にインラインルートは Response オブジェクト を返さなければなりません。
+				この Response オブジェクトは 自分で forge するか、 forge された Request を実行した結果として返します。
 			</p>
 
-			<p>Example route:</p>
+			<p>ルートの例:</p>
 
 			<pre class="php"><code>return array(
     'secret/mystuff' => function () {
-		// this route only works in development
+		// このルートは development 環境でのみ動作します
 		if (\Fuel::$env == \Fuel::DEVELOPMENT)
 		{
 			return \Request::forge('secret/mystuff/keepout', false)->execute();
@@ -217,15 +217,16 @@ echo Html::anchor(Router::get('admin_overview'), 'Overview');</code></pre>
 		}
 };</code></pre>
 
-			<h3 id="module_routing">Modules &amp; Routing</h3>
+			<h3 id="module_routing">モジュールとルーティング</h3>
 
-			<p><a href="modules.html#module_routing">Read about how modules handle routing</a>.</p>
+			<p><a href="modules.html#module_routing">モジュールがどのようにルーティングを扱うか</a> をお読みください。</p>
 
 		</div>
 
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/general/routing.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/general/routing.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/general/routing.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>

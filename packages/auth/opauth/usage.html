@@ -11,7 +11,7 @@
 		var class_prefix = "$object->";
 	</script>
 	<script src="./../../../assets/js/combined.js"></script>
-	<title>Usage - Opauth - Auth Package - FuelPHP Documentation</title>
+	<title>使用法 - Opauth - Auth パッケージ - FuelPHP ドキュメント</title>
 </head>
 <body>
 	<div id="container">
@@ -25,7 +25,7 @@
 				<form id="google_search">
 					<p>
 						<span id="search_clear">&nbsp;</span>
-						<input type="submit" name="search_submit" id="search_submit" value="search" />
+						<input type="submit" name="search_submit" id="search_submit" value="検索" />
 						<input type="text" value="" id="search_input" name="search_input" />
 					</p>
 				</form>
@@ -34,7 +34,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">table of contents</a>
+			<a href="#" id="toc_handle">目次</a>
 			<div class="clear"></div>
 		</header>
 
@@ -45,132 +45,132 @@
 
 		<div id="main">
 
-			<h2 id="usage">Opauth Usage</h2>
+			<h2 id="usage">Opauth の使用方法</h2>
 
-			<p>As said in the <a href="intro.html">introduction</a> of the Opauth extension to Auth, the wrapper class configures itself
-			automatically for either Simpleauth or Ormauth, based on the driver configured in the <strong>auth.php</strong> configuration
-			file.</p>
+			<p>Auth を拡張する Opauth の <a href="intro.html">はじめに</a> で述べたとおり、ラッパークラスは
+			<strong>auth.php</strong> 設定ファイルで構成されたドライバに基づいて、自動的に Simpleauth または Ormauth
+			のいずれかに設定されます。</p>
 
-			<p>If you don't use these drivers, but you have enrolled your own driver set in the Auth framework, you can still use the Opauth
-			integration class, but you'll have to create the 'providers' table defined in the migration 008 manually.
-			You can name it anything you like. Also, your custom Login driver should provide the methods <strong>Auth::check()</strong>,
-			<strong>Auth::instance()->get_user_id()</strong>, <strong>Auth::instance()->force_login()</strong> and
-			<strong>Auth::create_user()</strong>, with prototypes compatible with Simpleauth. Without these, it will not work.</p>
+			<p>認証フレームワークで独自のドライバセットを登録し、 Simpleauth または Ormauth のドライバを使用しない場合でも、
+			あなたはまだ Opauth 統合クラスを使用することができますが、マイグレーション 008 で定義された 'providers' のテーブルを手動で作成する必要があります。
+			あなたは独自のドライバセットに好きな名前を付けることができます。また、カスタムログインドライバは Simpleauth とプロトタイプ互換がある
+			<strong>Auth::check()</strong> 、 <strong>Auth::instance()->get_user_id()</strong> 、 <strong>Auth::instance()->force_login()</strong> と 
+			<strong>Auth::create_user()</strong> のメソッドを提供する必要があります。これらがないと、 Opauth 統合クラスは動作しません。</p>
 
-			<h3 id="runtime_config">Runtime configuration</h3>
+			<h3 id="runtime_config">実行時の設定</h3>
 
-			<p>Most of the Opauth configuration is done through the <strong>opauth.php</strong> configuration file, and all of the options in that
-			file can be altered at runtime by passing a new value to the forge() using the $config array. In addition to this, there are some
-			configuration values you can only pass at runtime, they are not supported in the configuration file:
+			<p>Opauth の設定の大部分は、設定ファイルの <strong>opauth.php</strong> を介して行われ、そして、そのファイル内のすべてのオプションは、
+			$config 配列を使用して、 forge() に新しい値を渡すことにより実行時に変更することができます。
+			これに加え、設定ファイルではサポートされず実行時にのみ渡すことができるいくつかの設定値が存在します：
 			</p>
 
 			<table class="config">
 				<thead>
 					<tr class="header">
-						<th style="width:20%;">Param</th>
-						<th style="width:10%;">Type</th>
-						<th>Default</th>
-						<th>Description</th>
+						<th style="width:20%;">パラメータ</th>
+						<th style="width:10%;">型</th>
+						<th>デフォルト</th>
+						<th>説明</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>table</td>
 						<td>string</td>
-						<td><pre><i>auto detected</i></pre></td>
+						<td><pre><i>自動検出</i></pre></td>
 						<td>
-							Allows you to define the name of the table that contains the provider information manually. When using Simpleauth or
-							Ormauth, the name of this table is auto-detected. If you use a custom Auth driver set, and have created the table
-							manually, you will have to pass this table name on every forge call.
+							手動でプロバイダ情報を含むテーブルの名前を定義することができます。
+							このテーブルの名前は Simpleauth または Ormauth を利用する場合は自動的に検出されます。
+							カスタム認証ドライバセットを利用し手動でテーブルを作成した場合は、すべての生成時の呼び出しでこのテーブル名を渡す必要があります。
 						</td>
 					</tr>
 					<tr>
 						<td>path</td>
 						<td>string</td>
-						<td><pre><i>auto detected</i></pre></td>
+						<td><pre><i>自動検出</i></pre></td>
 						<td>
-							URI path to the controller method that does your OAuth authentication. By default, it is set to whatever the current
-							path is when you forge an Opauth object.
+							あなたの OAuth 認証を行うコントローラのメソッドへの URI パス。
+							デフォルトでは、 Opauth オブジェクトを生成したときの現在のパスが設定されています。
 						</td>
 					</tr>
 					<tr>
 						<td>callback_url</td>
 						<td>string</td>
-						<td><pre><i>auto detected</i></pre></td>
+						<td><pre><i>自動検出</i></pre></td>
 						<td>
-							URI path to the controller method that handles the OAuth provider callback. By default, it is set to call the 'action_callback'
-							or 'get_callback' method in the same controller that <strong>path</strong> points to.
+							OAuth プロバイダのコールバックを処理するコントローラメソッドへの URI パス。デフォルトでは、 <strong>path</strong>
+							が指す同じコントローラ内の 'action_callback' または 'get_callback' メソッドを呼び出すように設定されています。
 						</td>
 					</tr>
 					<tr>
 						<td>provider</td>
 						<td>string</td>
-						<td><pre><i>auto detected</i></pre></td>
+						<td><pre><i>自動検出</i></pre></td>
 						<td>
-							If you have manually set the <strong>path</strong>, auto detection of the OAuth provider called doesn't work, and you will
-							have to define the provider name manually. This is case sensitive, and MUST match the case used by the strategy provider
-							and the key used to define the strategy in the <strong>opauth.php</strong> configuration file.
+							手動で <strong>path</strong> を設定している場合、OAuthプロバイダの呼び出しの自動検出が機能しないため
+							手動でプロバイダ名を定義する必要があります。これは大文字と小文字が区別され、ストラテジープロバイダの利用時と設定ファイルの
+							<strong>opauth.php</strong> でストラテジーの定義をするために利用するキーは一致しなければなりません。
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<p class="note">When using Simpleauth or Ormauth, and you have followed the example code for integrating Opauth in your application,
-			none of these runtime configuration values are needed, the auto-detected values will do the	trick just fine.</p>
+			<p class="note">Simpleauth または Ormauth を利用しており、あなたのアプリケーションが Opauth を統合するためコード例に従っている場合は、
+			これら実行時の設定値はいずれも必要がありません。自動検出した値でうまく動きます。</p>
 
-			<h3 id="classmethods">Class methods</h3>
+			<h3 id="classmethods">クラスメソッド</h3>
 
 			<article>
 				<h4 id="method_forge" class="method">forge($config = array(), $autorun = true)</h4>
-				<p>The <strong>forge</strong> method creates an instance of the Auth_Opauth class, which provides OAuth integration to your application.</p>
+				<p><strong>forge</strong> メソッドは Auth_Opauth クラスのインスタンスを作成し、アプリケーションに OAuth の統合を提供します。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>Yes</td>
+						<th class="legend">静的</th>
+						<td>はい</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$config</kbd></th>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>Any runtime configuration values you want to pass to the instance</td>
+									<td>インスタンスに渡したい任意の実行時の設定値</td>
 								</tr>
 								<tr>
 									<th><kbd>$autorun</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>If true, it will automatically initiate a connection to the OAuth provider. If false, it will just instantiate the object.</td>
+									<td>true の場合、自動的に OAuth プロバイダへの接続を開始します。 false の場合、オブジェクトのインスタンス化のみを行います。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>Auth_Opauth</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
 							<pre class="php"><code>/**
- * load the wrapper, and have it process the provider defined in the URI
+ * ラッパーがロードされ、 URI に定義されているプロバイダを処理している
  *
- * this redirects to the providers authentication page, so it should be the
- * last line in your method
+ * プロバイダの認証ページにリダイレクトされるため、
+ * メソッドの最後の行である必要がある
  */
 \Auth_Opauth::forge();
 
-// forge an object with a runtime config
+// ランタイム設定を持つオブジェクトを生成
 \Auth_Opauth::forge(array(
     'default_group' => $custom_group_id,
 ));
 
-// forge an object with a runtime config, to process a callback
+// ランタイム設定を持つオブジェクトを生成しコールバックを処理
 $opauth = \Auth_Opauth::forge(array(
     'default_group' => $custom_group_id,
 ), false);
@@ -179,46 +179,46 @@ $opauth = \Auth_Opauth::forge(array(
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">If you want to process a callback without passing a custom config, you don't have to pass an empty array, you
-				can use <strong>\Auth_Opauth::forge(false);</strong> as a shortcut.</p>
+				<p class="note">カスタム設定を渡さずに、コールバックを処理したい場合は空の配列を渡す必要はなく、 
+				<strong>\Auth_Opauth::forge(false);</strong> をショートカットとして利用できます。</p>
 			</article>
 
 			<article>
 				<h4 id="method_login_or_register" class="method">login_or_register()</h4>
-				<p>The <strong>login_or_register</strong> method processes the provider callback. If the returned provider UID is known, the user will
-				be logged in using the local account it is associated to. If not, the user is asked to either register for a new account, or login with
-				and existing account and associate the UID with that account.</p>
+				<p>The <strong>login_or_register</strong> メソッドは、プロバイダーのコールバックを処理します。既知のプロバイダの UID が返された場合、
+				ユーザーは、そのプロバイダに関連付けられているローカルアカウントを利用しログインすることができます。そうでないなら、新しいアカウントの登録、
+				もしくは、既存のアカウントを利用しログインを行い、そのアカウントと UID を関連付けること、のいずれかをユーザーは求めています。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
-							None
+							なし
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
+						<th>返り値</th>
 						<td>
-							string, status code. The following status codes are supported:
+							string, ステータスコード。次のステータスコードがサポートされている：
 							<ul>
-								<li>'linked': the UID is succesfully linked to the current logged-in user</li>
-								<li>'logged_in': the user is succesfully logged-in using the OAuth account</li>
-								<li>'registered': the UID is linked to a newly registered account, and the user is logged-in</li>
-								<li>'register': the UID is not known, and no logged-in user exists, have the user register first</li>
+								<li>'linked': UID は現在ログインしているユーザーに正常にリンクされた</li>
+								<li>'logged_in': OAuth のアカウントを使用しユーザーは正常にログインした</li>
+								<li>'registered': UID は新しく登録されたアカウントにリンクされ、そのユーザーでログインをした</li>
+								<li>'register': UID は既知ではなく、まだログインしているユーザが存在しないため、ユーザ登録を先に行う</li>
 							</ul>
 						</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// get the Opauth object
+							<pre class="php"><code>// opauth オブジェクトを取得
 $opauth = \Auth_Opauth::forge(false);
 
-// attempt to auto-login using the provider callback data
+// プロバイダのコールバックデータを使用し自動ログインを試す
 $status = $opauth->login_or_register();
 </code></pre>
 						</td>
@@ -229,49 +229,49 @@ $status = $opauth->login_or_register();
 
 			<article>
 				<h4 id="method_link_provider" class="method">link_provider(array $data)</h4>
-				<p>The <strong>link_provider</strong> method allows you to manually link a local user account to an OAuth login. You need this if you want
-				to provide the option for new users to register for a local account first, and then create the link between that account and the provider
-				UID manually.</p>
+				<p><strong>link_provider</strong> メソッドを使用すると、 OAuth ログインに手動でローカルユーザーアカウントをリンクすることができます。
+				もし、ローカルアカウントを最初に登録し、その後、手動でそのアカウントとプロバイダの UID との間のリンクを作成するためのオプションを、
+				新規ユーザーに提供したい場合は、この処理が必要となります。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">説明</th>
 								</tr>
 								<tr>
 									<th><kbd>$data</kbd></th>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>Array with all data required to create the link (see example)</td>
+									<td>リンクを作成するために必要なすべてのデータの配列 (例を参照)</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed. The <strong>insert id</strong> of the created provider link record, or <strong>false</strong> if the creation failed.</td>
+						<th>返り値</th>
+						<td>作成されたプロバイダリンクレコードの <strong>挿入 ID</strong> か、作成に失敗した場合は <strong>false</strong> 。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// get the opauth object
+							<pre class="php"><code>// opauth オブジェクトを取得
 $opauth = \Auth_Opauth::forge(false);
 
-// do we have OAuth strategy data?
+// OAuth ストラテジーデータを我々は持っていますか？
 if ($authentication = \Session::get('auth-strategy.authentication', array()))
 {
-	// get the current Auth userid
+	// 現在の認証済みユーザーIDを取得
 	list(, $userid) = \Auth::instance()->get_user_id();
 
-	// and link it to the provider
+	// そして、プロバイダとそれをリンク
 	$insert_id = $opauth->link_provider(array(
 		'parent_id' => $userid,
 		'provider' => $authentication['provider'],
@@ -285,7 +285,7 @@ if ($authentication = \Session::get('auth-strategy.authentication', array()))
 }
 else
 {
-	// no data available, looks like we didn't receive an OAuth callback earlier?
+	// 有効なデータがありません、先ほどの OAuth コールバックを受け取っていないように見えます。
 }
 </code></pre>
 						</td>
@@ -296,47 +296,47 @@ else
 
 			<article>
 				<h4 id="method_get" class="method">get($key, $default = null)</h4>
-				<p>The <strong>get</strong> method is a getter that allows direct access to the raw provider callback response structure as
-				created by the Opauth strategy.</p>
+				<p><strong>get</strong> メソッドは Opauth ストラテジーによって作成された生のプロバイダのコールバックレスポンスの構造に
+				直接アクセスすることが可能な getter です。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th class="legend">Static</th>
-						<td>No</td>
+						<th class="legend">静的</th>
+						<td>いいえ</td>
 					</tr>
 					<tr>
-						<th>Parameters</th>
+						<th>パラメータ</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>Param</th>
-									<th>Default</th>
-									<th class="description">Description</th>
+									<th>パラメータ</th>
+									<th>デフォルト</th>
+									<th class="description">パラメータ</th>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
-									<td><em>required</em></td>
-									<td>Name of the key to the desired value in the response array</td>
+									<td><em>必須</em></td>
+									<td>レスポンス配列内の値を要求するキーの名前</td>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>Default value to return if the requested key does not exist</td>
+									<td>要求されたキーが存在しない場合はデフォルト値が返されます</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<th>Returns</th>
-						<td>mixed. The value referenced by the given key, or whatever was defined as $default.</td>
+						<th>返り値</th>
+						<td>mixed 。指定されたキーによって参照される値、もしくは $default で定義された値。</td>
 					</tr>
 					<tr>
-						<th>Example</th>
+						<th>例</th>
 						<td>
-							<pre class="php"><code>// get the opauth object
+							<pre class="php"><code>// opauth オブジェクトを取得
 $opauth = \Auth_Opauth::forge(false);
 
-// get some auth data
+// いくつかの認証データを取得
 $provider = $opauth->get('auth.provider');
 $uid = $opauth->get('auth.uid');
 $token = $opauth->get('credentials.token', null);
@@ -348,15 +348,16 @@ $refresh_token = $opauth->get('credentials.refresh_token', null);
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">You can only use this in the method in which you are processing the callback. In all other cases, there
-				is no OAuth response available. If there was a valid response processed earlier, its basic data is stored in the session
-				using the session key "auth-strategy".</p>
+				<p class="note">コールバックを処理する中でのみこのメソッドを利用することができます。
+				他のすべての場合において、利用可能な OAuth レスポンスはありません。 以前に処理された有効なレスポンスがあった場合、
+				その基本データはセッションキー "auth-strategy" を使用してセッションに格納されています。</p>
 			</article>
 		</div>
 
 		<footer>
 			<p>
 				&copy; FuelPHP Development Team 2010-2016 - <a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.
+[ <a href="https://github.com/fuel/docs/commits/1.8/develop/packages/auth/opauth/usage.html">原文コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/commits/1.8/develop_japanese/packages/auth/opauth/usage.html">翻訳コミット履歴</a> | <a href="https://github.com/NEKOGET/FuelPHP_docs_jp/blob/1.8/develop_japanese/packages/auth/opauth/usage.html">GitHubで修正</a> ]
 			</p>
 		</footer>
 	</div>
