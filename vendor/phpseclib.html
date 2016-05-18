@@ -78,8 +78,8 @@ class Controller_Ssh extends Controller
 {
 	public function action_index()
 	{
-		// サーバーに接続する
-		$ssh = new \PHPSecLib\Net_SSH2('myserver.example.org');
+				// サーバーに接続する
+		$ssh = new \phpseclib\Net\SSH2('myserver.example.org');
 
 		// ログイン
 		if ( ! $ssh->login('username', 'password'))
