@@ -207,7 +207,7 @@ Auth::group()->set_config('key', 'value');
 							<th>例</th>
 							<td>
 								<pre class="php"><code>// simplegroup ドライバ の config の値を取得し、値がなければ false を返す
-$key = Auth::instance(simplegroup)->get_config('key', false);
+$key = Auth::instance('simplegroup')->get_config('key', false);
 </code></pre>
 							</td>
 						</tr>

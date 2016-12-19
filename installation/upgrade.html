@@ -67,7 +67,7 @@ $ php composer.phar update --prefer-dist
 				from the root of your application folder structure.
 			</p>
 			<p>
-				If have to upgrade from an earlier version, you have to manually remove the following folders:
+				If you have to upgrade from an earlier version, you must manually remove the following folders:
 <pre class="cli"><code>$ rm -rf fuel/core/ docs/
 $ rm -rf fuel/packages/auth/ fuel/packages/email/ fuel/packages/oil/
 $ rm -rf fuel/packages/orm/ fuel/packages/parser/ fuel/vendor/
@@ -130,10 +130,14 @@ $ rm -rf fuel/packages/orm/ fuel/packages/parser/ fuel/vendor/
 
 			<h4 id="app_others">含まれるその他のファイル</h4>
 			<p>
-				アップデートする必要があるかもしれないその他のファイルとは、 Oil 起動スクリプト、 .htaccess ファイル、そして PHPUnit が必要とするファイルのことです。
-				それらを変更していなければ、単に新バージョンに置き換えて、
-				実際に使用した時に問題が起きないことを確認すれば OK です。
-			</p>
+                Other files may need upgrading. If you haven't changed them, just replace them with the new version, to make sure 
+                you don't run into issues.</p>
+
+                <p><code>oil</code> - the 'Oil' bootstrap script, <code>.htaccess</code> and files needed by PHPUnit.</p>
+                <p> <code>app/config/config.php</code> - you may see an <em>"There is no security.output_filter defined"</em> error.<br/>
+                Keep your current config file, but copy over the "security" array from the latest version.</p>
+                <p> <code>app/bootstrap.php</code> - if you still have "Load in the Autoloader" (lines 3-6) these should be removed.<br/>
+                This is the cause of the <em>"Cannot declare class Fuel\Core\Autoloader, because the name is already in use"</em> error.</p>
 
 			<h3 id="tips">上流リポジトリを使う</h3>
 
